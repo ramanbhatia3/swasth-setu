@@ -105,161 +105,135 @@ function parseNaturalQuery(rawQuery) {
   };
 }
 
+// --- NEW: Extracted core search logic so the AI can use it internally ---
+// Export executeSearch so aiController can invoke the exact same regional/budget matching
+export const executeSearch = async (q, city, specialization, maxBudget, sortBy) => {
+  let targetSpecialties = [];
+  let targetLocations = [];
+  let primaryLocString = '';
+  let targetBudget = maxBudget ? Number(maxBudget) : null;
+  let isDirectName = false;
+  let directNameTerm = '';
+
+  if (q && q.trim().length > 0) {
+    const parsed = parseNaturalQuery(q);
+    if (!parsed.isValid) return { isInvalidQuery: true, message: parsed.reason, hospitals: [] };
+
+    if (parsed.isNameSearch) {
+      isDirectName = true;
+      directNameTerm = parsed.term;
+    } else {
+      targetSpecialties = parsed.specialties;
+      targetLocations = parsed.locations;
+      primaryLocString = parsed.primaryLocationString;
+      if (!targetBudget && parsed.budget) targetBudget = parsed.budget;
+    }
+  }
+
+  if (specialization && !targetSpecialties.includes(specialization)) {
+    targetSpecialties.push(specialization);
+  }
+
+  let dbQuery = {};
+  const andConditions = [];
+
+  if (isDirectName) {
+    andConditions.push({
+      $or: [
+        { name: { $regex: directNameTerm,$options: 'i' } },
+        { specializations: { $regex: directNameTerm,$options: 'i' } }
+      ]
+    });
+  } else {
+    if (targetLocations.length > 0) {
+      const locRegexes = targetLocations.map(l => new RegExp(l, 'i'));
+      andConditions.push({
+        $or: [{ 'location.city': { $in: locRegexes } }, { 'location.state': {$in: locRegexes } }]
+      });
+    }
+    if (targetSpecialties.length > 0) {
+      const specRegexes = targetSpecialties.map(s => new RegExp(s, 'i'));
+      andConditions.push({
+        $or: [{ specializations: { $in: specRegexes } }, { chronicConditionsHandled: {$in: specRegexes } }]
+      });
+    }
+  }
+
+  if (andConditions.length > 0) dbQuery.$and = andConditions;
+
+  let rawHospitals = await Hospital.find(dbQuery).limit(100).lean();
+
+  let locationRelaxed = false;
+  if (rawHospitals.length === 0 && targetLocations.length > 0 && targetSpecialties.length > 0) {
+    const specRegexes = targetSpecialties.map(s => new RegExp(s, 'i'));
+    rawHospitals = await Hospital.find({
+      $or: [{ specializations: { $in: specRegexes } }, { chronicConditionsHandled: {$in: specRegexes } }]
+    }).limit(50).lean();
+    locationRelaxed = true;
+  }
+
+  const scoredHospitals = rawHospitals.map(hospital => {
+    let matchScore = 50;
+    const matchExplanations = [];
+
+    const hasSpec = targetSpecialties.some(ts =>
+      hospital.specializations.some(s => s.toLowerCase() === ts.toLowerCase()) ||
+      hospital.chronicConditionsHandled.some(c => c.toLowerCase().includes(ts.toLowerCase()))
+    );
+    if (hasSpec) { matchScore += 25; matchExplanations.push(`Specialists in ${targetSpecialties.join(' & ')}`); }
+
+    if (targetBudget) {
+      const affordable = hospital.procedures.filter(p => p.estimatedCost.min <= targetBudget);
+      if (affordable.length > 0) { matchScore += 15; matchExplanations.push(`Procedures starting within ₹${targetBudget.toLocaleString()}`); } 
+      else { matchScore -= 5; matchExplanations.push(`Packages may exceed ₹${targetBudget.toLocaleString()}`); }
+    }
+
+    if (hospital.metrics?.successRate >= 90) { matchScore += 10; matchExplanations.push(`Clinical success rate: ${hospital.metrics.successRate}%`); }
+
+    if (targetLocations.length > 0) {
+      const hCity = hospital.location.city.toLowerCase();
+      const hState = hospital.location.state.toLowerCase();
+      const isLocMatch = targetLocations.some(l => hCity.includes(l.toLowerCase()) || hState.includes(l.toLowerCase()));
+      if (isLocMatch && !locationRelaxed) { matchScore += 8; matchExplanations.push(`Located in ${hospital.location.city}, ${hospital.location.state}`); } 
+      else if (locationRelaxed) { matchExplanations.push(`Nationwide specialized center (outside requested region)`); }
+    }
+
+    matchScore = Math.min(94, Math.max(50, matchScore));
+    return { ...hospital, matchScore, matchExplanations };
+  });
+
+  const sort = sortBy || 'successRate';
+  if (sort === 'successRate') scoredHospitals.sort((a, b) => (b.metrics?.successRate || 0) - (a.metrics?.successRate || 0));
+  else if (sort === 'budgetLow') scoredHospitals.sort((a, b) => (a.procedures?.[0]?.estimatedCost?.min || 9999999) - (b.procedures?.[0]?.estimatedCost?.min || 9999999));
+  
+  return {
+    isInvalidQuery: false,
+    parsedQuery: { detectedLocation: primaryLocString, detectedSpecialties: targetSpecialties, detectedBudget: targetBudget },
+    hospitals: scoredHospitals
+  };
+};
+
 export const searchHospitals = async (req, res) => {
   try {
-    const { q, sortBy } = req.query;
+    const { q, city, specialization, maxBudget, sortBy } = req.query;
+    const result = await executeSearch(q, city, specialization, maxBudget, sortBy);
 
-    let targetSpecialties = [];
-    let targetLocations = [];
-    let primaryLocString = '';
-    let targetBudget = null;
-    let isDirectName = false;
-    let directNameTerm = '';
-
-    if (q && q.trim().length > 0) {
-      const parsed = parseNaturalQuery(q);
-
-      if (!parsed.isValid) {
-        return res.status(200).json({
-          success: true, count: 0, isInvalidQuery: true, message: parsed.reason, hospitals: []
-        });
-      }
-
-      if (parsed.isNameSearch) {
-        isDirectName = true;
-        directNameTerm = parsed.term;
-      } else {
-        targetSpecialties = parsed.specialties;
-        targetLocations = parsed.locations;
-        primaryLocString = parsed.primaryLocationString;
-        targetBudget = parsed.budget;
-      }
-    }
-
-    let dbQuery = {};
-    const andConditions = [];
-
-    if (isDirectName) {
-      andConditions.push({
-        $or: [
-          { name: { $regex: directNameTerm,$options: 'i' } },
-          { specializations: { $regex: directNameTerm,$options: 'i' } }
-        ]
-      });
-    } else {
-      // NEW: Search BOTH City and State fields with all regional keywords
-      if (targetLocations.length > 0) {
-        const locRegexes = targetLocations.map(l => new RegExp(l, 'i'));
-        andConditions.push({
-          $or: [
-            { 'location.city': { $in: locRegexes } },
-            { 'location.state': { $in: locRegexes } }
-          ]
-        });
-      }
-      if (targetSpecialties.length > 0) {
-        const specRegexes = targetSpecialties.map(s => new RegExp(s, 'i'));
-        andConditions.push({
-          $or: [
-            { specializations: { $in: specRegexes } },
-            { chronicConditionsHandled: { $in: specRegexes } }
-          ]
-        });
-      }
-    }
-
-    if (andConditions.length > 0) {
-      dbQuery.$and = andConditions;
-    }
-
-    let rawHospitals = await Hospital.find(dbQuery).limit(100).lean();
-
-    // Fallback: If regional search yields 0 results, drop location and search nationwide
-    let locationRelaxed = false;
-    if (rawHospitals.length === 0 && targetLocations.length > 0 && targetSpecialties.length > 0) {
-      const specRegexes = targetSpecialties.map(s => new RegExp(s, 'i'));
-      rawHospitals = await Hospital.find({
-        $or: [
-          { specializations: { $in: specRegexes } },
-          { chronicConditionsHandled: { $in: specRegexes } }
-        ]
-      }).limit(50).lean();
-      locationRelaxed = true;
-    }
-
-    const scoredHospitals = rawHospitals.map(hospital => {
-      let matchScore = 50;
-      const matchExplanations = [];
-
-      const hasSpec = targetSpecialties.some(ts =>
-        hospital.specializations.some(s => s.toLowerCase() === ts.toLowerCase()) ||
-        hospital.chronicConditionsHandled.some(c => c.toLowerCase().includes(ts.toLowerCase()))
-      );
-      if (hasSpec) {
-        matchScore += 25;
-        matchExplanations.push(`Specialists in ${targetSpecialties.join(' & ')}`);
-      }
-
-      if (targetBudget) {
-        const affordable = hospital.procedures.filter(p => p.estimatedCost.min <= targetBudget);
-        if (affordable.length > 0) {
-          matchScore += 15;
-          matchExplanations.push(`Procedures starting within ₹${targetBudget.toLocaleString()}`);
-        } else {
-          matchScore -= 5;
-          matchExplanations.push(`Packages may exceed ₹${targetBudget.toLocaleString()}`);
-        }
-      }
-
-      if (hospital.metrics?.successRate >= 90) {
-        matchScore += 10;
-        matchExplanations.push(`Clinical success rate: ${hospital.metrics.successRate}%`);
-      }
-
-      if (targetLocations.length > 0) {
-        const hCity = hospital.location.city.toLowerCase();
-        const hState = hospital.location.state.toLowerCase();
-        const isLocMatch = targetLocations.some(l => hCity.includes(l.toLowerCase()) || hState.includes(l.toLowerCase()));
-
-        if (isLocMatch && !locationRelaxed) {
-          matchScore += 8;
-          matchExplanations.push(`Located in ${hospital.location.city}, ${hospital.location.state}`);
-        } else if (locationRelaxed) {
-          matchExplanations.push(`Nationwide specialized center (outside requested region)`);
-        }
-      }
-
-      matchScore = Math.min(94, Math.max(50, matchScore));
-      return { ...hospital, matchScore, matchExplanations };
-    });
-
-    const sort = sortBy || 'successRate';
-    if (sort === 'successRate') {
-      scoredHospitals.sort((a, b) => (b.metrics?.successRate || 0) - (a.metrics?.successRate || 0));
-    } else if (sort === 'budgetLow') {
-      scoredHospitals.sort((a, b) => (a.procedures?.[0]?.estimatedCost?.min || 9999999) - (b.procedures?.[0]?.estimatedCost?.min || 9999999));
-    } else if (sort === 'patientCount') {
-      scoredHospitals.sort((a, b) => (b.metrics?.successfulPatientsCount || 0) - (a.metrics?.successfulPatientsCount || 0));
-    } else if (sort === 'matchScore') {
-      scoredHospitals.sort((a, b) => b.matchScore - a.matchScore);
+    if (result.isInvalidQuery) {
+      return res.status(200).json({ success: true, count: 0, isInvalidQuery: true, message: result.message, hospitals: [] });
     }
 
     res.status(200).json({
       success: true,
-      count: scoredHospitals.length,
-      parsedQuery: {
-        detectedLocation: primaryLocString, // Clean string for UI
-        detectedSpecialties: targetSpecialties,
-        detectedBudget: targetBudget
-      },
-      hospitals: scoredHospitals
+      count: result.hospitals.length,
+      parsedQuery: result.parsedQuery,
+      hospitals: result.hospitals
     });
-
   } catch (error) {
     console.error("Search Error:", error.message);
     res.status(500).json({ success: false, message: "Search service encountered an issue" });
   }
 };
+
 
 export const getHospitalById = async (req, res) => {
   try {
