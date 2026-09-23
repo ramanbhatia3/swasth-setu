@@ -1,10 +1,16 @@
 import express from 'express';
-import { searchHospitals, seedDemoHospitals } from '../controllers/hospitalController.js';
+import { 
+  searchHospitals, 
+  seedDemoHospitals, 
+  getHospitalById, 
+  compareHospitals 
+} from '../controllers/hospitalController.js';
 
 const router = express.Router();
 
-// Public routes (Users don't need to be logged in just to search)
 router.get('/search', searchHospitals);
-router.get('/seed', seedDemoHospitals); // We will hit this once via Postman/Browser to load data
+router.post('/compare', compareHospitals); 
+router.get('/seed', seedDemoHospitals); 
+router.get('/:id', getHospitalById); // Keep :id at the bottom so it doesn't accidentally catch '/search' or '/seed'
 
 export default router;
