@@ -15,14 +15,13 @@ export default function AiReport() {
   ]);
   const [isLoading, setIsLoading] = useState(false);
   
-  // Auto-scroll to bottom of chat
-  const messagesEndRef = useRef(null);
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  // Auto-scroll to bottom of chat without scrolling the whole page
+  const chatContainerRef = useRef(null);
   
   useEffect(() => {
-    scrollToBottom();
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
   }, [messages, isLoading]);
 
   const handleSendMessage = async (e) => {
@@ -75,7 +74,10 @@ export default function AiReport() {
       <div className="flex-grow bg-white dark:bg-[#141311] border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm flex flex-col overflow-hidden transition-colors">
         
         {/* Messages Area */}
-        <div className="flex-grow p-6 overflow-y-auto bg-slate-50 dark:bg-[#0f0e0c] space-y-6">
+        <div 
+          ref={chatContainerRef}
+          className="flex-grow p-6 overflow-y-auto bg-slate-50 dark:bg-[#0f0e0c] space-y-6"
+        >
           {messages.map((msg, index) => (
             <motion.div 
               initial={{ opacity: 0, y: 10 }}
@@ -124,7 +126,6 @@ export default function AiReport() {
               </div>
             </motion.div>
           )}
-          <div ref={messagesEndRef} />
         </div>
 
         {/* Input Area */}
