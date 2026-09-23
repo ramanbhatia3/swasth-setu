@@ -1,0 +1,381 @@
+import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { MapContainer, TileLayer, Marker, Popup, CircleMarker, useMap } from 'react-leaflet';
+import MarkerClusterGroup from 'react-leaflet-cluster';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Map as MapIcon, List, Search, Filter, AlertTriangle, CheckCircle2, Info, Clock, Activity, ExternalLink, Flame } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+
+// --- Custom Leaflet Marker Icons based on Performance ---
+const createCustomIcon = (color) => {
+  return L.divIcon({
+    className: 'custom-leaflet-marker',
+    html: `<div style="background-color: ${color}; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"></div>`,
+    iconSize: [20, 20],
+    iconAnchor: [10, 10],
+    popupAnchor: [0, -10]
+  });
+};
+
+const icons = {
+  'Good': createCustomIcon('#10b981'), // Emerald
+  'Needs Monitoring': createCustomIcon('#f59e0b'), // Amber
+  'Requires Attention': createCustomIcon('#ef4444'), // Rose
+  'Insufficient Data': createCustomIcon('#94a3b8') // Slate
+};
+
+// --- Custom Cluster Styling ---
+const createClusterCustomIcon = function (cluster) {
+  const count = cluster.getChildCount();
+  let size = 40;
+  let color = 'rgba(13, 148, 136, 0.9)'; // Teal for medium clusters
+
+  if (count < 10) {
+    size = 35;
+    color = 'rgba(16, 185, 129, 0.9)'; // Emerald for small clusters
+  } else if (count >= 40) {
+    size = 50;
+    color = 'rgba(37, 99, 235, 0.9)'; // Blue for large clusters
+  }
+
+  return L.divIcon({
+    html: `<div style="
+      width: ${size}px; 
+      height: ${size}px; 
+      background-color: ${color}; 
+      color: white; 
+      border-radius: 50%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      font-weight: 900; 
+      font-size: 14px;
+      border: 3px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: all 0.2s ease-in-out;
+    ">${count}</div>`,
+    className: 'custom-cluster-marker',
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2]
+  });
+};
+
+
+// Component to dynamically pan map when searching
+const MapController = ({ center, zoom }) => {
+  const map = useMap();
+  useEffect(() => {
+    if (center) map.flyTo(center, zoom, { duration: 1.5 });
+  }, [center, zoom, map]);
+  return null;
+};
+
+export default function HospitalMap() {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  
+  const [hospitals, setHospitals] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [lastUpdated, setLastUpdated] = useState('');
+  
+  // View & Filter States
+  const [viewMode, setViewMode] = useState('map'); // 'map' or 'list'
+  const [isHeatmap, setIsHeatmap] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [statusFilter, setStatusFilter] = useState('All');
+  
+  // Map Positioning
+  const [mapCenter, setMapCenter] = useState([22.9734, 78.6569]); // Center of India
+  const [mapZoom, setMapZoom] = useState(5);
+
+  useEffect(() => {
+    const fetchMapData = async () => {
+      try {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/hospitals/map-data`);
+        if (res.data.success) {
+          setHospitals(res.data.hospitals);
+          setLastUpdated(res.data.lastUpdated);
+        }
+      } catch (err) {
+        console.error("Failed to load map data", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchMapData();
+  }, []);
+
+  const filteredHospitals = hospitals.filter(h => {
+    const matchesSearch = h.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          h.city.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          h.state.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesStatus = statusFilter === 'All' || h.performanceStatus === statusFilter;
+    return matchesSearch && matchesStatus;
+  });
+
+  // Calculate Region Summary based on filtered view
+  const summary = {
+    total: filteredHospitals.length,
+    good: filteredHospitals.filter(h => h.performanceStatus === 'Good').length,
+    attention: filteredHospitals.filter(h => h.performanceStatus === 'Requires Attention').length,
+    reports: filteredHospitals.reduce((acc, h) => acc + h.stats.totalReports, 0)
+  };
+
+  const handleSearchSelect = (hospital) => {
+    setMapCenter([hospital.coordinates.lat, hospital.coordinates.lng]);
+    setMapZoom(14);
+    setViewMode('map');
+  };
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center h-[calc(100vh-4rem)] bg-slate-50">
+        <Activity className="animate-spin text-teal-600 mb-4" size={40} />
+        <h2 className="text-xl font-bold text-slate-800">Initializing Geographical Data...</h2>
+        <p className="text-slate-500">Mapping hospital coordinates and aggregating performance reports.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-col h-[calc(100vh-4rem)] bg-slate-50 overflow-hidden">
+      
+      {/* TOP TOOLBAR */}
+      <div className="bg-white border-b border-slate-200 p-4 shrink-0 flex flex-col md:flex-row items-center justify-between gap-4 z-10 shadow-sm">
+        <div>
+          <h1 className="text-xl font-black text-slate-900 flex items-center gap-2">
+            <MapIcon className="text-teal-600" /> National Healthcare Infrastructure
+          </h1>
+          <p className="text-xs text-slate-500 flex items-center gap-1 mt-1">
+            <Clock size={12} /> Data refreshed: {new Date(lastUpdated).toLocaleString()}
+          </p>
+        </div>
+
+        <div className="flex items-center gap-3 w-full md:w-auto">
+          <div className="relative flex-grow md:w-64">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+            <input 
+              type="text"
+              placeholder="Search hospital or city..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-9 pr-3 py-2 bg-slate-100 border border-transparent focus:border-teal-500 rounded-lg text-sm outline-none transition-colors"
+            />
+          </div>
+          
+          <select 
+            value={statusFilter} 
+            onChange={(e) => setStatusFilter(e.target.value)}
+            className="bg-slate-100 border border-transparent focus:border-teal-500 rounded-lg px-3 py-2 text-sm outline-none"
+          >
+            <option value="All">All Statuses</option>
+            <option value="Good">Good</option>
+            <option value="Needs Monitoring">Needs Monitoring</option>
+            <option value="Requires Attention">Requires Attention</option>
+          </select>
+
+          <div className="flex bg-slate-200 rounded-lg p-1 shrink-0">
+            <button onClick={() => setViewMode('map')} className={`px-3 py-1 rounded-md text-sm font-bold flex items-center gap-1 transition-colors ${viewMode === 'map' ? 'bg-white text-teal-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
+              <MapIcon size={16} /> Map
+            </button>
+            <button onClick={() => setViewMode('list')} className={`px-3 py-1 rounded-md text-sm font-bold flex items-center gap-1 transition-colors ${viewMode === 'list' ? 'bg-white text-teal-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
+              <List size={16} /> List
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* MAIN CONTENT AREA */}
+      <div className="flex-grow relative flex">
+        
+        {viewMode === 'map' ? (
+          <div className="w-full h-full relative z-0">
+            <MapContainer 
+              center={mapCenter} 
+              zoom={mapZoom} 
+              style={{ width: '100%', height: '100%' }}
+              zoomControl={false}
+            >
+              <MapController center={mapCenter} zoom={mapZoom} />
+              <TileLayer
+  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+/>
+
+              {!isHeatmap ? (
+                <MarkerClusterGroup 
+  chunkedLoading 
+  maxClusterRadius={50} 
+  iconCreateFunction={createClusterCustomIcon}
+>
+                  {filteredHospitals.map(hospital => (
+                    <Marker 
+                      key={hospital.id} 
+                      position={[hospital.coordinates.lat, hospital.coordinates.lng]}
+                      icon={icons[hospital.performanceStatus]}
+                    >
+                      <Popup className="hospital-popup">
+                        <div className="min-w-[200px]">
+                          <h3 className="font-bold text-slate-900 text-sm mb-1">{hospital.name}</h3>
+                          <p className="text-xs text-slate-500 mb-3">{hospital.city}, {hospital.state}</p>
+                          
+                          <div className="grid grid-cols-2 gap-2 mb-4 border-t border-slate-100 pt-3">
+                            <div>
+                              <p className="text-[10px] text-slate-400 font-bold uppercase">Status</p>
+                              <p className={`text-xs font-bold ${
+                                hospital.performanceStatus === 'Good' ? 'text-emerald-600' :
+                                hospital.performanceStatus === 'Requires Attention' ? 'text-rose-600' :
+                                'text-amber-600'
+                              }`}>{hospital.performanceStatus}</p>
+                            </div>
+                            <div>
+                              <p className="text-[10px] text-slate-400 font-bold uppercase">Resolution</p>
+                              <p className="text-xs font-bold text-slate-800">{hospital.stats.resolutionRate !== null ? `${hospital.stats.resolutionRate}%` : 'N/A'}</p>
+                            </div>
+                            <div>
+                              <p className="text-[10px] text-slate-400 font-bold uppercase">Total Reports</p>
+                              <p className="text-xs font-bold text-slate-800">{hospital.stats.totalReports}</p>
+                            </div>
+                            <div>
+                              <p className="text-[10px] text-rose-400 font-bold uppercase">Critical Issues</p>
+                              <p className="text-xs font-bold text-rose-600">{hospital.stats.criticalOpen}</p>
+                            </div>
+                          </div>
+
+                          <button 
+                            onClick={() => navigate(`/hospital/${hospital.id}`)}
+                            className="w-full py-2 bg-teal-600 text-white rounded-lg text-xs font-bold flex items-center justify-center gap-1 hover:bg-teal-700"
+                          >
+                            View Full Profile <ExternalLink size={12} />
+                          </button>
+
+                          {user?.role === 'admin' && (
+                            <button onClick={() => navigate('/admin')} className="w-full py-1.5 mt-2 bg-slate-100 text-slate-700 rounded-lg text-[11px] font-bold hover:bg-slate-200">
+                              Admin Investigation
+                            </button>
+                          )}
+                        </div>
+                      </Popup>
+                    </Marker>
+                  ))}
+                </MarkerClusterGroup>
+              ) : (
+                // Heatmap visual representation (sized by complaint volume)
+                filteredHospitals.map(hospital => {
+                  if (hospital.stats.totalReports === 0) return null;
+                  return (
+                    <CircleMarker
+                      key={`heat-${hospital.id}`}
+                      center={[hospital.coordinates.lat, hospital.coordinates.lng]}
+                      radius={Math.min(30, Math.max(10, hospital.stats.totalReports * 2))}
+                      pathOptions={{ 
+                        fillColor: '#ef4444', 
+                        color: '#ef4444', 
+                        weight: 1, 
+                        fillOpacity: 0.5 
+                      }}
+                    >
+                      <Popup>
+                        <h3 className="font-bold text-sm">{hospital.name}</h3>
+                        <p className="text-rose-600 font-bold text-xs mt-1"><Flame size={14} className="inline"/> {hospital.stats.totalReports} Grievances Filed</p>
+                      </Popup>
+                    </CircleMarker>
+                  );
+                })
+              )}
+            </MapContainer>
+
+            {/* FLOATING MAP LEGEND & CONTROLS */}
+            <div className="absolute bottom-6 left-6 z-[1000] flex flex-col gap-4">
+              
+              {/* Region Summary Card */}
+              <div className="bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-slate-200 text-sm">
+                <h4 className="font-black text-slate-900 mb-2 border-b border-slate-200 pb-2">Region Summary</h4>
+                <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+                  <div className="text-slate-600">Total Facilities: <strong className="text-slate-900">{summary.total}</strong></div>
+                  <div className="text-slate-600">Total Reports: <strong className="text-slate-900">{summary.reports}</strong></div>
+                  <div className="text-emerald-600">Performing Well: <strong>{summary.good}</strong></div>
+                  <div className="text-rose-600">Critical Status: <strong>{summary.attention}</strong></div>
+                </div>
+              </div>
+
+              {/* Legend Card */}
+              <div className="bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-slate-200 text-sm w-64">
+                <div className="flex justify-between items-center mb-3">
+                  <h4 className="font-black text-slate-900">Hospital Status</h4>
+                  <button 
+                    onClick={() => setIsHeatmap(!isHeatmap)}
+                    className={`text-[10px] px-2 py-1 rounded font-bold uppercase ${isHeatmap ? 'bg-rose-100 text-rose-700' : 'bg-slate-200 text-slate-600'}`}
+                  >
+                    Heatmap Mode
+                  </button>
+                </div>
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-emerald-500"></div> <span className="text-slate-700 font-medium">Good Performance</span></li>
+                  <li className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-amber-500"></div> <span className="text-slate-700 font-medium">Needs Monitoring</span></li>
+                  <li className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-rose-500"></div> <span className="text-slate-700 font-medium">Requires Attention</span></li>
+                  <li className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-slate-400"></div> <span className="text-slate-700 font-medium">Insufficient Data</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        ) : (
+          // LIST VIEW
+          <div className="w-full h-full overflow-y-auto p-6">
+            <div className="max-w-4xl mx-auto space-y-4">
+              {filteredHospitals.map(hospital => (
+                <div key={hospital.id} className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between gap-4 hover:shadow-md transition-shadow">
+                  <div>
+                    <h3 className="font-bold text-lg text-slate-900">{hospital.name}</h3>
+                    <p className="text-sm text-slate-500 mb-3">{hospital.city}, {hospital.state}</p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className={`text-xs px-2.5 py-1 rounded-full font-bold border ${
+                        hospital.performanceStatus === 'Good' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
+                        hospital.performanceStatus === 'Requires Attention' ? 'bg-rose-50 text-rose-700 border-rose-200' :
+                        'bg-amber-50 text-amber-700 border-amber-200'
+                      }`}>
+                        {hospital.performanceStatus}
+                      </span>
+                      {hospital.stats.resolutionRate !== null && (
+                        <span className="text-xs px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700 border border-slate-200">
+                          {hospital.stats.resolutionRate}% Resolution
+                        </span>
+                      )}
+                      <span className="text-xs px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700 border border-slate-200">
+                        {hospital.stats.totalReports} Total Reports
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2 shrink-0">
+                    <button 
+                      onClick={() => handleSearchSelect(hospital)} 
+                      className="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg text-sm font-bold hover:bg-slate-200 flex items-center justify-center gap-2"
+                    >
+                      <MapIcon size={16} /> Locate on Map
+                    </button>
+                    <button 
+                      onClick={() => navigate(`/hospital/${hospital.id}`)}
+                      className="px-4 py-2 bg-teal-600 text-white rounded-lg text-sm font-bold hover:bg-teal-700 flex items-center justify-center gap-2"
+                    >
+                      View Profile <ExternalLink size={16} />
+                    </button>
+                  </div>
+                </div>
+              ))}
+              {filteredHospitals.length === 0 && (
+                <div className="text-center py-20 text-slate-500">
+                  <Info size={48} className="mx-auto mb-4 text-slate-300" />
+                  <p className="font-bold text-lg">No hospitals match your criteria</p>
+                  <p>Try adjusting your search or filters.</p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

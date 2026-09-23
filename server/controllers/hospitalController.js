@@ -1,4 +1,5 @@
 import Hospital from '../models/Hospital.js';
+import Report from '../models/Report.js';
 import { completeHospitalList } from '../seeders/hospitalData.js';
 
 // Comprehensive Medical Thesaurus
@@ -258,4 +259,120 @@ export const seedDemoHospitals = async (req, res) => {
     const inserted = await Hospital.insertMany(completeHospitalList);
     res.status(201).json({ success: true, message: `Seeded ${inserted.length} records!`, count: inserted.length });
   } catch (error) { res.status(500).json({ success: false, message: "Failed" }); }
+};
+
+// --- NEW: Interactive Map Data with Self-Healing Geocoding ---
+const CITY_COORDINATES = {
+  'chandigarh': { lat: 30.7333, lng: 76.7794 },
+  'mohali': { lat: 30.7046, lng: 76.7179 },
+  'new delhi': { lat: 28.6139, lng: 77.2090 },
+  'gurugram': { lat: 28.4595, lng: 77.0266 },
+  'mumbai': { lat: 19.0760, lng: 72.8777 },
+  'pune': { lat: 18.5204, lng: 73.8567 },
+  'bengaluru': { lat: 12.9716, lng: 77.5946 },
+  'chennai': { lat: 13.0827, lng: 80.2707 },
+  'hyderabad': { lat: 17.3850, lng: 78.4867 },
+  'kolkata': { lat: 22.5726, lng: 88.3639 },
+  'ahmedabad': { lat: 23.0225, lng: 72.5714 },
+  'jaipur': { lat: 26.9124, lng: 75.7873 },
+  'lucknow': { lat: 26.8467, lng: 80.9462 },
+  'patna': { lat: 25.5941, lng: 85.1376 },
+  'bhopal': { lat: 23.2599, lng: 77.4126 },
+  'kochi': { lat: 9.9312, lng: 76.2673 },
+  'guwahati': { lat: 26.1445, lng: 91.7362 },
+  'bhubaneswar': { lat: 20.2961, lng: 85.8245 },
+  'ludhiana': { lat: 30.9010, lng: 75.8573 },
+  'amritsar': { lat: 31.6340, lng: 74.8723 },
+  'panchkula': { lat: 30.6942, lng: 76.8606 },
+  'default': { lat: 22.9734, lng: 78.6569 } // Central India fallback
+};
+
+export const getMapData = async (req, res) => {
+  try {
+    const hospitals = await Hospital.find().lean();
+    
+    // Aggregate all reports to determine genuine performance statuses
+    const reportAggregates = await Report.aggregate([
+      {
+        $group: {
+          _id: '$hospital',
+          totalReports: { $sum: 1 },
+          resolved: { $sum: { $cond: [{ $eq: ['$status', 'Resolved'] }, 1, 0] } },
+          pending: { $sum: { $cond: [{ $in: ['$status', ['Pending', 'Under Review', 'In Progress']] }, 1, 0] } },
+          criticalOpen: { $sum: { $cond: [ { $and: [{ $eq: ['$severity', 'Critical'] }, { $ne: ['$status', 'Resolved'] }] }, 1, 0 ] } }
+        }
+      }
+    ]);
+
+    const reportMap = new Map();
+    reportAggregates.forEach(agg => reportMap.set(agg._id.toString(), agg));
+
+    const bulkUpdates = [];
+    
+    const mapData = hospitals.map(h => {
+      // 1. SELF-HEALING GEOCODING: If coordinates are missing, assign and save them
+      let coords = h.location?.coordinates;
+      if (!coords || !coords.lat || !coords.lng) {
+        const cityKey = h.location.city.toLowerCase();
+        const baseCoords = CITY_COORDINATES[cityKey] || CITY_COORDINATES['default'];
+        
+        // Add tiny random jitter so hospitals in the same city don't perfectly overlap
+        coords = {
+          lat: baseCoords.lat + (Math.random() - 0.5) * 0.05,
+          lng: baseCoords.lng + (Math.random() - 0.5) * 0.05
+        };
+        
+        // Queue database update so we never have to geocode this hospital again
+        bulkUpdates.push({
+          updateOne: { filter: { _id: h._id }, update: { $set: { 'location.coordinates': coords } } }
+        });
+      }
+
+      // 2. PERFORMANCE CALCULATION
+      const stats = reportMap.get(h._id.toString()) || { totalReports: 0, resolved: 0, pending: 0, criticalOpen: 0 };
+      const resolutionRate = stats.totalReports > 0 ? Math.round((stats.resolved / stats.totalReports) * 100) : null;
+      
+      let performanceStatus = 'Insufficient Data';
+      if (stats.totalReports > 0) {
+        if (stats.criticalOpen >= 1 || stats.pending >= 4) {
+          performanceStatus = 'Requires Attention';
+        } else if (stats.pending >= 2 || resolutionRate < 75) {
+          performanceStatus = 'Needs Monitoring';
+        } else {
+          performanceStatus = 'Good';
+        }
+      }
+
+      return {
+        id: h._id,
+        name: h.name,
+        type: h.type,
+        city: h.location.city,
+        state: h.location.state,
+        coordinates: coords,
+        specializations: h.specializations,
+        performanceStatus,
+        stats: {
+          ...stats,
+          resolutionRate,
+          clinicalSuccessRate: h.metrics?.successRate
+        }
+      };
+    });
+
+    // Fire and forget coordinates update in the background
+    if (bulkUpdates.length > 0) {
+      Hospital.bulkWrite(bulkUpdates).catch(err => console.error("Geocoding save error:", err));
+    }
+
+    res.status(200).json({
+      success: true,
+      lastUpdated: new Date().toISOString(),
+      hospitals: mapData
+    });
+
+  } catch (error) {
+    console.error("Map Data Error:", error);
+    res.status(500).json({ success: false, message: "Failed to load map data" });
+  }
 };

@@ -14,6 +14,7 @@ import CompareHospitals from './pages/CompareHospitals';
 import Feedback from './pages/Feedback';
 import AdminDashboard from './pages/AdminDashboard';
 import AiReport from './pages/AiReport'; // <-- NEW
+import HospitalMap from './pages/Map';
 
 function App() {
   return (
@@ -38,6 +39,8 @@ function App() {
               <Route path="records" element={<MedicalRecords />} />
               <Route path="admin" element={<AdminDashboard />} />
             </Route>
+
+            <Route element={<HospitalMap />} path="/map" />
 
           </Route>
         </Routes>
