@@ -6,7 +6,8 @@ import authRoutes from "./routes/authRoutes.js";
 import profileRoutes from "./routes/profileRoutes.js";
 import recordRoutes from "./routes/recordRoutes.js";
 import hospitalRoutes from "./routes/hospitalRoutes.js";
-import reviewRoutes from "./routes/reviewRoutes.js"; // <-- NEW
+import reviewRoutes from "./routes/reviewRoutes.js";
+import reportRoutes from "./routes/reportRoutes.js"; // <-- NEW
 
 const app = express();
 
@@ -23,7 +24,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/profile", profileRoutes);
 app.use("/api/records", recordRoutes);
 app.use("/api/hospitals", hospitalRoutes);
-app.use("/api/reviews", reviewRoutes); // <-- NEW
+app.use("/api/reviews", reviewRoutes);
+app.use("/api/reports", reportRoutes); // <-- NEW
 
 app.use((req, res, next) => {
   res.status(404).json({ success: false, message: "API Route not found" });
