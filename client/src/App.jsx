@@ -9,8 +9,9 @@ import Register from './pages/Register';
 import Profile from './pages/Profile';
 import MedicalRecords from './pages/MedicalRecords';
 import FindServices from './pages/FindServices';
-import HospitalDetails from './pages/HospitalDetails'; // <-- NEW
-import CompareHospitals from './pages/CompareHospitals'; // <-- NEW
+import HospitalDetails from './pages/HospitalDetails';
+import CompareHospitals from './pages/CompareHospitals';
+import Feedback from './pages/Feedback'; // <-- NEW
 
 function App() {
   return (
@@ -24,9 +25,9 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="services" element={<FindServices />} />
-            
-            <Route path="hospital/:id" element={<HospitalDetails />} /> {/* <-- NEW */}
-            <Route path="compare" element={<CompareHospitals />} /> {/* <-- NEW */}
+            <Route path="hospital/:id" element={<HospitalDetails />} />
+            <Route path="compare" element={<CompareHospitals />} />
+            <Route path="feedback" element={<Feedback />} /> {/* <-- NOW A REAL PAGE */}
             
             <Route path="ai-report" element={<div className="p-8 text-center text-xl">AI Report (Coming Soon)</div>} />
             
@@ -34,7 +35,6 @@ function App() {
             <Route element={<ProtectedRoute />}>
               <Route path="profile" element={<Profile />} />
               <Route path="records" element={<MedicalRecords />} />
-              <Route path="feedback" element={<div className="p-8 text-center text-xl">Feedback (Coming Soon)</div>} />
             </Route>
 
           </Route>
