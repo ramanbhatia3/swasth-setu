@@ -12,7 +12,6 @@ export const chatWithAI = async (req, res) => {
       return res.status(400).json({ success: false, message: "Message is required." });
     }
 
-    // NEW: We read the key INSIDE the function so it catches the loaded .env file
     const apiKey = process.env.GEMINI_API_KEY;
 
     // HACKATHON FALLBACK
@@ -25,7 +24,9 @@ export const chatWithAI = async (req, res) => {
 
     // Initialize the AI SDK with the dynamically read key
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    
+    // FIX: Changed from "gemini-1.5-flash" to "gemini-pro" which is universally supported
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     // SYSTEM GUARDRAILS: Enforcing medical safety rules before appending the user's message
     const prompt = `
