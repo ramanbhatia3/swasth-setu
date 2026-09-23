@@ -12,22 +12,20 @@ export const chatWithAI = async (req, res) => {
       return res.status(400).json({ success: false, message: "Message is required." });
     }
 
+    // NEW: We read the key INSIDE the function so it catches the loaded .env file
     const apiKey = process.env.GEMINI_API_KEY;
 
     // HACKATHON FALLBACK
     if (!apiKey) {
       return res.status(200).json({ 
         success: true, 
-        reply: "*(Simulated AI Response)*: To make me functional, add a GEMINI_API_KEY to your backend .env file." 
+        reply: "*(Simulated AI Response)*: I am the Swasth Setu Assistant! To make me fully functional, please add a `GEMINI_API_KEY` to your backend `.env` file." 
       });
     }
 
-    // Google explicitly requested this updated model version for your API key
-    const targetModel = "gemini-3.6-flash";
-
-    // Initialize the AI SDK
+    // Initialize the AI SDK with the dynamically read key
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: targetModel });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     // SYSTEM GUARDRAILS: Enforcing medical safety rules before appending the user's message
     const prompt = `
@@ -59,7 +57,7 @@ export const chatWithAI = async (req, res) => {
     console.error("AI Generation Error:", error.message);
     res.status(500).json({ 
       success: false, 
-      message: "The AI Assistant encountered an error connecting to Gemini. Please try again." 
+      message: "The AI Assistant encountered an error connecting to Gemini. Please check if your API key is valid." 
     });
   }
 };
