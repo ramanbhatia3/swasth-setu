@@ -196,7 +196,7 @@ export default function AdminDashboard() {
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-xl font-black text-white tracking-tight">Swasth Setu Central Authority</h1>
+              <h1 className="text-xl font-bold text-white tracking-tight font-serif">Swasth Setu Central Authority</h1>
               <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-teal-950 text-teal-400 border border-teal-800">
                 GOVT OF INDIA
               </span>
@@ -425,7 +425,7 @@ export default function AdminDashboard() {
             <div className="space-y-6">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
-                  <h2 className="text-2xl font-black text-white tracking-tight">Hospital Performance Directory</h2>
+                  <h2 className="text-2xl font-bold text-white tracking-tight font-serif">Hospital Performance Directory</h2>
                   <p className="text-sm text-slate-400">Standardized grievance metrics, resolution percentages, and compliance status</p>
                 </div>
                 <div className="flex gap-2">
@@ -492,7 +492,7 @@ export default function AdminDashboard() {
             <div className="space-y-6">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
-                  <h2 className="text-2xl font-black text-white tracking-tight">Citizen Healthcare Grievance Queue</h2>
+                  <h2 className="text-2xl font-bold text-white tracking-tight font-serif">Citizen Healthcare Grievance Queue</h2>
                   <p className="text-sm text-slate-400">Formal complaints submitted by citizens undergoing investigation</p>
                 </div>
                 <button
@@ -625,7 +625,7 @@ export default function AdminDashboard() {
           {activeTab === 'analytics' && (
             <div className="space-y-8">
               <div>
-                <h2 className="text-2xl font-black text-white tracking-tight">Grievance Analytics & Distribution</h2>
+                <h2 className="text-2xl font-bold text-white tracking-tight font-serif">Grievance Analytics & Distribution</h2>
                 <p className="text-sm text-slate-400">Quantitative insights derived from actual database records</p>
               </div>
 
@@ -695,7 +695,7 @@ export default function AdminDashboard() {
           {activeTab === 'comparison' && (
             <div className="space-y-6">
               <div>
-                <h2 className="text-2xl font-black text-white tracking-tight">Administrative Hospital Comparison</h2>
+                <h2 className="text-2xl font-bold text-white tracking-tight font-serif">Administrative Hospital Comparison</h2>
                 <p className="text-sm text-slate-400">Evaluate up to 3 institutions side-by-side to review compliance disparities</p>
               </div>
 
@@ -775,7 +775,7 @@ export default function AdminDashboard() {
           {activeTab === 'officers' && (
             <div className="space-y-6">
               <div>
-                <h2 className="text-2xl font-black text-white tracking-tight">Administrative Roster & Case Workload</h2>
+                <h2 className="text-2xl font-bold text-white tracking-tight font-serif">Administrative Roster & Case Workload</h2>
                 <p className="text-sm text-slate-400">Medical monitoring officers and active unresolved caseload distributions</p>
               </div>
 
@@ -805,7 +805,7 @@ export default function AdminDashboard() {
           {activeTab === 'audit' && (
             <div className="space-y-6">
               <div>
-                <h2 className="text-2xl font-black text-white tracking-tight">Immutable Administrative Audit Trail</h2>
+                <h2 className="text-2xl font-bold text-white tracking-tight font-serif">Immutable Administrative Audit Trail</h2>
                 <p className="text-sm text-slate-400">Cryptographically recorded log of status alterations and staff assignments</p>
               </div>
 
@@ -839,7 +839,7 @@ export default function AdminDashboard() {
           {activeTab === 'notifications' && (
             <div className="space-y-6">
               <div>
-                <h2 className="text-2xl font-black text-white tracking-tight">System Alerts & SLA Monitors</h2>
+                <h2 className="text-2xl font-bold text-white tracking-tight font-serif">System Alerts & SLA Monitors</h2>
                 <p className="text-sm text-slate-400">Automated triggers generated for critical unaddressed incidents</p>
               </div>
 

@@ -31,11 +31,11 @@ const icons = {
 const createClusterCustomIcon = function (cluster) {
   const count = cluster.getChildCount();
   let size = 40;
-  let color = 'rgba(13, 148, 136, 0.9)'; // Teal for medium clusters
+  let color = 'rgba(13, 92, 58, 0.9)'; // Primary 800 for medium clusters
 
   if (count < 10) {
     size = 35;
-    color = 'rgba(16, 185, 129, 0.9)'; // Emerald for small clusters
+    color = 'rgba(16, 185, 129, 0.9)'; // Primary 500 for small clusters
   } else if (count >= 40) {
     size = 50;
     color = 'rgba(37, 99, 235, 0.9)'; // Blue for large clusters
@@ -132,24 +132,24 @@ export default function HospitalMap() {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center h-[calc(100vh-4rem)] bg-slate-50">
-        <Activity className="animate-spin text-teal-600 mb-4" size={40} />
-        <h2 className="text-xl font-bold text-slate-800">Initializing Geographical Data...</h2>
-        <p className="text-slate-500">Mapping hospital coordinates and aggregating performance reports.</p>
+      <div className="flex flex-col items-center justify-center h-[calc(100vh-4rem)] bg-slate-50 dark:bg-[#0f0e0c] transition-colors">
+        <Activity className="animate-spin text-primary-600 mb-4" size={40} />
+        <h2 className="text-xl font-bold text-slate-800 dark:text-slate-200">Initializing Geographical Data...</h2>
+        <p className="text-slate-500 dark:text-slate-400">Mapping hospital coordinates and aggregating performance reports.</p>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col h-[calc(100vh-4rem)] bg-slate-50 overflow-hidden">
+    <div className="flex flex-col h-[calc(100vh-4rem)] bg-slate-50 dark:bg-[#0f0e0c] overflow-hidden transition-colors">
       
       {/* TOP TOOLBAR */}
-      <div className="bg-white border-b border-slate-200 p-4 shrink-0 flex flex-col md:flex-row items-center justify-between gap-4 z-10 shadow-sm">
+      <div className="bg-white dark:bg-[#141311] border-b border-slate-200 dark:border-slate-800 p-4 shrink-0 flex flex-col md:flex-row items-center justify-between gap-4 z-10 shadow-sm transition-colors">
         <div>
-          <h1 className="text-xl font-black text-slate-900 flex items-center gap-2">
-            <MapIcon className="text-teal-600" /> National Healthcare Infrastructure
+          <h1 className="text-xl font-black text-slate-900 dark:text-white flex items-center gap-2 font-serif">
+            <MapIcon className="text-primary-600 dark:text-primary-400" /> National Healthcare Infrastructure
           </h1>
-          <p className="text-xs text-slate-500 flex items-center gap-1 mt-1">
+          <p className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1 mt-1">
             <Clock size={12} /> Data refreshed: {new Date(lastUpdated).toLocaleString()}
           </p>
         </div>
@@ -162,14 +162,14 @@ export default function HospitalMap() {
               placeholder="Search hospital or city..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 bg-slate-100 border border-transparent focus:border-teal-500 rounded-lg text-sm outline-none transition-colors"
+              className="w-full pl-9 pr-3 py-2 bg-slate-100 dark:bg-slate-800/50 border border-transparent focus:border-primary-500 rounded-lg text-sm outline-none transition-colors text-slate-900 dark:text-slate-200"
             />
           </div>
           
           <select 
             value={statusFilter} 
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="bg-slate-100 border border-transparent focus:border-teal-500 rounded-lg px-3 py-2 text-sm outline-none"
+            className="bg-slate-100 dark:bg-slate-800/50 border border-transparent focus:border-primary-500 rounded-lg px-3 py-2 text-sm outline-none text-slate-900 dark:text-slate-200"
           >
             <option value="All">All Statuses</option>
             <option value="Good">Good</option>
@@ -177,11 +177,11 @@ export default function HospitalMap() {
             <option value="Requires Attention">Requires Attention</option>
           </select>
 
-          <div className="flex bg-slate-200 rounded-lg p-1 shrink-0">
-            <button onClick={() => setViewMode('map')} className={`px-3 py-1 rounded-md text-sm font-bold flex items-center gap-1 transition-colors ${viewMode === 'map' ? 'bg-white text-teal-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
+          <div className="flex bg-slate-200 dark:bg-slate-800 rounded-lg p-1 shrink-0">
+            <button onClick={() => setViewMode('map')} className={`px-3 py-1 rounded-md text-sm font-bold flex items-center gap-1 transition-colors ${viewMode === 'map' ? 'bg-white dark:bg-slate-900 text-primary-700 dark:text-primary-400 shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'}`}>
               <MapIcon size={16} /> Map
             </button>
-            <button onClick={() => setViewMode('list')} className={`px-3 py-1 rounded-md text-sm font-bold flex items-center gap-1 transition-colors ${viewMode === 'list' ? 'bg-white text-teal-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
+            <button onClick={() => setViewMode('list')} className={`px-3 py-1 rounded-md text-sm font-bold flex items-center gap-1 transition-colors ${viewMode === 'list' ? 'bg-white dark:bg-slate-900 text-primary-700 dark:text-primary-400 shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'}`}>
               <List size={16} /> List
             </button>
           </div>
@@ -219,7 +219,7 @@ export default function HospitalMap() {
                     >
                       <Popup className="hospital-popup">
                         <div className="min-w-[200px]">
-                          <h3 className="font-bold text-slate-900 text-sm mb-1">{hospital.name}</h3>
+                          <h3 className="font-bold text-slate-900 text-sm mb-1 font-serif">{hospital.name}</h3>
                           <p className="text-xs text-slate-500 mb-3">{hospital.city}, {hospital.state}</p>
                           
                           <div className="grid grid-cols-2 gap-2 mb-4 border-t border-slate-100 pt-3">
@@ -247,7 +247,7 @@ export default function HospitalMap() {
 
                           <button 
                             onClick={() => navigate(`/hospital/${hospital.id}`)}
-                            className="w-full py-2 bg-teal-600 text-white rounded-lg text-xs font-bold flex items-center justify-center gap-1 hover:bg-teal-700"
+                            className="w-full py-2 bg-primary-600 text-white rounded-lg text-xs font-bold flex items-center justify-center gap-1 hover:bg-primary-700"
                           >
                             View Full Profile <ExternalLink size={12} />
                           </button>
@@ -292,59 +292,59 @@ export default function HospitalMap() {
             <div className="absolute bottom-6 left-6 z-[1000] flex flex-col gap-4">
               
               {/* Region Summary Card */}
-              <div className="bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-slate-200 text-sm">
-                <h4 className="font-black text-slate-900 mb-2 border-b border-slate-200 pb-2">Region Summary</h4>
+              <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800 text-sm">
+                <h4 className="font-black text-slate-900 dark:text-white mb-2 border-b border-slate-200 dark:border-slate-700 pb-2">Region Summary</h4>
                 <div className="grid grid-cols-2 gap-x-6 gap-y-2">
-                  <div className="text-slate-600">Total Facilities: <strong className="text-slate-900">{summary.total}</strong></div>
-                  <div className="text-slate-600">Total Reports: <strong className="text-slate-900">{summary.reports}</strong></div>
-                  <div className="text-emerald-600">Performing Well: <strong>{summary.good}</strong></div>
-                  <div className="text-rose-600">Critical Status: <strong>{summary.attention}</strong></div>
+                  <div className="text-slate-600 dark:text-slate-400">Total Facilities: <strong className="text-slate-900 dark:text-slate-200">{summary.total}</strong></div>
+                  <div className="text-slate-600 dark:text-slate-400">Total Reports: <strong className="text-slate-900 dark:text-slate-200">{summary.reports}</strong></div>
+                  <div className="text-emerald-600 dark:text-emerald-400">Performing Well: <strong>{summary.good}</strong></div>
+                  <div className="text-rose-600 dark:text-rose-400">Critical Status: <strong>{summary.attention}</strong></div>
                 </div>
               </div>
 
               {/* Legend Card */}
-              <div className="bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-slate-200 text-sm w-64">
+              <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800 text-sm w-64">
                 <div className="flex justify-between items-center mb-3">
-                  <h4 className="font-black text-slate-900">Hospital Status</h4>
+                  <h4 className="font-black text-slate-900 dark:text-white">Hospital Status</h4>
                   <button 
                     onClick={() => setIsHeatmap(!isHeatmap)}
-                    className={`text-[10px] px-2 py-1 rounded font-bold uppercase ${isHeatmap ? 'bg-rose-100 text-rose-700' : 'bg-slate-200 text-slate-600'}`}
+                    className={`text-[10px] px-2 py-1 rounded font-bold uppercase ${isHeatmap ? 'bg-rose-100 text-rose-700 dark:bg-rose-900/50 dark:text-rose-300' : 'bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400'}`}
                   >
                     Heatmap Mode
                   </button>
                 </div>
                 <ul className="space-y-2">
-                  <li className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-emerald-500"></div> <span className="text-slate-700 font-medium">Good Performance</span></li>
-                  <li className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-amber-500"></div> <span className="text-slate-700 font-medium">Needs Monitoring</span></li>
-                  <li className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-rose-500"></div> <span className="text-slate-700 font-medium">Requires Attention</span></li>
-                  <li className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-slate-400"></div> <span className="text-slate-700 font-medium">Insufficient Data</span></li>
+                  <li className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-emerald-500"></div> <span className="text-slate-700 dark:text-slate-300 font-medium">Good Performance</span></li>
+                  <li className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-amber-500"></div> <span className="text-slate-700 dark:text-slate-300 font-medium">Needs Monitoring</span></li>
+                  <li className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-rose-500"></div> <span className="text-slate-700 dark:text-slate-300 font-medium">Requires Attention</span></li>
+                  <li className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-slate-400 dark:bg-slate-600"></div> <span className="text-slate-700 dark:text-slate-300 font-medium">Insufficient Data</span></li>
                 </ul>
               </div>
             </div>
           </div>
         ) : (
           // LIST VIEW
-          <div className="w-full h-full overflow-y-auto p-6">
+          <div className="w-full h-full overflow-y-auto p-6 bg-slate-50 dark:bg-[#0f0e0c]">
             <div className="max-w-4xl mx-auto space-y-4">
               {filteredHospitals.map(hospital => (
-                <div key={hospital.id} className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between gap-4 hover:shadow-md transition-shadow">
+                <div key={hospital.id} className="bg-white dark:bg-[#141311] p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row justify-between gap-4 hover:shadow-md transition-shadow">
                   <div>
-                    <h3 className="font-bold text-lg text-slate-900">{hospital.name}</h3>
-                    <p className="text-sm text-slate-500 mb-3">{hospital.city}, {hospital.state}</p>
+                    <h3 className="font-bold text-lg text-slate-900 dark:text-white font-serif">{hospital.name}</h3>
+                    <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">{hospital.city}, {hospital.state}</p>
                     <div className="flex flex-wrap gap-2">
                       <span className={`text-xs px-2.5 py-1 rounded-full font-bold border ${
-                        hospital.performanceStatus === 'Good' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
-                        hospital.performanceStatus === 'Requires Attention' ? 'bg-rose-50 text-rose-700 border-rose-200' :
-                        'bg-amber-50 text-amber-700 border-amber-200'
+                        hospital.performanceStatus === 'Good' ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800' :
+                        hospital.performanceStatus === 'Requires Attention' ? 'bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-400 border-rose-200 dark:border-rose-800' :
+                        'bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-800'
                       }`}>
                         {hospital.performanceStatus}
                       </span>
                       {hospital.stats.resolutionRate !== null && (
-                        <span className="text-xs px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700 border border-slate-200">
+                        <span className="text-xs px-2.5 py-1 rounded-full font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
                           {hospital.stats.resolutionRate}% Resolution
                         </span>
                       )}
-                      <span className="text-xs px-2.5 py-1 rounded-full font-bold bg-slate-100 text-slate-700 border border-slate-200">
+                      <span className="text-xs px-2.5 py-1 rounded-full font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
                         {hospital.stats.totalReports} Total Reports
                       </span>
                     </div>
@@ -352,13 +352,13 @@ export default function HospitalMap() {
                   <div className="flex flex-col gap-2 shrink-0">
                     <button 
                       onClick={() => handleSearchSelect(hospital)} 
-                      className="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg text-sm font-bold hover:bg-slate-200 flex items-center justify-center gap-2"
+                      className="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-bold hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center gap-2"
                     >
                       <MapIcon size={16} /> Locate on Map
                     </button>
                     <button 
                       onClick={() => navigate(`/hospital/${hospital.id}`)}
-                      className="px-4 py-2 bg-teal-600 text-white rounded-lg text-sm font-bold hover:bg-teal-700 flex items-center justify-center gap-2"
+                      className="px-4 py-2 bg-primary-600 text-white rounded-lg text-sm font-bold hover:bg-primary-700 flex items-center justify-center gap-2"
                     >
                       View Profile <ExternalLink size={16} />
                     </button>
@@ -366,9 +366,9 @@ export default function HospitalMap() {
                 </div>
               ))}
               {filteredHospitals.length === 0 && (
-                <div className="text-center py-20 text-slate-500">
-                  <Info size={48} className="mx-auto mb-4 text-slate-300" />
-                  <p className="font-bold text-lg">No hospitals match your criteria</p>
+                <div className="text-center py-20 text-slate-500 dark:text-slate-400">
+                  <Info size={48} className="mx-auto mb-4 text-slate-300 dark:text-slate-600" />
+                  <p className="font-bold text-lg text-slate-700 dark:text-slate-300">No hospitals match your criteria</p>
                   <p>Try adjusting your search or filters.</p>
                 </div>
               )}

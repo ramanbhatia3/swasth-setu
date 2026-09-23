@@ -109,12 +109,12 @@ export default function MedicalRecords() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Medical Records</h1>
-          <p className="text-slate-600">Securely manage and view your uploaded health documents.</p>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white font-serif">Medical Records</h1>
+          <p className="text-slate-600 dark:text-slate-400">Securely manage and view your uploaded health documents.</p>
         </div>
         <button 
           onClick={() => setIsModalOpen(true)}
-          className="flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-sm"
+          className="flex items-center gap-2 bg-primary-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-primary-700 transition-colors shadow-sm"
         >
           <Plus size={20} /> Upload Record
         </button>
@@ -122,15 +122,15 @@ export default function MedicalRecords() {
 
       {/* Records Grid */}
       {loading ? (
-        <div className="text-center py-12 text-slate-500">Loading records...</div>
+        <div className="text-center py-12 text-slate-500 dark:text-slate-400">Loading records...</div>
       ) : records.length === 0 ? (
-        <div className="bg-white border border-slate-200 rounded-xl p-12 text-center">
-          <div className="w-16 h-16 bg-slate-50 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4">
+        <div className="bg-white dark:bg-[#141311] border border-slate-200 dark:border-slate-800 rounded-xl p-12 text-center transition-colors">
+          <div className="w-16 h-16 bg-slate-50 dark:bg-[#0f0e0c] text-slate-400 dark:text-slate-500 rounded-full flex items-center justify-center mx-auto mb-4 border border-slate-100 dark:border-slate-800">
             <UploadCloud size={32} />
           </div>
-          <h3 className="text-lg font-medium text-slate-900 mb-1">No records found</h3>
-          <p className="text-slate-500 mb-6">Upload your first medical report to keep it securely stored.</p>
-          <button onClick={() => setIsModalOpen(true)} className="text-blue-600 font-medium hover:underline">
+          <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-1">No records found</h3>
+          <p className="text-slate-500 dark:text-slate-400 mb-6">Upload your first medical report to keep it securely stored.</p>
+          <button onClick={() => setIsModalOpen(true)} className="text-primary-600 dark:text-primary-400 font-medium hover:underline">
             Click here to upload
           </button>
         </div>
@@ -141,31 +141,31 @@ export default function MedicalRecords() {
               key={record._id}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white dark:bg-[#141311] border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex justify-between items-start mb-4">
-                <div className="p-2 bg-slate-50 rounded-lg border border-slate-100">
+                <div className="p-2 bg-slate-50 dark:bg-[#0f0e0c] rounded-lg border border-slate-100 dark:border-slate-800">
                   {getCategoryIcon(record.category)}
                 </div>
-                <div className="flex items-center gap-1 text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">
+                <div className="flex items-center gap-1 text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded-full border border-emerald-100 dark:border-emerald-900/50">
                   <CheckCircle size={12} /> Verified Owner
                 </div>
               </div>
               
-              <h3 className="font-semibold text-slate-900 mb-1 truncate" title={record.title}>
+              <h3 className="font-semibold text-slate-900 dark:text-white mb-1 truncate font-serif" title={record.title}>
                 {record.title}
               </h3>
-              <p className="text-sm text-slate-500 mb-4">
+              <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
                 {record.category} • {new Date(record.reportDate).toLocaleDateString()}
               </p>
               
-              <div className="pt-4 border-t border-slate-100 flex justify-between items-center">
-                <span className="text-xs text-slate-400 truncate w-32" title={record.originalFileName}>
+              <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center">
+                <span className="text-xs text-slate-400 dark:text-slate-500 truncate w-32" title={record.originalFileName}>
                   {record.originalFileName}
                 </span>
                 <button 
                   onClick={() => handleViewSecureFile(record._id, record.mimeType)}
-                  className="flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"
+                  className="flex items-center gap-1.5 text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 transition-colors"
                 >
                   <Eye size={16} /> View
                 </button>
@@ -183,53 +183,53 @@ export default function MedicalRecords() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden"
+              className="bg-white dark:bg-[#141311] rounded-2xl shadow-xl w-full max-w-md overflow-hidden border border-slate-200 dark:border-slate-800"
             >
-              <div className="flex justify-between items-center p-5 border-b border-slate-100 bg-slate-50">
-                <h2 className="text-lg font-bold text-slate-900">Upload Medical Record</h2>
-                <button onClick={() => setIsModalOpen(false)} className="text-slate-400 hover:text-slate-600">
+              <div className="flex justify-between items-center p-5 border-b border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-[#0f0e0c]">
+                <h2 className="text-lg font-bold text-slate-900 dark:text-white font-serif">Upload Medical Record</h2>
+                <button onClick={() => setIsModalOpen(false)} className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300">
                   <X size={24} />
                 </button>
               </div>
               
               <form onSubmit={handleUpload} className="p-5 space-y-4">
                 {error && (
-                  <div className="p-3 bg-red-50 text-red-700 text-sm rounded-lg flex items-start gap-2">
+                  <div className="p-3 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 text-sm rounded-lg flex items-start gap-2">
                     <AlertCircle size={16} className="mt-0.5 shrink-0" /> {error}
                   </div>
                 )}
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Document Title</label>
-                  <input type="text" required value={formData.title} onChange={(e) => setFormData({...formData, title: e.target.value})} placeholder="e.g. Complete Blood Count (CBC)" className="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Document Title</label>
+                  <input type="text" required value={formData.title} onChange={(e) => setFormData({...formData, title: e.target.value})} placeholder="e.g. Complete Blood Count (CBC)" className="w-full p-2.5 bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none" />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Category</label>
-                    <select value={formData.category} onChange={(e) => setFormData({...formData, category: e.target.value})} className="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 bg-white">
+                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Category</label>
+                    <select value={formData.category} onChange={(e) => setFormData({...formData, category: e.target.value})} className="w-full p-2.5 bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none">
                       {['Blood Tests', 'Diagnostic Tests', 'Imaging', 'Prescriptions', 'Discharge Summaries', 'Medical History', 'Other'].map(cat => (
                         <option key={cat} value={cat}>{cat}</option>
                       ))}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Report Date</label>
-                    <input type="date" required value={formData.reportDate} onChange={(e) => setFormData({...formData, reportDate: e.target.value})} className="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
+                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Report Date</label>
+                    <input type="date" required value={formData.reportDate} onChange={(e) => setFormData({...formData, reportDate: e.target.value})} className="w-full p-2.5 bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none" />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">File (PDF, JPG, PNG)</label>
-                  <input type="file" required accept=".pdf,.jpg,.jpeg,.png" onChange={handleFileChange} className="w-full text-sm text-slate-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 border border-slate-300 rounded-lg p-1" />
-                  <p className="text-xs text-slate-500 mt-1">Maximum file size: 5MB</p>
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">File (PDF, JPG, PNG)</label>
+                  <input type="file" required accept=".pdf,.jpg,.jpeg,.png" onChange={handleFileChange} className="w-full text-sm text-slate-500 dark:text-slate-400 file:mr-4 file:py-2.5 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-primary-50 dark:file:bg-primary-900/20 file:text-primary-700 dark:file:text-primary-400 hover:file:bg-primary-100 dark:hover:file:bg-primary-900/40 border border-slate-300 dark:border-slate-700 rounded-lg p-1" />
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Maximum file size: 5MB</p>
                 </div>
 
-                <div className="pt-4 mt-6 border-t border-slate-100 flex justify-end gap-3">
-                  <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-lg transition-colors">
+                <div className="pt-4 mt-6 border-t border-slate-100 dark:border-slate-800 flex justify-end gap-3">
+                  <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
                     Cancel
                   </button>
-                  <button type="submit" disabled={uploading} className="px-5 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors shadow-sm disabled:opacity-70 flex items-center gap-2">
+                  <button type="submit" disabled={uploading} className="px-5 py-2 text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-lg transition-colors shadow-sm disabled:opacity-70 flex items-center gap-2">
                     {uploading ? 'Uploading...' : 'Save Record'}
                   </button>
                 </div>

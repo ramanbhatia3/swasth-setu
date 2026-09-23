@@ -40,23 +40,23 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center bg-slate-50 px-4 py-12">
+    <div className="min-h-[80vh] flex items-center justify-center bg-slate-50 dark:bg-[#0f0e0c] px-4 py-12 transition-colors">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-md w-full bg-white rounded-2xl shadow-xl border border-slate-100 p-8"
+        className="max-w-md w-full bg-white dark:bg-[#141311] rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 p-8 transition-colors"
       >
         <div className="flex justify-center mb-6">
-          <div className="p-3 bg-emerald-600 rounded-xl text-white shadow-lg shadow-emerald-200">
+          <div className="p-3 bg-primary-600 rounded-xl text-white shadow-lg shadow-primary-200 dark:shadow-primary-900/20">
             <Activity size={32} />
           </div>
         </div>
         
-        <h2 className="text-2xl font-bold text-slate-900 text-center mb-2">Create Account</h2>
-        <p className="text-slate-600 text-center mb-8">Join Swasth Setu to manage your healthcare journey.</p>
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white text-center mb-2 font-serif">Create Account</h2>
+        <p className="text-slate-600 dark:text-slate-400 text-center mb-8">Join Swasth Setu to manage your healthcare journey.</p>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-50 text-red-700 rounded-lg flex items-start gap-3 text-sm">
+          <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-900/50 text-red-700 dark:text-red-400 rounded-lg flex items-start gap-3 text-sm">
             <AlertCircle size={18} className="mt-0.5 shrink-0" />
             <p>{error}</p>
           </div>
@@ -64,10 +64,10 @@ export default function Register() {
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Full Name</label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <User size={18} className="text-slate-400" />
+                <User size={18} className="text-slate-400 dark:text-slate-500" />
               </div>
               <input
                 type="text"
@@ -75,17 +75,17 @@ export default function Register() {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                className="block w-full pl-10 pr-3 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 sm:text-sm transition-colors"
+                className="block w-full pl-10 pr-3 py-2.5 bg-white dark:bg-[#0f0e0c] border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600 sm:text-sm transition-colors outline-none"
                 placeholder="John Doe"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Email Address</label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Mail size={18} className="text-slate-400" />
+                <Mail size={18} className="text-slate-400 dark:text-slate-500" />
               </div>
               <input
                 type="email"
@@ -93,17 +93,17 @@ export default function Register() {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="block w-full pl-10 pr-3 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 sm:text-sm transition-colors"
+                className="block w-full pl-10 pr-3 py-2.5 bg-white dark:bg-[#0f0e0c] border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600 sm:text-sm transition-colors outline-none"
                 placeholder="you@example.com"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Password</label>
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Password</label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Lock size={18} className="text-slate-400" />
+                <Lock size={18} className="text-slate-400 dark:text-slate-500" />
               </div>
               <input
                 type="password"
@@ -111,7 +111,7 @@ export default function Register() {
                 required
                 value={formData.password}
                 onChange={handleChange}
-                className="block w-full pl-10 pr-3 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 sm:text-sm transition-colors"
+                className="block w-full pl-10 pr-3 py-2.5 bg-white dark:bg-[#0f0e0c] border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600 sm:text-sm transition-colors outline-none"
                 placeholder="••••••••"
               />
             </div>
@@ -120,15 +120,15 @@ export default function Register() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full flex justify-center items-center py-2.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 disabled:opacity-70 disabled:cursor-not-allowed transition-colors mt-2"
+            className="w-full flex justify-center items-center py-2.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-70 disabled:cursor-not-allowed transition-colors mt-2"
           >
             {isLoading ? "Creating account..." : "Create Account"}
           </button>
         </form>
 
-        <div className="mt-8 text-center text-sm text-slate-600">
+        <div className="mt-8 text-center text-sm text-slate-600 dark:text-slate-400">
           Already have an account?{' '}
-          <Link to="/login" className="font-semibold text-emerald-600 hover:text-emerald-500 transition-colors">
+          <Link to="/login" className="font-semibold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors">
             Sign in
           </Link>
         </div>

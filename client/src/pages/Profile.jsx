@@ -80,15 +80,15 @@ export default function Profile() {
 
   const getStatusColor = (status) => {
     switch(status) {
-      case 'Submitted': return 'bg-blue-100 text-blue-800';
-      case 'In Progress': return 'bg-amber-100 text-amber-800';
-      case 'Resolved': return 'bg-emerald-100 text-emerald-800';
-      case 'Closed': return 'bg-slate-100 text-slate-800';
-      default: return 'bg-slate-100 text-slate-800';
+      case 'Submitted': return 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 border border-blue-200 dark:border-blue-800';
+      case 'In Progress': return 'bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-400 border border-amber-200 dark:border-amber-800';
+      case 'Resolved': return 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800';
+      case 'Closed': return 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700';
+      default: return 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700';
     }
   };
 
-  if (loadingProfile) return <div className="p-12 text-center text-slate-500">Loading profile...</div>;
+  if (loadingProfile) return <div className="p-12 text-center text-slate-500 dark:text-slate-400">Loading profile...</div>;
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
@@ -97,29 +97,29 @@ export default function Profile() {
         {/* User Header */}
         <div className="flex items-center gap-4 mb-8">
           {user?.profileImage ? (
-            <img src={user.profileImage} alt="Profile" className="w-16 h-16 rounded-full shadow-sm" />
+            <img src={user.profileImage} alt="Profile" className="w-16 h-16 rounded-full shadow-sm object-cover border border-slate-200 dark:border-slate-700" />
           ) : (
-            <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-2xl font-bold">
+            <div className="w-16 h-16 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-400 text-2xl font-bold border border-primary-200 dark:border-primary-800/50">
               {user?.name?.charAt(0)}
             </div>
           )}
           <div>
-            <h1 className="text-2xl font-bold text-slate-900">{user?.name}</h1>
-            <p className="text-slate-500">{user?.email}</p>
+            <h1 className="text-2xl font-bold text-slate-900 dark:text-white font-serif">{user?.name}</h1>
+            <p className="text-slate-500 dark:text-slate-400">{user?.email}</p>
           </div>
         </div>
 
         {/* Custom Tabs Navigation */}
-        <div className="flex border-b border-slate-200 mb-8">
+        <div className="flex border-b border-slate-200 dark:border-slate-800 mb-8">
           <button 
             onClick={() => setActiveTab('health')}
-            className={`pb-4 px-4 font-medium text-sm transition-colors flex items-center gap-2 ${activeTab === 'health' ? 'border-b-2 border-blue-600 text-blue-600' : 'text-slate-500 hover:text-slate-700'}`}
+            className={`pb-4 px-4 font-medium text-sm transition-colors flex items-center gap-2 ${activeTab === 'health' ? 'border-b-2 border-primary-600 dark:border-primary-400 text-primary-600 dark:text-primary-400' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'}`}
           >
             <Activity size={18} /> Health Profile
           </button>
           <button 
             onClick={() => setActiveTab('reports')}
-            className={`pb-4 px-4 font-medium text-sm transition-colors flex items-center gap-2 ${activeTab === 'reports' ? 'border-b-2 border-blue-600 text-blue-600' : 'text-slate-500 hover:text-slate-700'}`}
+            className={`pb-4 px-4 font-medium text-sm transition-colors flex items-center gap-2 ${activeTab === 'reports' ? 'border-b-2 border-primary-600 dark:border-primary-400 text-primary-600 dark:text-primary-400' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'}`}
           >
             <ShieldAlert size={18} /> My Govt. Reports
           </button>
@@ -128,34 +128,34 @@ export default function Profile() {
         {/* TAB 1: HEALTH PROFILE */}
         {activeTab === 'health' && (
           <form onSubmit={handleProfileSubmit} className="space-y-6">
-            {successMsg && <div className="p-4 bg-emerald-50 text-emerald-700 rounded-lg flex items-center gap-2 border border-emerald-100"><CheckCircle size={20} /> {successMsg}</div>}
+            {successMsg && <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 rounded-lg flex items-center gap-2 border border-emerald-100 dark:border-emerald-900/50"><CheckCircle size={20} /> {successMsg}</div>}
             
             {/* Medical Vitals */}
-            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-              <div className="flex items-center gap-2 text-lg font-semibold text-slate-800 mb-4 border-b border-slate-100 pb-3">
-                <Activity className="text-blue-500" /> Basic Medical Vitals
+            <div className="bg-white dark:bg-[#141311] p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm transition-colors">
+              <div className="flex items-center gap-2 text-lg font-semibold text-slate-800 dark:text-white mb-4 border-b border-slate-100 dark:border-slate-800 pb-3">
+                <Activity className="text-primary-500" /> Basic Medical Vitals
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div><label className="block text-sm font-medium text-slate-700 mb-1">Blood Group</label><select name="bloodGroup" value={formData.bloodGroup} onChange={(e) => setFormData({...formData, bloodGroup: e.target.value})} className="w-full p-2.5 border border-slate-300 rounded-lg bg-white">{['Unknown', 'A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'].map(bg => <option key={bg} value={bg}>{bg}</option>)}</select></div>
-                <div><label className="block text-sm font-medium text-slate-700 mb-1">Gender</label><select name="gender" value={formData.gender} onChange={(e) => setFormData({...formData, gender: e.target.value})} className="w-full p-2.5 border border-slate-300 rounded-lg bg-white">{['Prefer not to say', 'Male', 'Female', 'Other'].map(g => <option key={g} value={g}>{g}</option>)}</select></div>
-                <div><label className="block text-sm font-medium text-slate-700 mb-1">Height (cm)</label><input type="number" name="height" value={formData.height} onChange={(e) => setFormData({...formData, height: e.target.value})} className="w-full p-2.5 border border-slate-300 rounded-lg" /></div>
-                <div><label className="block text-sm font-medium text-slate-700 mb-1">Weight (kg)</label><input type="number" name="weight" value={formData.weight} onChange={(e) => setFormData({...formData, weight: e.target.value})} className="w-full p-2.5 border border-slate-300 rounded-lg" /></div>
+                <div><label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Blood Group</label><select name="bloodGroup" value={formData.bloodGroup} onChange={(e) => setFormData({...formData, bloodGroup: e.target.value})} className="w-full p-2.5 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none">{['Unknown', 'A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'].map(bg => <option key={bg} value={bg}>{bg}</option>)}</select></div>
+                <div><label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Gender</label><select name="gender" value={formData.gender} onChange={(e) => setFormData({...formData, gender: e.target.value})} className="w-full p-2.5 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none">{['Prefer not to say', 'Male', 'Female', 'Other'].map(g => <option key={g} value={g}>{g}</option>)}</select></div>
+                <div><label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Height (cm)</label><input type="number" name="height" value={formData.height} onChange={(e) => setFormData({...formData, height: e.target.value})} className="w-full p-2.5 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none" /></div>
+                <div><label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Weight (kg)</label><input type="number" name="weight" value={formData.weight} onChange={(e) => setFormData({...formData, weight: e.target.value})} className="w-full p-2.5 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none" /></div>
               </div>
             </div>
 
             {/* Health History */}
-            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-              <div className="flex items-center gap-2 text-lg font-semibold text-slate-800 mb-4 border-b border-slate-100 pb-3">
+            <div className="bg-white dark:bg-[#141311] p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm transition-colors">
+              <div className="flex items-center gap-2 text-lg font-semibold text-slate-800 dark:text-white mb-4 border-b border-slate-100 dark:border-slate-800 pb-3">
                 <AlertTriangle className="text-orange-500" /> Health History
               </div>
               <div className="space-y-4">
-                <div><label className="block text-sm font-medium text-slate-700 mb-1">Allergies (comma separated)</label><input type="text" name="allergies" value={formData.allergies} onChange={(e) => setFormData({...formData, allergies: e.target.value})} className="w-full p-2.5 border border-slate-300 rounded-lg" /></div>
-                <div><label className="block text-sm font-medium text-slate-700 mb-1">Existing Conditions (comma separated)</label><input type="text" name="existingConditions" value={formData.existingConditions} onChange={(e) => setFormData({...formData, existingConditions: e.target.value})} className="w-full p-2.5 border border-slate-300 rounded-lg" /></div>
+                <div><label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Allergies (comma separated)</label><input type="text" name="allergies" value={formData.allergies} onChange={(e) => setFormData({...formData, allergies: e.target.value})} className="w-full p-2.5 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none" /></div>
+                <div><label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Existing Conditions (comma separated)</label><input type="text" name="existingConditions" value={formData.existingConditions} onChange={(e) => setFormData({...formData, existingConditions: e.target.value})} className="w-full p-2.5 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none" /></div>
               </div>
             </div>
 
             <div className="flex justify-end pt-4">
-              <button type="submit" disabled={saving} className="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:opacity-70 shadow-sm">
+              <button type="submit" disabled={saving} className="flex items-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-700 transition-colors disabled:opacity-70 shadow-sm">
                 <Save size={20} /> {saving ? 'Saving...' : 'Save Profile Changes'}
               </button>
             </div>
@@ -166,26 +166,26 @@ export default function Profile() {
         {activeTab === 'reports' && (
           <div className="space-y-4">
             {loadingReports ? (
-              <div className="text-center py-12 text-slate-500"><Activity className="animate-spin text-blue-500 mx-auto mb-2" /> Loading reports...</div>
+              <div className="text-center py-12 text-slate-500 dark:text-slate-400"><Activity className="animate-spin text-primary-500 mx-auto mb-2" /> Loading reports...</div>
             ) : myReports.length === 0 ? (
-              <div className="bg-white p-12 rounded-xl border border-slate-200 text-center shadow-sm">
-                <ShieldAlert size={40} className="text-slate-300 mx-auto mb-3" />
-                <h3 className="font-medium text-slate-900 mb-1">No reports filed</h3>
-                <p className="text-slate-500 text-sm">You haven't submitted any formal hospital reports yet.</p>
+              <div className="bg-white dark:bg-[#141311] p-12 rounded-xl border border-slate-200 dark:border-slate-800 text-center shadow-sm">
+                <ShieldAlert size={40} className="text-slate-300 dark:text-slate-600 mx-auto mb-3" />
+                <h3 className="font-medium text-slate-900 dark:text-white mb-1">No reports filed</h3>
+                <p className="text-slate-500 dark:text-slate-400 text-sm">You haven't submitted any formal hospital reports yet.</p>
               </div>
             ) : (
               myReports.map(report => (
-                <div key={report._id} className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div key={report._id} className="bg-white dark:bg-[#141311] p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4 transition-colors">
                   <div>
                     <div className="flex items-center gap-3 mb-1">
-                      <span className="font-mono text-xs font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded">{report.reportId}</span>
+                      <span className="font-mono text-xs font-bold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded border border-slate-200 dark:border-slate-700">{report.reportId}</span>
                       <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${getStatusColor(report.status)}`}>{report.status}</span>
                     </div>
-                    <h3 className="font-bold text-slate-900 text-lg mt-2">{report.hospital.name}</h3>
-                    <p className="text-sm text-slate-600 font-medium">{report.category}</p>
-                    <p className="text-sm text-slate-500 flex items-center gap-1 mt-1"><Clock size={14} /> Submitted: {new Date(report.createdAt).toLocaleDateString()}</p>
+                    <h3 className="font-bold text-slate-900 dark:text-white text-lg mt-2 font-serif">{report.hospital.name}</h3>
+                    <p className="text-sm text-slate-600 dark:text-slate-300 font-medium">{report.category}</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-1 mt-1"><Clock size={14} /> Submitted: {new Date(report.createdAt).toLocaleDateString()}</p>
                   </div>
-                  <button className="px-4 py-2 border border-slate-300 text-slate-700 font-medium text-sm rounded-lg hover:bg-slate-50 transition-colors w-full md:w-auto text-center">
+                  <button className="px-4 py-2 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium text-sm rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors w-full md:w-auto text-center">
                     View Details
                   </button>
                 </div>

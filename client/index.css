@@ -1,5 +1,108 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary-50: #ecfdf5;
+  --color-primary-100: #d1fae5;
+  --color-primary-200: #a7f3d0;
+  --color-primary-300: #6ee7b7;
+  --color-primary-400: #34d399;
+  --color-primary-500: #10B981; /* Accent: modern soft mint */
+  --color-primary-600: #059669;
+  --color-primary-700: #047857;
+  --color-primary-800: #0D5C3A; /* Primary: emerald clinical */
+  --color-primary-900: #064e3b;
+  --color-primary-950: #022c22;
+  
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-serif: 'Fraunces', serif;
+}
+
+@layer base {
+  :root {
+    --ink: #0f0e0c;
+    --paper: #f7f4ee;
+    --cream: #efe9dc;
+    --border: #ddd7c8;
+    --muted: #7a7469;
+    
+    --red: #b83018;
+    --red-light: #fdf0ec;
+    --red-border: #f0c4b4;
+    
+    --blue: #1a3d6b;
+    --blue-light: #edf2f9;
+    --blue-border: #b8c8de;
+    
+    --green: #1a5c3a;
+    --green-light: #edf6f1;
+    --green-border: #b4d9c4;
+    
+    --amber: #7a4e00;
+    --amber-light: #fdf6e8;
+    --amber-border: #e8d09a;
+    
+    --radius: 10px;
+    --radius-lg: 16px;
+    
+    --bg-main: var(--paper);
+    --bg-card: #ffffff;
+    --text-main: var(--ink);
+    --text-muted: var(--muted);
+    --border-color: var(--border);
+  }
+
+  .dark {
+    --ink: #f7f4ee;
+    --paper: #0f0e0c;
+    --cream: #1c1b18;
+    --border: #38342b;
+    --muted: #a39c8f;
+    
+    --red: #f0c4b4;
+    --red-light: #3a1005;
+    --red-border: #7a200f;
+    
+    --blue: #b8c8de;
+    --blue-light: #0d1e35;
+    --blue-border: #1a3d6b;
+    
+    --green: #b4d9c4;
+    --green-light: #0d2e1d;
+    --green-border: #1a5c3a;
+    
+    --amber: #e8d09a;
+    --amber-light: #3d2700;
+    --amber-border: #7a4e00;
+
+    --bg-main: var(--paper);
+    --bg-card: #141311;
+    --text-main: var(--ink);
+    --text-muted: var(--muted);
+    --border-color: var(--border);
+  }
+}
 
 body {
-  background-color: #f8fafc; /* Light slate background */
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
 }
