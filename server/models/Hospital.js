@@ -1,38 +1,58 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
+
+const procedureSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  category: { type: String }, // e.g., "Surgery", "Dialysis", "Chemotherapy", "Consultation"
+  estimatedCost: {
+    min: { type: Number, required: true },
+    max: { type: Number, required: true }
+  }
+});
 
 const hospitalSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  type: { type: String, enum: ['Government', 'Private', 'Trust'], required: true },
+  name: { type: String, required: true, trim: true },
+  type: { type: String, enum: ['Government', 'Autonomous/Govt-Aided', 'Private', 'Trust/Charitable'], required: true },
   location: {
-    address: { type: String },
-    city: { type: String, required: true },
-    state: { type: String, required: true },
+    address: { type: String, required: true },
+    city: { type: String, required: true, index: true },
+    state: { type: String, required: true, index: true },
     pincode: { type: String },
     coordinates: {
       lat: { type: Number },
       lng: { type: Number }
     }
   },
-  specializations: [{ type: String }],
+  specializations: [{ type: String, index: true }], // e.g. "Cardiology", "Nephrology", "Gastroenterology"
+  chronicConditionsHandled: [{ type: String, index: true }], // e.g. "Pancreatic Cancer", "Chronic Kidney Disease", "Heart Failure"
   facilities: [{ type: String }],
-  services: [{
-    name: { type: String }, // e.g., "Kidney Transplant", "Dialysis"
-    estimatedCost: {
-      min: { type: Number },
-      max: { type: Number }
-    }
-  }],
+  procedures: [procedureSchema],
+  metrics: {
+    successRate: { type: Number, required: true, min: 50, max: 99 }, // e.g., 94 (%)
+    successfulPatientsCount: { type: Number, required: true }, // e.g., 18500
+    averageWaitTimeDays: { type: Number, default: 3 },
+    nabhAccredited: { type: Boolean, default: true }
+  },
   statistics: {
     beds: { type: Number },
-    doctors: { type: Number },
+    doctors: { type: Number }
   },
-  isVerified: { type: Boolean, default: false },
   contact: {
     phone: { type: String },
+    email: { type: String },
     website: { type: String }
-  }
-}, { 
-  timestamps: true 
+  },
+  isVerified: { type: Boolean, default: true }
+}, {
+  timestamps: true
 });
 
-export default mongoose.model("Hospital", hospitalSchema);
+// Text index for fast multi-field searching
+hospitalSchema.index({
+  name: 'text',
+  'location.city': 'text',
+  'location.state': 'text',
+  specializations: 'text',
+  chronicConditionsHandled: 'text'
+});
+
+export default mongoose.model('Hospital', hospitalSchema);
