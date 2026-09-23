@@ -80,6 +80,9 @@ export default function HospitalDetails() {
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
     if (reviewForm.rating === 0) return setReviewError("Please provide an overall rating (1-5 stars).");
+    if (reviewForm.categories.staffCommunication === 0 || reviewForm.categories.cleanliness === 0 || reviewForm.categories.waitingTime === 0) {
+      return setReviewError("Please provide a rating for Staff Behavior, Cleanliness, and Waiting Time.");
+    }
     setSubmittingReview(true);
     setReviewError('');
     try {
@@ -257,9 +260,22 @@ export default function HospitalDetails() {
               </div>
               <form onSubmit={handleReviewSubmit} className="p-6 space-y-6 max-h-[80vh] overflow-y-auto">
                 {reviewError && <div className="p-3 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 text-sm rounded-lg flex items-start gap-2"><AlertCircle size={16} className="mt-0.5 shrink-0" /> {reviewError}</div>}
-                <div className="bg-primary-50 dark:bg-primary-900/20 p-4 rounded-xl border border-primary-100 dark:border-primary-900/50 text-center">
+                <div className="bg-primary-50 dark:bg-primary-900/20 p-4 rounded-xl border border-primary-100 dark:border-primary-900/50 flex flex-col items-center">
                   <StarRating label="Overall Experience" rating={reviewForm.rating} setRating={(val) => setReviewForm({...reviewForm, rating: val})} />
                 </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="flex flex-col items-center p-3 bg-slate-50 dark:bg-[#0f0e0c] rounded-xl border border-slate-200 dark:border-slate-800">
+                    <StarRating label="Staff Behavior" rating={reviewForm.categories.staffCommunication} setRating={(val) => setReviewForm({...reviewForm, categories: {...reviewForm.categories, staffCommunication: val}})} />
+                  </div>
+                  <div className="flex flex-col items-center p-3 bg-slate-50 dark:bg-[#0f0e0c] rounded-xl border border-slate-200 dark:border-slate-800">
+                    <StarRating label="Cleanliness" rating={reviewForm.categories.cleanliness} setRating={(val) => setReviewForm({...reviewForm, categories: {...reviewForm.categories, cleanliness: val}})} />
+                  </div>
+                  <div className="flex flex-col items-center p-3 bg-slate-50 dark:bg-[#0f0e0c] rounded-xl border border-slate-200 dark:border-slate-800">
+                    <StarRating label="Waiting Time" rating={reviewForm.categories.waitingTime} setRating={(val) => setReviewForm({...reviewForm, categories: {...reviewForm.categories, waitingTime: val}})} />
+                  </div>
+                </div>
+
                 <div>
                   <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Written Experience (Required)</label>
                   <textarea required maxLength={1000} rows={4} value={reviewForm.experience} onChange={(e) => setReviewForm({...reviewForm, experience: e.target.value})} className="w-full p-3 border border-slate-300 dark:border-slate-700 bg-white dark:bg-[#141311] rounded-lg focus:ring-2 focus:ring-primary-500 resize-none text-sm text-slate-900 dark:text-white" />

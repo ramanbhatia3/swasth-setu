@@ -135,6 +135,10 @@ export const executeSearch = async (q, city, specialization, maxBudget, sortBy) 
     targetSpecialties.push(specialization);
   }
 
+  if (city) {
+    targetLocations.push(city);
+  }
+
   let dbQuery = {};
   const andConditions = [];
 

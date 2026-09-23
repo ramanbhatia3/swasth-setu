@@ -1,12 +1,13 @@
 import { useState, useEffect, useCallback } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { Home, Search, Brain, MessageSquare, Map as MapIcon, User, Menu, X, Activity, LogOut, FileText, ShieldAlert, Sun, Moon } from 'lucide-react';
+import { Home, Search, Brain, MessageSquare, Map as MapIcon, User, Menu, X, Activity, LogOut, FileText, ShieldAlert, Sun, Moon, Stethoscope } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../../context/AuthContext';
 
 const navigationItems = [
   { label: 'Home', path: '/', icon: Home, end: true }, // end: true — otherwise NavLink matches every nested route
   { label: 'Find Services', path: '/services', icon: Search },
+  { label: 'Specialists', path: '/specialists', icon: Stethoscope },
   { label: 'Live Map', path: '/map', icon: MapIcon },
   { label: 'AI Report', path: '/ai-report', icon: Brain },
   { label: 'Feedback', path: '/feedback', icon: MessageSquare },

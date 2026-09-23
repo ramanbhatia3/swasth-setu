@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-import { 
-  Activity, AlertTriangle, Phone, Save, CheckCircle, 
+import {
+  Activity, AlertTriangle, Phone, Save, CheckCircle,
   FileText, ShieldAlert, Clock
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 export default function Profile() {
   const { user } = useAuth();
-  
+
   // Tabs State
   const [activeTab, setActiveTab] = useState('health'); // 'health' or 'reports'
-  
+
   // Health Profile State
   const [loadingProfile, setLoadingProfile] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -40,7 +40,7 @@ export default function Profile() {
             emergencyContact: p.emergencyContact || { name: '', phone: '', relation: '' }
           });
         }
-      } catch (error) { console.error("Failed to fetch profile:", error); } 
+      } catch (error) { console.error("Failed to fetch profile:", error); }
       finally { setLoadingProfile(false); }
     };
     fetchProfile();
@@ -53,7 +53,7 @@ export default function Profile() {
         try {
           const res = await axios.get(`${import.meta.env.VITE_API_URL}/reports/my-reports`);
           if (res.data.success) setMyReports(res.data.reports);
-        } catch (error) { console.error("Failed to fetch reports:", error); } 
+        } catch (error) { console.error("Failed to fetch reports:", error); }
         finally { setLoadingReports(false); }
       };
       fetchReports();
@@ -79,7 +79,7 @@ export default function Profile() {
   };
 
   const getStatusColor = (status) => {
-    switch(status) {
+    switch (status) {
       case 'Submitted': return 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 border border-blue-200 dark:border-blue-800';
       case 'In Progress': return 'bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-400 border border-amber-200 dark:border-amber-800';
       case 'Resolved': return 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800';
@@ -93,7 +93,7 @@ export default function Profile() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-        
+
         {/* User Header */}
         <div className="flex items-center gap-4 mb-8">
           {user?.profileImage ? (
@@ -111,13 +111,13 @@ export default function Profile() {
 
         {/* Custom Tabs Navigation */}
         <div className="flex border-b border-slate-200 dark:border-slate-800 mb-8">
-          <button 
+          <button
             onClick={() => setActiveTab('health')}
             className={`pb-4 px-4 font-medium text-sm transition-colors flex items-center gap-2 ${activeTab === 'health' ? 'border-b-2 border-primary-600 dark:border-primary-400 text-primary-600 dark:text-primary-400' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'}`}
           >
             <Activity size={18} /> Health Profile
           </button>
-          <button 
+          <button
             onClick={() => setActiveTab('reports')}
             className={`pb-4 px-4 font-medium text-sm transition-colors flex items-center gap-2 ${activeTab === 'reports' ? 'border-b-2 border-primary-600 dark:border-primary-400 text-primary-600 dark:text-primary-400' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'}`}
           >
@@ -129,17 +129,17 @@ export default function Profile() {
         {activeTab === 'health' && (
           <form onSubmit={handleProfileSubmit} className="space-y-6">
             {successMsg && <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 rounded-lg flex items-center gap-2 border border-emerald-100 dark:border-emerald-900/50"><CheckCircle size={20} /> {successMsg}</div>}
-            
+
             {/* Medical Vitals */}
             <div className="bg-white dark:bg-[#141311] p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm transition-colors">
               <div className="flex items-center gap-2 text-lg font-semibold text-slate-800 dark:text-white mb-4 border-b border-slate-100 dark:border-slate-800 pb-3">
                 <Activity className="text-primary-500" /> Basic Medical Vitals
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div><label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Blood Group</label><select name="bloodGroup" value={formData.bloodGroup} onChange={(e) => setFormData({...formData, bloodGroup: e.target.value})} className="w-full p-2.5 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none">{['Unknown', 'A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'].map(bg => <option key={bg} value={bg}>{bg}</option>)}</select></div>
-                <div><label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Gender</label><select name="gender" value={formData.gender} onChange={(e) => setFormData({...formData, gender: e.target.value})} className="w-full p-2.5 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none">{['Prefer not to say', 'Male', 'Female', 'Other'].map(g => <option key={g} value={g}>{g}</option>)}</select></div>
-                <div><label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Height (cm)</label><input type="number" name="height" value={formData.height} onChange={(e) => setFormData({...formData, height: e.target.value})} className="w-full p-2.5 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none" /></div>
-                <div><label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Weight (kg)</label><input type="number" name="weight" value={formData.weight} onChange={(e) => setFormData({...formData, weight: e.target.value})} className="w-full p-2.5 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none" /></div>
+                <div><label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Blood Group</label><select name="bloodGroup" value={formData.bloodGroup} onChange={(e) => setFormData({ ...formData, bloodGroup: e.target.value })} className="w-full p-2.5 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none">{['Unknown', 'A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'].map(bg => <option key={bg} value={bg}>{bg}</option>)}</select></div>
+                <div><label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Gender</label><select name="gender" value={formData.gender} onChange={(e) => setFormData({ ...formData, gender: e.target.value })} className="w-full p-2.5 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none">{['Prefer not to say', 'Male', 'Female', 'Other'].map(g => <option key={g} value={g}>{g}</option>)}</select></div>
+                <div><label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Height (cm)</label><input type="number" name="height" value={formData.height} onChange={(e) => setFormData({ ...formData, height: e.target.value })} className="w-full p-2.5 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none" /></div>
+                <div><label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Weight (kg)</label><input type="number" name="weight" value={formData.weight} onChange={(e) => setFormData({ ...formData, weight: e.target.value })} className="w-full p-2.5 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none" /></div>
               </div>
             </div>
 
@@ -149,8 +149,8 @@ export default function Profile() {
                 <AlertTriangle className="text-orange-500" /> Health History
               </div>
               <div className="space-y-4">
-                <div><label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Allergies (comma separated)</label><input type="text" name="allergies" value={formData.allergies} onChange={(e) => setFormData({...formData, allergies: e.target.value})} className="w-full p-2.5 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none" /></div>
-                <div><label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Existing Conditions (comma separated)</label><input type="text" name="existingConditions" value={formData.existingConditions} onChange={(e) => setFormData({...formData, existingConditions: e.target.value})} className="w-full p-2.5 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none" /></div>
+                <div><label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Allergies (comma separated)</label><input type="text" name="allergies" value={formData.allergies} onChange={(e) => setFormData({ ...formData, allergies: e.target.value })} className="w-full p-2.5 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none" /></div>
+                <div><label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Existing Conditions (comma separated)</label><input type="text" name="existingConditions" value={formData.existingConditions} onChange={(e) => setFormData({ ...formData, existingConditions: e.target.value })} className="w-full p-2.5 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-[#0f0e0c] text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 outline-none" /></div>
               </div>
             </div>
 

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FileText, UploadCloud, Plus, X, Image as ImageIcon, 
-  Droplet, Activity, Eye, File, CheckCircle, AlertCircle 
+  Droplet, Activity, Eye, File, CheckCircle, AlertCircle, Calendar, Stethoscope, Clock
 } from 'lucide-react';
 
 export default function MedicalRecords() {
@@ -12,6 +12,11 @@ export default function MedicalRecords() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
+  
+  // Tabs State
+  const [activeTab, setActiveTab] = useState('documents');
+  const [appointments, setAppointments] = useState([]);
+  const [loadingAppointments, setLoadingAppointments] = useState(false);
   
   // Form State
   const [file, setFile] = useState(null);
@@ -23,7 +28,9 @@ export default function MedicalRecords() {
 
   const fetchRecords = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/records/my-records`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/records/my-records`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+      });
       if (res.data.success) setRecords(res.data.records);
     } catch (err) {
       console.error("Failed to fetch records:", err);
@@ -32,8 +39,23 @@ export default function MedicalRecords() {
     }
   };
 
+  const fetchAppointments = async () => {
+    try {
+      setLoadingAppointments(true);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/doctors/appointments/my`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+      });
+      if (res.data.success) setAppointments(res.data.data);
+    } catch (err) {
+      console.error("Failed to fetch appointments:", err);
+    } finally {
+      setLoadingAppointments(false);
+    }
+  };
+
   useEffect(() => {
     fetchRecords();
+    fetchAppointments();
   }, []);
 
   const handleFileChange = (e) => {
@@ -120,59 +142,132 @@ export default function MedicalRecords() {
         </button>
       </div>
 
-      {/* Records Grid */}
-      {loading ? (
-        <div className="text-center py-12 text-slate-500 dark:text-slate-400">Loading records...</div>
-      ) : records.length === 0 ? (
-        <div className="bg-white dark:bg-[#141311] border border-slate-200 dark:border-slate-800 rounded-xl p-12 text-center transition-colors">
-          <div className="w-16 h-16 bg-slate-50 dark:bg-[#0f0e0c] text-slate-400 dark:text-slate-500 rounded-full flex items-center justify-center mx-auto mb-4 border border-slate-100 dark:border-slate-800">
-            <UploadCloud size={32} />
-          </div>
-          <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-1">No records found</h3>
-          <p className="text-slate-500 dark:text-slate-400 mb-6">Upload your first medical report to keep it securely stored.</p>
-          <button onClick={() => setIsModalOpen(true)} className="text-primary-600 dark:text-primary-400 font-medium hover:underline">
-            Click here to upload
-          </button>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {records.map((record) => (
-            <motion.div 
-              key={record._id}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-white dark:bg-[#141311] border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div className="flex justify-between items-start mb-4">
-                <div className="p-2 bg-slate-50 dark:bg-[#0f0e0c] rounded-lg border border-slate-100 dark:border-slate-800">
-                  {getCategoryIcon(record.category)}
-                </div>
-                <div className="flex items-center gap-1 text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded-full border border-emerald-100 dark:border-emerald-900/50">
-                  <CheckCircle size={12} /> Verified Owner
-                </div>
+      {/* Tabs */}
+      <div className="flex items-center gap-4 border-b border-slate-200 dark:border-slate-800 mb-6">
+        <button
+          onClick={() => setActiveTab('documents')}
+          className={`pb-3 font-medium text-sm transition-colors relative ${activeTab === 'documents' ? 'text-primary-600 dark:text-primary-400' : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300'}`}
+        >
+          <div className="flex items-center gap-2"><FileText size={16}/> Documents</div>
+          {activeTab === 'documents' && <motion.div layoutId="tab-indicator" className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-600 dark:bg-primary-400" />}
+        </button>
+        <button
+          onClick={() => setActiveTab('appointments')}
+          className={`pb-3 font-medium text-sm transition-colors relative ${activeTab === 'appointments' ? 'text-primary-600 dark:text-primary-400' : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300'}`}
+        >
+          <div className="flex items-center gap-2"><Calendar size={16}/> My Appointments</div>
+          {activeTab === 'appointments' && <motion.div layoutId="tab-indicator" className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-600 dark:bg-primary-400" />}
+        </button>
+      </div>
+
+      {/* Content Area */}
+      {activeTab === 'documents' ? (
+        <>
+          {loading ? (
+            <div className="text-center py-12 text-slate-500 dark:text-slate-400">Loading records...</div>
+          ) : records.length === 0 ? (
+            <div className="bg-white dark:bg-[#141311] border border-slate-200 dark:border-slate-800 rounded-xl p-12 text-center transition-colors">
+              <div className="w-16 h-16 bg-slate-50 dark:bg-[#0f0e0c] text-slate-400 dark:text-slate-500 rounded-full flex items-center justify-center mx-auto mb-4 border border-slate-100 dark:border-slate-800">
+                <UploadCloud size={32} />
               </div>
-              
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-1 truncate font-serif" title={record.title}>
-                {record.title}
-              </h3>
-              <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
-                {record.category} • {new Date(record.reportDate).toLocaleDateString()}
-              </p>
-              
-              <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center">
-                <span className="text-xs text-slate-400 dark:text-slate-500 truncate w-32" title={record.originalFileName}>
-                  {record.originalFileName}
-                </span>
-                <button 
-                  onClick={() => handleViewSecureFile(record._id, record.mimeType)}
-                  className="flex items-center gap-1.5 text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 transition-colors"
+              <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-1">No records found</h3>
+              <p className="text-slate-500 dark:text-slate-400 mb-6">Upload your first medical report to keep it securely stored.</p>
+              <button onClick={() => setIsModalOpen(true)} className="text-primary-600 dark:text-primary-400 font-medium hover:underline">
+                Click here to upload
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {records.map((record) => (
+                <motion.div 
+                  key={record._id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-white dark:bg-[#141311] border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <Eye size={16} /> View
-                </button>
+                  <div className="flex justify-between items-start mb-4">
+                    <div className="p-2 bg-slate-50 dark:bg-[#0f0e0c] rounded-lg border border-slate-100 dark:border-slate-800">
+                      {getCategoryIcon(record.category)}
+                    </div>
+                    <div className="flex items-center gap-1 text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded-full border border-emerald-100 dark:border-emerald-900/50">
+                      <CheckCircle size={12} /> Verified Owner
+                    </div>
+                  </div>
+                  
+                  <h3 className="font-semibold text-slate-900 dark:text-white mb-1 truncate font-serif" title={record.title}>
+                    {record.title}
+                  </h3>
+                  <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
+                    {record.category} • {new Date(record.reportDate).toLocaleDateString()}
+                  </p>
+                  
+                  <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center">
+                    <span className="text-xs text-slate-400 dark:text-slate-500 truncate w-32" title={record.originalFileName}>
+                      {record.originalFileName}
+                    </span>
+                    <button 
+                      onClick={() => handleViewSecureFile(record._id, record.mimeType)}
+                      className="flex items-center gap-1.5 text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 transition-colors"
+                    >
+                      <Eye size={16} /> View
+                    </button>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </>
+      ) : (
+        <>
+          {loadingAppointments ? (
+            <div className="text-center py-12 text-slate-500 dark:text-slate-400">Loading appointments...</div>
+          ) : appointments.length === 0 ? (
+            <div className="bg-white dark:bg-[#141311] border border-slate-200 dark:border-slate-800 rounded-xl p-12 text-center transition-colors">
+              <div className="w-16 h-16 bg-slate-50 dark:bg-[#0f0e0c] text-slate-400 dark:text-slate-500 rounded-full flex items-center justify-center mx-auto mb-4 border border-slate-100 dark:border-slate-800">
+                <Calendar size={32} />
               </div>
-            </motion.div>
-          ))}
-        </div>
+              <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-1">No appointments</h3>
+              <p className="text-slate-500 dark:text-slate-400 mb-6">You haven't booked any appointments yet.</p>
+              <a href="/specialists" className="inline-block bg-primary-600 text-white font-medium px-5 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                Find a Specialist
+              </a>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {appointments.map(app => (
+                <motion.div
+                  key={app._id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-white dark:bg-[#141311] border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex items-start justify-between"
+                >
+                  <div>
+                    <h3 className="font-bold text-slate-900 dark:text-white font-serif">{app.doctor?.name || 'Unknown Doctor'}</h3>
+                    <p className="text-sm text-primary-600 dark:text-primary-400 font-medium mb-3">{app.doctor?.specialization}</p>
+                    <div className="space-y-1">
+                      <p className="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-2">
+                        <Calendar size={14} /> {new Date(app.date).toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                      </p>
+                      <p className="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-2">
+                        <Clock size={14} /> {app.timeSlot}
+                      </p>
+                    </div>
+                  </div>
+                  <div>
+                    <span className={`text-xs font-bold px-3 py-1 rounded-full border ${
+                      app.status === 'Confirmed' ? 'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-400 dark:border-emerald-800' :
+                      app.status === 'Completed' ? 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-800' :
+                      app.status === 'Cancelled' ? 'bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-900/30 dark:text-rose-400 dark:border-rose-800' :
+                      'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-800'
+                    }`}>
+                      {app.status}
+                    </span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </>
       )}
 
       {/* Upload Modal */}

@@ -16,10 +16,24 @@ export default function Feedback() {
     
     setIsSearching(true);
     try {
-      // We reuse the existing search API, filtering just by the hospital name/city text
       const res = await axios.get(`${import.meta.env.VITE_API_URL}/hospitals/search?city=${searchTerm}`);
       if (res.data.success) {
-        setResults(res.data.hospitals);
+        // Sort by region (state, then city)
+        const sortedHospitals = res.data.hospitals.sort((a, b) => {
+          const stateA = (a.location?.state || '').toLowerCase();
+          const stateB = (b.location?.state || '').toLowerCase();
+          if (stateA < stateB) return -1;
+          if (stateA > stateB) return 1;
+          
+          const cityA = (a.location?.city || '').toLowerCase();
+          const cityB = (b.location?.city || '').toLowerCase();
+          if (cityA < cityB) return -1;
+          if (cityA > cityB) return 1;
+          
+          return 0;
+        });
+        
+        setResults(sortedHospitals);
       }
     } catch (error) {
       console.error("Failed to search hospitals for feedback", error);

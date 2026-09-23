@@ -10,6 +10,7 @@ import reviewRoutes from "./routes/reviewRoutes.js";
 import reportRoutes from "./routes/reportRoutes.js";
 import aiRoutes from "./routes/aiRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js"; // <-- NEW
+import doctorRoutes from "./routes/doctorRoutes.js";
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.use("/api/reviews", reviewRoutes);
 app.use("/api/reports", reportRoutes);
 app.use("/api/ai", aiRoutes);
 app.use("/api/admin", adminRoutes); // <-- NEW
+app.use("/api/doctors", doctorRoutes);
 
 app.use((req, res, next) => {
   res.status(404).json({ success: false, message: "API Route not found" });

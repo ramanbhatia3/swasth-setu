@@ -1,19 +1,19 @@
 import mongoose from "mongoose";
 
 const healthProfileSchema = new mongoose.Schema({
-  user: { 
-    type: mongoose.Schema.Types.ObjectId, 
-    ref: 'User', 
-    required: true, 
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
     unique: true // One profile per user
   },
   dateOfBirth: { type: Date },
-  gender: { 
-    type: String, 
-    enum: ['Male', 'Female', 'Other', 'Prefer not to say'] 
+  gender: {
+    type: String,
+    enum: ['Male', 'Female', 'Other', 'Prefer not to say']
   },
-  bloodGroup: { 
-    type: String, 
+  bloodGroup: {
+    type: String,
     enum: ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-', 'Unknown'],
     default: 'Unknown'
   },
@@ -26,8 +26,8 @@ const healthProfileSchema = new mongoose.Schema({
     phone: { type: String },
     relation: { type: String }
   }
-}, { 
-  timestamps: true 
+}, {
+  timestamps: true
 });
 
 export default mongoose.model("HealthProfile", healthProfileSchema);

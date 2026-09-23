@@ -11,9 +11,9 @@ export const chatWithAI = async (req, res) => {
 
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
-      return res.status(200).json({ 
-        success: true, 
-        reply: "*(Simulated AI Response)*: To make me functional, add a GEMINI_API_KEY to your backend .env file." 
+      return res.status(200).json({
+        success: true,
+        reply: "*(Simulated AI Response)*: To make me functional, add a GEMINI_API_KEY to your backend .env file."
       });
     }
 

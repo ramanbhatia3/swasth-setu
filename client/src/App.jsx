@@ -15,6 +15,7 @@ import Feedback from './pages/Feedback';
 import AdminDashboard from './pages/AdminDashboard';
 import AiReport from './pages/AiReport'; // <-- NEW
 import HospitalMap from './pages/Map';
+import Specialists from './pages/Specialists';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="compare" element={<CompareHospitals />} />
             <Route path="feedback" element={<Feedback />} />
             <Route path="ai-report" element={<AiReport />} /> {/* <-- NOW A REAL PAGE */}
+            <Route path="specialists" element={<Specialists />} />
             
             {/* PROTECTED ROUTES (Requires Login) */}
             <Route element={<ProtectedRoute />}>
