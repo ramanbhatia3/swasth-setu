@@ -5,7 +5,7 @@ import {
   LayoutDashboard, Building2, AlertTriangle, CheckCircle2, Clock, 
   Flame, ShieldAlert, TrendingUp, Search, Filter, RefreshCw, 
   Download, Eye, UserCheck, Bot, Sparkles, X, ChevronRight, 
-  BarChart3, GitCompare, Users, FileText, Bell, Check, Edit3, ArrowUpRight
+  BarChart3, GitCompare, Users, FileText, Bell, Check, Edit3, ArrowUpRight, Plus, Edit
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
@@ -42,6 +42,16 @@ export default function AdminDashboard() {
 
   // Comparison State
   const [compareHospitals, setCompareHospitals] = useState([]);
+
+  // Admin Management States
+  const [showAddHospital, setShowAddHospital] = useState(false);
+  const [newHospitalData, setNewHospitalData] = useState({
+    name: '', type: 'Government', 
+    location: { address: '', city: '', state: '' },
+    metrics: { successRate: 90, successfulPatientsCount: 0 }
+  });
+  const [selectedEditHospital, setSelectedEditHospital] = useState(null);
+  const [editHospitalData, setEditHospitalData] = useState(null);
 
   // Toast State
   const [toastMessage, setToastMessage] = useState('');
@@ -130,6 +140,72 @@ export default function AdminDashboard() {
       }
     } catch (err) {
       showToast('Could not fetch detailed hospital profile.');
+    }
+  };
+
+  const handleOpenEditHospital = async (hospitalId) => {
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const res = await axios.get(`${apiUrl}/admin/hospital/${hospitalId}`, getAuthHeaders());
+      if (res.data.success) {
+        setSelectedEditHospital(hospitalId);
+        setEditHospitalData({
+          isVerified: res.data.hospital.isVerified,
+          facilities: res.data.hospital.facilities?.join(', ') || ''
+        });
+      }
+    } catch (err) {
+      showToast('Could not fetch hospital details for editing.');
+    }
+  };
+
+  const handleCreateHospital = async (e) => {
+    e.preventDefault();
+    setIsUpdating(true);
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const res = await axios.post(`${apiUrl}/admin/hospital`, newHospitalData, getAuthHeaders());
+      if (res.data.success) {
+        showToast('New hospital registered successfully.');
+        setShowAddHospital(false);
+        setNewHospitalData({
+          name: '', type: 'Government', 
+          location: { address: '', city: '', state: '' },
+          metrics: { successRate: 90, successfulPatientsCount: 0 }
+        });
+        fetchAllAdminData();
+      }
+    } catch (error) {
+      showToast('Error registering hospital.');
+    } finally {
+      setIsUpdating(false);
+    }
+  };
+
+  const handleUpdateHospital = async (e) => {
+    e.preventDefault();
+    if (!selectedEditHospital) return;
+    setIsUpdating(true);
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const facilitiesList = typeof editHospitalData.facilities === 'string' 
+        ? editHospitalData.facilities.split(',').map(f => f.trim()).filter(f => f) 
+        : editHospitalData.facilities;
+
+      const res = await axios.put(`${apiUrl}/admin/hospital/${selectedEditHospital}`, {
+        isVerified: editHospitalData.isVerified,
+        facilities: facilitiesList
+      }, getAuthHeaders());
+
+      if (res.data.success) {
+        showToast('Hospital facilities and verification updated.');
+        setSelectedEditHospital(null);
+        fetchAllAdminData();
+      }
+    } catch (error) {
+      showToast('Error updating hospital.');
+    } finally {
+      setIsUpdating(false);
     }
   };
 
@@ -428,10 +504,16 @@ export default function AdminDashboard() {
                   <h2 className="text-2xl font-bold text-white tracking-tight font-serif">Hospital Performance Directory</h2>
                   <p className="text-sm text-slate-400">Standardized grievance metrics, resolution percentages, and compliance status</p>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 items-center flex-wrap">
                   <span className="text-xs px-3 py-1.5 rounded-lg bg-emerald-950 text-emerald-300 border border-emerald-800 font-semibold">Good: Res Rate ≥ 75%</span>
                   <span className="text-xs px-3 py-1.5 rounded-lg bg-amber-950 text-amber-300 border border-amber-800 font-semibold">Needs Attention: Backlog ≥ 4</span>
                   <span className="text-xs px-3 py-1.5 rounded-lg bg-rose-950 text-rose-300 border border-rose-800 font-semibold">Critical: Unresolved Criticals</span>
+                  <button
+                    onClick={() => setShowAddHospital(true)}
+                    className="flex items-center gap-2 ml-4 px-4 py-1.5 rounded-lg bg-teal-600 hover:bg-teal-500 text-slate-950 font-bold transition-colors shadow-lg"
+                  >
+                    <Plus size={16} /> Add New Hospital
+                  </button>
                 </div>
               </div>
 
@@ -471,12 +553,21 @@ export default function AdminDashboard() {
                             </span>
                           </td>
                           <td className="px-6 py-4 text-right">
-                            <button
-                              onClick={() => handleOpenHospitalDetail(h.hospitalId)}
-                              className="px-3 py-1.5 bg-teal-600 hover:bg-teal-500 text-slate-950 font-bold text-xs rounded-lg transition-colors"
-                            >
-                              Inspect Details
-                            </button>
+                            <div className="flex justify-end gap-2">
+                              <button
+                                onClick={() => handleOpenEditHospital(h.hospitalId)}
+                                className="p-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-lg transition-colors"
+                                title="Edit Facility & Verification"
+                              >
+                                <Edit size={16} />
+                              </button>
+                              <button
+                                onClick={() => handleOpenHospitalDetail(h.hospitalId)}
+                                className="px-3 py-1.5 bg-teal-600 hover:bg-teal-500 text-slate-950 font-bold text-xs rounded-lg transition-colors"
+                              >
+                                Inspect
+                              </button>
+                            </div>
                           </td>
                         </tr>
                       ))}
@@ -1033,6 +1124,203 @@ export default function AdminDashboard() {
                 </div>
 
               </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* ADD NEW HOSPITAL MODAL */}
+      <AnimatePresence>
+        {showAddHospital && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="bg-slate-950 border border-slate-800 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
+            >
+              <div className="p-6 bg-slate-900 border-b border-slate-800 flex justify-between items-center">
+                <div>
+                  <h3 className="text-xl font-black text-white">Add New Hospital</h3>
+                  <p className="text-xs text-slate-400">Register a new healthcare facility</p>
+                </div>
+                <button onClick={() => setShowAddHospital(false)} className="text-slate-400 hover:text-white">
+                  <X size={22} />
+                </button>
+              </div>
+
+              <form onSubmit={handleCreateHospital} className="p-6 space-y-5 overflow-y-auto flex-grow text-sm">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Hospital Name</label>
+                    <input
+                      required
+                      type="text"
+                      value={newHospitalData.name}
+                      onChange={(e) => setNewHospitalData({...newHospitalData, name: e.target.value})}
+                      className="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-white focus:ring-2 focus:ring-teal-600 outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Type</label>
+                    <select
+                      value={newHospitalData.type}
+                      onChange={(e) => setNewHospitalData({...newHospitalData, type: e.target.value})}
+                      className="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-white focus:ring-2 focus:ring-teal-600 outline-none"
+                    >
+                      {['Government', 'Autonomous/Govt-Aided', 'Private', 'Trust/Charitable'].map(t => (
+                        <option key={t} value={t}>{t}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="col-span-3">
+                    <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Address</label>
+                    <input
+                      required
+                      type="text"
+                      value={newHospitalData.location.address}
+                      onChange={(e) => setNewHospitalData({...newHospitalData, location: {...newHospitalData.location, address: e.target.value}})}
+                      className="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-white focus:ring-2 focus:ring-teal-600 outline-none"
+                    />
+                  </div>
+                  <div className="col-span-2">
+                    <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1.5">City</label>
+                    <input
+                      required
+                      type="text"
+                      value={newHospitalData.location.city}
+                      onChange={(e) => setNewHospitalData({...newHospitalData, location: {...newHospitalData.location, city: e.target.value}})}
+                      className="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-white focus:ring-2 focus:ring-teal-600 outline-none"
+                    />
+                  </div>
+                  <div className="col-span-1">
+                    <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1.5">State</label>
+                    <input
+                      required
+                      type="text"
+                      value={newHospitalData.location.state}
+                      onChange={(e) => setNewHospitalData({...newHospitalData, location: {...newHospitalData.location, state: e.target.value}})}
+                      className="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-white focus:ring-2 focus:ring-teal-600 outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Success Rate (%)</label>
+                    <input
+                      type="number"
+                      min="50" max="99"
+                      required
+                      value={newHospitalData.metrics.successRate}
+                      onChange={(e) => setNewHospitalData({...newHospitalData, metrics: {...newHospitalData.metrics, successRate: Number(e.target.value)}})}
+                      className="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-white focus:ring-2 focus:ring-teal-600 outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Successful Patients</label>
+                    <input
+                      type="number"
+                      min="0"
+                      required
+                      value={newHospitalData.metrics.successfulPatientsCount}
+                      onChange={(e) => setNewHospitalData({...newHospitalData, metrics: {...newHospitalData.metrics, successfulPatientsCount: Number(e.target.value)}})}
+                      className="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-white focus:ring-2 focus:ring-teal-600 outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-slate-800 flex justify-end gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setShowAddHospital(false)}
+                    className="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 font-bold hover:bg-slate-800"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={isUpdating}
+                    className="px-5 py-2 rounded-xl bg-teal-600 hover:bg-teal-500 text-slate-950 font-black shadow-lg"
+                  >
+                    {isUpdating ? 'Saving...' : 'Register Facility'}
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* EDIT HOSPITAL FACILITY & VERIFICATION MODAL */}
+      <AnimatePresence>
+        {selectedEditHospital && editHospitalData && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="bg-slate-950 border border-slate-800 rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl flex flex-col"
+            >
+              <div className="p-6 bg-slate-900 border-b border-slate-800 flex justify-between items-center">
+                <div>
+                  <h3 className="text-xl font-black text-white">Edit Facility Details</h3>
+                  <p className="text-xs text-slate-400">Update facilities and verification status</p>
+                </div>
+                <button onClick={() => setSelectedEditHospital(null)} className="text-slate-400 hover:text-white">
+                  <X size={22} />
+                </button>
+              </div>
+
+              <form onSubmit={handleUpdateHospital} className="p-6 space-y-6">
+                <div>
+                  <label className="flex items-center gap-3 cursor-pointer">
+                    <div className="relative">
+                      <input 
+                        type="checkbox" 
+                        className="sr-only"
+                        checked={editHospitalData.isVerified}
+                        onChange={(e) => setEditHospitalData({...editHospitalData, isVerified: e.target.checked})}
+                      />
+                      <div className={`block w-10 h-6 rounded-full ${editHospitalData.isVerified ? 'bg-teal-500' : 'bg-slate-700'}`}></div>
+                      <div className={`dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition transform ${editHospitalData.isVerified ? 'translate-x-4' : ''}`}></div>
+                    </div>
+                    <span className="text-sm font-bold text-white">Verified Facility Status</span>
+                  </label>
+                  <p className="text-xs text-slate-400 mt-1 ml-12">Only verified hospitals appear in citizen search results</p>
+                </div>
+
+                <div>
+                  <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Facilities (Comma Separated)</label>
+                  <textarea
+                    rows={4}
+                    value={editHospitalData.facilities}
+                    onChange={(e) => setEditHospitalData({...editHospitalData, facilities: e.target.value})}
+                    placeholder="e.g. ICU, Blood Bank, 24/7 Pharmacy..."
+                    className="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-white focus:ring-2 focus:ring-teal-600 outline-none resize-none"
+                  />
+                </div>
+
+                <div className="pt-4 border-t border-slate-800 flex justify-end gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedEditHospital(null)}
+                    className="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 font-bold hover:bg-slate-800"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={isUpdating}
+                    className="px-5 py-2 rounded-xl bg-teal-600 hover:bg-teal-500 text-slate-950 font-black shadow-lg"
+                  >
+                    {isUpdating ? 'Updating...' : 'Save Changes'}
+                  </button>
+                </div>
+              </form>
             </motion.div>
           </div>
         )}

@@ -604,3 +604,50 @@ export const exportComplaintsCSV = async (req, res) => {
     res.status(500).json({ success: false, message: 'Failed to generate CSV' });
   }
 };
+
+// 12. CREATE NEW HOSPITAL
+export const createNewHospital = async (req, res) => {
+  try {
+    const newHospital = await Hospital.create(req.body);
+    // Log to Audit Trail
+    const adminUser = req.user || { name: 'Admin Officer', email: 'admin@swasthsetu.gov.in' };
+    await AuditLog.create({
+      adminName: adminUser.name || 'Senior Administrator',
+      adminEmail: adminUser.email || 'admin@swasthsetu.gov.in',
+      action: 'HOSPITAL_CREATED',
+      hospitalName: newHospital.name,
+      newValue: 'Created',
+      details: `New hospital record created: ${newHospital.name} in ${newHospital.location?.city || 'Unknown City'}`
+    });
+    res.status(201).json({ success: true, hospital: newHospital, message: 'Hospital created successfully' });
+  } catch (error) {
+    console.error('Create Hospital Error:', error.message);
+    res.status(500).json({ success: false, message: 'Failed to create hospital' });
+  }
+};
+
+// 13. UPDATE HOSPITAL (Facilities & Verification)
+export const updateHospitalStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updateData = req.body;
+    const hospital = await Hospital.findByIdAndUpdate(id, updateData, { new: true });
+    if (!hospital) {
+      return res.status(404).json({ success: false, message: 'Hospital not found' });
+    }
+    // Log to Audit Trail
+    const adminUser = req.user || { name: 'Admin Officer', email: 'admin@swasthsetu.gov.in' };
+    await AuditLog.create({
+      adminName: adminUser.name || 'Senior Administrator',
+      adminEmail: adminUser.email || 'admin@swasthsetu.gov.in',
+      action: 'HOSPITAL_UPDATED',
+      hospitalName: hospital.name,
+      newValue: 'Updated',
+      details: `Hospital record updated: ${hospital.name} (Verification: ${hospital.isVerified})`
+    });
+    res.status(200).json({ success: true, hospital, message: 'Hospital updated successfully' });
+  } catch (error) {
+    console.error('Update Hospital Error:', error.message);
+    res.status(500).json({ success: false, message: 'Failed to update hospital' });
+  }
+};

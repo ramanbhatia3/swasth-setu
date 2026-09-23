@@ -76,36 +76,88 @@ export default function CompareHospitals() {
               ))}
             </tr>
 
-            {/* Specializations Row */}
+            {/* Clinical Success Rates Row */}
             <tr className="divide-x divide-slate-200 dark:divide-slate-800">
-              <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">Specializations</td>
+              <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">Clinical Success Rates</td>
               {hospitals.map(h => (
-                <td key={h._id} className="p-4 align-top">
-                  <ul className="list-disc list-inside text-sm text-slate-700 dark:text-slate-300 space-y-1">
-                    {h.specializations.map((s, i) => <li key={i}>{s}</li>)}
-                  </ul>
+                <td key={h._id} className="p-4 text-slate-700 dark:text-slate-300 font-medium">
+                  {h.metrics?.successRate ? (
+                    <span className={h.metrics.successRate >= 90 ? 'text-green-600 dark:text-green-400' : ''}>
+                      {h.metrics.successRate}%
+                    </span>
+                  ) : <Minus size={16} className="text-slate-300 dark:text-slate-600"/>}
                 </td>
               ))}
             </tr>
 
-            {/* Facilities Row */}
+            {/* Annual Patient Volume Row */}
             <tr className="divide-x divide-slate-200 dark:divide-slate-800">
-              <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">Key Facilities</td>
+              <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">Annual Patient Volume</td>
               {hospitals.map(h => (
-                <td key={h._id} className="p-4 align-top">
-                  <div className="flex flex-wrap gap-1">
-                    {h.facilities.map((f, i) => (
-                      <span key={i} className="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 text-xs rounded border border-primary-100 dark:border-primary-800/50">{f}</span>
-                    ))}
+                <td key={h._id} className="p-4 text-slate-700 dark:text-slate-300">
+                  {h.metrics?.successfulPatientsCount ? h.metrics.successfulPatientsCount.toLocaleString() : <Minus size={16} className="text-slate-300 dark:text-slate-600"/>}
+                </td>
+              ))}
+            </tr>
+
+            {/* Estimated Procedure Pricing Row */}
+            <tr className="divide-x divide-slate-200 dark:divide-slate-800">
+              <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">Estimated Procedure Pricing</td>
+              {hospitals.map(h => {
+                let displayPrice = <Minus size={16} className="text-slate-300 dark:text-slate-600"/>;
+                if (h.procedures && h.procedures.length > 0) {
+                  const min = Math.min(...h.procedures.map(p => p.estimatedCost.min));
+                  const max = Math.max(...h.procedures.map(p => p.estimatedCost.max));
+                  displayPrice = `₹${min.toLocaleString()} - ₹${max.toLocaleString()}`;
+                }
+                return (
+                  <td key={h._id} className="p-4 text-slate-700 dark:text-slate-300">
+                    {displayPrice}
+                  </td>
+                );
+              })}
+            </tr>
+
+            {/* Facility Checkmarks */}
+            {['ICU', 'Organ Transplant', 'Emergency', 'Blood Bank'].map(facilityName => (
+              <tr key={facilityName} className="divide-x divide-slate-200 dark:divide-slate-800">
+                <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">{facilityName}</td>
+                {hospitals.map(h => {
+                  const hasFacility = h.facilities?.some(f => f.toLowerCase().includes(facilityName.toLowerCase()));
+                  return (
+                    <td key={h._id} className="p-4 text-center">
+                      {hasFacility ? (
+                        <Check size={20} className="text-green-500 mx-auto" />
+                      ) : (
+                        <Minus size={20} className="text-slate-300 dark:text-slate-600 mx-auto" />
+                      )}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+
+            {/* CTAs Row */}
+            <tr className="divide-x divide-slate-200 dark:divide-slate-800 border-t-2 border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-[#0f0e0c]/20">
+              <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">Actions</td>
+              {hospitals.map(h => (
+                <td key={h._id} className="p-4">
+                  <div className="flex flex-col gap-2">
+                    <Link 
+                      to={`/hospital/${h._id}`} 
+                      className="w-full py-2 px-4 bg-primary-600 hover:bg-primary-700 text-white text-center rounded-lg font-medium transition-colors"
+                    >
+                      View Details
+                    </Link>
+                    <Link 
+                      to={`/feedback?hospitalId=${h._id}`} 
+                      className="w-full py-2 px-4 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 text-center rounded-lg font-medium transition-colors"
+                    >
+                      File Report
+                    </Link>
                   </div>
                 </td>
               ))}
-            </tr>
-
-            {/* Beds Row */}
-            <tr className="divide-x divide-slate-200 dark:divide-slate-800">
-              <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">Total Beds</td>
-              {hospitals.map(h => <td key={h._id} className="p-4 text-slate-700 dark:text-slate-300">{h.statistics?.beds || <Minus size={16} className="text-slate-300 dark:text-slate-600"/>}</td>)}
             </tr>
 
           </tbody>

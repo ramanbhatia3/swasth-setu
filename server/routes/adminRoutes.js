@@ -12,7 +12,9 @@ import {
   getAuditLogs,
   getAdminNotifications,
   getOfficersList,
-  exportComplaintsCSV
+  exportComplaintsCSV,
+  createNewHospital,
+  updateHospitalStatus
 } from '../controllers/adminController.js';
 import { seedSampleReports } from '../seeders/reportSeeder.js';
 
@@ -40,5 +42,7 @@ router.get('/ai-insights', getAIAdministrativeInsights);
 router.get('/audit-logs', getAuditLogs);
 router.get('/notifications', getAdminNotifications);
 router.get('/officers', getOfficersList);
+router.post('/hospital', createNewHospital);
+router.put('/hospital/:id', updateHospitalStatus);
 
 export default router;

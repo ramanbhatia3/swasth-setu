@@ -12,7 +12,7 @@ const auditLogSchema = new mongoose.Schema({
   action: {
     type: String,
     required: true,
-    enum: ['STATUS_CHANGE', 'OFFICER_ASSIGNED', 'REMARKS_UPDATED', 'REPORT_ESCALATED', 'HOSPITAL_FLAGGED']
+    enum: ['STATUS_CHANGE', 'OFFICER_ASSIGNED', 'REMARKS_UPDATED', 'REPORT_ESCALATED', 'HOSPITAL_FLAGGED', 'HOSPITAL_CREATED', 'HOSPITAL_UPDATED']
   },
   reportId: {
     type: mongoose.Schema.Types.ObjectId,

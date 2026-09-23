@@ -5,6 +5,7 @@ import {
   Activity, HeartPulse, Building2, Lock
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import MacroInsightsWidget from '../components/MacroInsightsWidget';
 
 export default function Home() {
   const { user } = useAuth();
@@ -78,6 +79,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* MACRO INSIGHTS WIDGET */}
+      <MacroInsightsWidget />
 
       {/* CORE FEATURES */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
