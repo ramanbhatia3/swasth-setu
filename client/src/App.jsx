@@ -11,7 +11,8 @@ import MedicalRecords from './pages/MedicalRecords';
 import FindServices from './pages/FindServices';
 import HospitalDetails from './pages/HospitalDetails';
 import CompareHospitals from './pages/CompareHospitals';
-import Feedback from './pages/Feedback'; // <-- NEW
+import Feedback from './pages/Feedback';
+import AdminDashboard from './pages/AdminDashboard'; // <-- NEW
 
 function App() {
   return (
@@ -27,14 +28,14 @@ function App() {
             <Route path="services" element={<FindServices />} />
             <Route path="hospital/:id" element={<HospitalDetails />} />
             <Route path="compare" element={<CompareHospitals />} />
-            <Route path="feedback" element={<Feedback />} /> {/* <-- NOW A REAL PAGE */}
-            
+            <Route path="feedback" element={<Feedback />} />
             <Route path="ai-report" element={<div className="p-8 text-center text-xl">AI Report (Coming Soon)</div>} />
             
             {/* PROTECTED ROUTES (Requires Login) */}
             <Route element={<ProtectedRoute />}>
               <Route path="profile" element={<Profile />} />
               <Route path="records" element={<MedicalRecords />} />
+              <Route path="admin" element={<AdminDashboard />} /> {/* <-- NEW */}
             </Route>
 
           </Route>
