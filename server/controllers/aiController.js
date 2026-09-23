@@ -1,8 +1,8 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import dotenv from 'dotenv';
 
-// Initialize the AI SDK. (Fallback to "dummy" prevents crashes if key is missing)
-const apiKey = process.env.GEMINI_API_KEY;
-const genAI = new GoogleGenerativeAI(apiKey || "dummy_key");
+// Force dotenv to load right here just to be absolutely safe
+dotenv.config();
 
 export const chatWithAI = async (req, res) => {
   try {
@@ -12,16 +12,22 @@ export const chatWithAI = async (req, res) => {
       return res.status(400).json({ success: false, message: "Message is required." });
     }
 
-    // HACKATHON FALLBACK: If no API key is set in .env, return a simulated response
+    const apiKey = process.env.GEMINI_API_KEY;
+
+    // HACKATHON FALLBACK
     if (!apiKey) {
       return res.status(200).json({ 
         success: true, 
-        reply: "*(Simulated AI Response)*: I am the Swasth Setu Assistant! To make me fully functional, please add a `GEMINI_API_KEY` to your backend `.env` file. For now, I'm just a placeholder to help you build the UI!" 
+        reply: "*(Simulated AI Response)*: To make me functional, add a GEMINI_API_KEY to your backend .env file." 
       });
     }
 
-    // Connect to the Gemini 1.5 Flash model (Fast & perfect for chat)
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    // Google explicitly requested this updated model version for your API key
+    const targetModel = "gemini-3.6-flash";
+
+    // Initialize the AI SDK
+    const genAI = new GoogleGenerativeAI(apiKey);
+    const model = genAI.getGenerativeModel({ model: targetModel });
 
     // SYSTEM GUARDRAILS: Enforcing medical safety rules before appending the user's message
     const prompt = `
@@ -53,7 +59,7 @@ export const chatWithAI = async (req, res) => {
     console.error("AI Generation Error:", error.message);
     res.status(500).json({ 
       success: false, 
-      message: "The AI Assistant is currently experiencing high traffic. Please try again later." 
+      message: "The AI Assistant encountered an error connecting to Gemini. Please try again." 
     });
   }
 };
