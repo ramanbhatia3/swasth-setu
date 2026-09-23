@@ -1,20 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { Home, Search, Brain, MessageSquare, User, Menu, X, Activity, LogOut, FileText, ShieldAlert } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../../context/AuthContext';
 
 const navigationItems = [
-  { label: 'Home', path: '/', icon: Home },
+  { label: 'Home', path: '/', icon: Home, end: true }, // `end: true` — otherwise NavLink matches every nested route and Home stays "active" everywhere
   { label: 'Find Services', path: '/services', icon: Search },
   { label: 'AI Report', path: '/ai-report', icon: Brain },
   { label: 'Feedback', path: '/feedback', icon: MessageSquare },
 ];
 
+function getInitial(name) {
+  return name?.trim()?.charAt(0)?.toUpperCase() || '?';
+}
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [imgError, setImgError] = useState(false);
   const { user, logout } = useAuth();
-  const closeMenu = () => setIsOpen(false);
+  const closeMenu = useCallback(() => setIsOpen(false), []);
+
+  // Close on Escape, lock body scroll while mobile menu is open
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (e) => e.key === 'Escape' && closeMenu();
+    document.addEventListener('keydown', onKeyDown);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [isOpen, closeMenu]);
+
+  const isAdmin = user?.role === 'admin';
+  const firstName = user?.name?.split(' ')[0] || 'Account';
+  const showAvatarImg = user?.profileImage && !imgError;
 
   return (
     <nav className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
@@ -31,16 +52,27 @@ export default function Navbar() {
 
           <div className="hidden md:flex md:items-center md:space-x-8">
             {navigationItems.map((item) => (
-              <NavLink key={item.path} to={item.path} className={({ isActive }) => `flex items-center gap-2 text-sm font-medium transition-colors hover:text-blue-600 ${isActive ? 'text-blue-600 border-b-2 border-blue-600 py-5' : 'text-slate-600'}`}>
+              <NavLink
+                key={item.path}
+                to={item.path}
+                end={item.end}
+                className={({ isActive }) =>
+                  `flex items-center gap-2 text-sm font-medium transition-colors hover:text-blue-600 ${
+                    isActive ? 'text-blue-600 border-b-2 border-blue-600 py-5' : 'text-slate-600'
+                  }`
+                }
+              >
                 <item.icon size={18} /> {item.label}
               </NavLink>
             ))}
-            
+
             {user ? (
               <div className="flex items-center gap-5 pl-4 border-l border-slate-200">
-                {/* NEW: ONLY SHOW TO ADMINS */}
-                {user.role === 'admin' && (
-                  <Link to="/admin" className="text-sm font-bold text-red-600 bg-red-50 px-3 py-1.5 rounded-lg border border-red-100 hover:bg-red-100 transition-colors flex items-center gap-1.5">
+                {isAdmin && (
+                  <Link
+                    to="/admin"
+                    className="text-sm font-bold text-red-600 bg-red-50 px-3 py-1.5 rounded-lg border border-red-100 hover:bg-red-100 transition-colors flex items-center gap-1.5"
+                  >
                     <ShieldAlert size={16} /> Admin
                   </Link>
                 )}
@@ -50,22 +82,41 @@ export default function Navbar() {
                 </Link>
 
                 <Link to="/profile" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                  {user.profileImage ? (
-                    <img src={user.profileImage} alt="Profile" className="w-8 h-8 rounded-full border border-slate-200 object-cover" />
+                  {showAvatarImg ? (
+                    <img
+                      src={user.profileImage}
+                      alt={user.name || 'Profile'}
+                      onError={() => setImgError(true)}
+                      className="w-8 h-8 rounded-full border border-slate-200 object-cover"
+                    />
                   ) : (
-                    <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold border border-blue-200">{user.name.charAt(0)}</div>
+                    <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold border border-blue-200">
+                      {getInitial(user.name)}
+                    </div>
                   )}
-                  <span className="text-sm font-medium text-slate-700">{user.name.split(' ')[0]}</span>
+                  <span className="text-sm font-medium text-slate-700">{firstName}</span>
                 </Link>
-                <button onClick={logout} className="text-sm font-medium text-red-600 hover:text-red-700 transition-colors">Logout</button>
+                <button onClick={logout} className="text-sm font-medium text-red-600 hover:text-red-700 transition-colors">
+                  Logout
+                </button>
               </div>
             ) : (
-              <NavLink to="/login" className="flex items-center gap-2 px-5 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors text-sm font-medium shadow-sm"><User size={18} /> Sign In</NavLink>
+              <NavLink
+                to="/login"
+                className="flex items-center gap-2 px-5 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors text-sm font-medium shadow-sm"
+              >
+                <User size={18} /> Sign In
+              </NavLink>
             )}
           </div>
 
           <div className="flex items-center md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-slate-600 hover:text-blue-600 focus:outline-none p-2">
+            <button
+              onClick={() => setIsOpen((v) => !v)}
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isOpen}
+              className="text-slate-600 hover:text-blue-600 focus:outline-none p-2"
+            >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
@@ -74,28 +125,65 @@ export default function Navbar() {
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="md:hidden border-t border-slate-200 bg-white overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden border-t border-slate-200 bg-white overflow-hidden"
+          >
             <div className="px-4 pt-2 pb-4 space-y-1 shadow-inner">
               {navigationItems.map((item) => (
-                <NavLink key={item.path} to={item.path} onClick={closeMenu} className={({ isActive }) => `flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium ${isActive ? 'bg-blue-50 text-blue-700' : 'text-slate-700 hover:bg-slate-50'}`}>
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  end={item.end}
+                  onClick={closeMenu}
+                  className={({ isActive }) =>
+                    `flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium ${
+                      isActive ? 'bg-blue-50 text-blue-700' : 'text-slate-700 hover:bg-slate-50'
+                    }`
+                  }
+                >
                   <item.icon size={20} /> {item.label}
                 </NavLink>
               ))}
-              
+
               {user ? (
                 <div className="mt-4 pt-4 border-t border-slate-100">
-                  {user.role === 'admin' && (
-                    <NavLink to="/admin" onClick={closeMenu} className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-bold text-red-700 bg-red-50 mb-2 border border-red-100">
+                  {isAdmin && (
+                    <NavLink
+                      to="/admin"
+                      onClick={closeMenu}
+                      className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-bold text-red-700 bg-red-50 mb-2 border border-red-100"
+                    >
                       <ShieldAlert size={20} /> Admin Dashboard
                     </NavLink>
                   )}
-                  <NavLink to="/records" onClick={closeMenu} className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-slate-800 hover:bg-slate-50"><FileText size={20} /> My Records</NavLink>
-                  <NavLink to="/profile" onClick={closeMenu} className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-slate-800 hover:bg-slate-50"><User size={20} /> My Profile</NavLink>
-                  <button onClick={() => { logout(); closeMenu(); }} className="flex w-full items-center gap-3 px-3 py-3 mt-2 rounded-md text-base font-medium bg-red-50 text-red-600"><LogOut size={20} /> Logout</button>
+                  <NavLink to="/records" onClick={closeMenu} className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-slate-800 hover:bg-slate-50">
+                    <FileText size={20} /> My Records
+                  </NavLink>
+                  <NavLink to="/profile" onClick={closeMenu} className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-slate-800 hover:bg-slate-50">
+                    <User size={20} /> My Profile
+                  </NavLink>
+                  <button
+                    onClick={() => {
+                      logout();
+                      closeMenu();
+                    }}
+                    className="flex w-full items-center gap-3 px-3 py-3 mt-2 rounded-md text-base font-medium bg-red-50 text-red-600"
+                  >
+                    <LogOut size={20} /> Logout
+                  </button>
                 </div>
               ) : (
                 <div className="mt-4 pt-4 border-t border-slate-100">
-                  <NavLink to="/login" onClick={closeMenu} className="flex items-center justify-center gap-3 px-3 py-3 rounded-md text-base font-medium bg-blue-600 text-white shadow-sm"><User size={20} /> Sign In</NavLink>
+                  <NavLink
+                    to="/login"
+                    onClick={closeMenu}
+                    className="flex items-center justify-center gap-3 px-3 py-3 rounded-md text-base font-medium bg-blue-600 text-white shadow-sm"
+                  >
+                    <User size={20} /> Sign In
+                  </NavLink>
                 </div>
               )}
             </div>
