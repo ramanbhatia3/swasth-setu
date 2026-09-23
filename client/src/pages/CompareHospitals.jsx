@@ -2,13 +2,37 @@ import { useState, useEffect } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Check, Minus } from 'lucide-react';
+import { ArrowLeft, Check, Minus, MapPin } from 'lucide-react';
 
 export default function CompareHospitals() {
   const location = useLocation();
   const navigate = useNavigate();
   const [hospitals, setHospitals] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [userLoc, setUserLoc] = useState(null);
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => setUserLoc({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
+        () => setUserLoc({ lat: 28.6139, lng: 77.2090 })
+      );
+    } else {
+      setUserLoc({ lat: 28.6139, lng: 77.2090 });
+    }
+  }, []);
+
+  const calculateDistance = (lat1, lon1, lat2, lon2) => {
+    if (!lat1 || !lon1 || !lat2 || !lon2) return null;
+    const R = 6371; // km
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+              Math.sin(dLon/2) * Math.sin(dLon/2); 
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    return Math.round(R * c);
+  };
 
   useEffect(() => {
     // If user typed /compare manually without selecting anything, kick them back
@@ -113,6 +137,23 @@ export default function CompareHospitals() {
                 return (
                   <td key={h._id} className="p-4 text-slate-700 dark:text-slate-300">
                     {displayPrice}
+                  </td>
+                );
+              })}
+            </tr>
+
+            {/* Distance Row */}
+            <tr className="divide-x divide-slate-200 dark:divide-slate-800">
+              <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">Distance (approx.)</td>
+              {hospitals.map(h => {
+                const dist = userLoc && h.location?.coordinates?.lat ? calculateDistance(userLoc.lat, userLoc.lng, h.location.coordinates.lat, h.location.coordinates.lng) : null;
+                return (
+                  <td key={h._id} className="p-4 text-slate-700 dark:text-slate-300 font-medium">
+                    {dist !== null ? (
+                      <span className="flex items-center gap-1"><MapPin size={16} className="text-primary-500" /> {dist} km away</span>
+                    ) : (
+                      <span className="text-slate-400 text-sm">N/A</span>
+                    )}
                   </td>
                 );
               })}
