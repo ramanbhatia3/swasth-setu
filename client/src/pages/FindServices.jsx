@@ -122,7 +122,7 @@ export default function FindServices() {
 
             {/* AI Parsing Context Display */}
             <AnimatePresence>
-              {parsedContext && (parsedContext.detectedCity || parsedContext.detectedSpecialties?.length > 0 || parsedContext.detectedBudget) && (
+              {parsedContext && (parsedContext.detectedLocation || parsedContext.detectedSpecialties?.length > 0 || parsedContext.detectedBudget) && (
                 <motion.div 
                   initial={{ opacity: 0, height: 0 }} 
                   animate={{ opacity: 1, height: 'auto' }} 
@@ -133,8 +133,9 @@ export default function FindServices() {
                     {parsedContext.detectedSpecialties?.length > 0 && (
                       <p className="flex items-start gap-2"><HeartPulse size={16} className="mt-0.5 shrink-0"/> {parsedContext.detectedSpecialties.join(', ')}</p>
                     )}
-                    {parsedContext.detectedCity && (
-                      <p className="flex items-start gap-2"><MapPin size={16} className="mt-0.5 shrink-0"/> {parsedContext.detectedCity}</p>
+                    {/* CHANGED THIS LINE BELOW TO USE detectedLocation */}
+                    {parsedContext.detectedLocation && (
+                      <p className="flex items-start gap-2"><MapPin size={16} className="mt-0.5 shrink-0"/> Region: {parsedContext.detectedLocation}</p>
                     )}
                     {parsedContext.detectedBudget && (
                       <p className="flex items-start gap-2"><IndianRupee size={16} className="mt-0.5 shrink-0"/> Max Budget: ₹{parsedContext.detectedBudget.toLocaleString()}</p>

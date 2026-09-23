@@ -1,121 +1,97 @@
 import Hospital from '../models/Hospital.js';
 import { completeHospitalList } from '../seeders/hospitalData.js';
 
-// Comprehensive Medical Thesaurus for Natural Language Matching
+// Comprehensive Medical Thesaurus
 const MEDICAL_TAXONOMY = {
-  Cardiology: [
-    'heart', 'cardiac', 'cardio', 'coronary', 'bypass', 'cabg', 'angioplasty',
-    'valve', 'hypertension', 'blood pressure', 'arrhythmia', 'heart failure'
-  ],
-  Gastroenterology: [
-    'pancreatic', 'pancreas', 'pancreatitis', 'pancreatectomy', 'whipple',
-    'digestive', 'stomach', 'gut', 'colon', 'gallbladder', 'cholecystectomy',
-    'ercp', 'eus', 'bile', 'acid reflux', 'gerd', 'gastro'
-  ],
-  Hepatology: [
-    'liver', 'cirrhosis', 'jaundice', 'hepatitis', 'fatty liver', 'ascites'
-  ],
-  Nephrology: [
-    'kidney', 'renal', 'dialysis', 'hemodialysis', 'kidney stone', 'ckd',
-    'creatinine', 'urea', 'nephro', 'renal failure'
-  ],
-  Oncology: [
-    'cancer', 'tumor', 'tumour', 'chemo', 'chemotherapy', 'radiation',
-    'carcinoma', 'malignancy', 'oncology', 'biopsy', 'lymphoma', 'leukemia'
-  ],
-  Neurology: [
-    'brain', 'neuro', 'stroke', 'paralysis', 'epilepsy', 'seizure',
-    'parkinson', 'dementia', 'alzheimer', 'headache', 'migraine', 'spine'
-  ],
-  Orthopedics: [
-    'bone', 'joint', 'knee replacement', 'hip replacement', 'fracture',
-    'arthritis', 'ortho', 'ligament', 'cartilage'
-  ],
-  Endocrinology: [
-    'diabetes', 'sugar', 'insulin', 'thyroid', 'hormone', 'endocrine', 'pcos'
-  ],
-  Rheumatology: [
-    'rheumatoid', 'arthritis', 'lupus', 'sle', 'joint pain', 'autoimmune'
-  ],
-  Pulmonology: [
-    'lung', 'respiratory', 'asthma', 'copd', 'breathing', 'bronchitis', 'pulmonary'
-  ]
+  Cardiology: ['heart', 'cardiac', 'cardio', 'coronary', 'bypass', 'cabg', 'angioplasty', 'valve', 'hypertension', 'blood pressure', 'arrhythmia', 'heart failure'],
+  Gastroenterology: ['pancreatic', 'pancreas', 'pancreatitis', 'pancreatectomy', 'whipple', 'digestive', 'stomach', 'gut', 'colon', 'gallbladder', 'cholecystectomy', 'ercp', 'eus', 'bile', 'acid reflux', 'gerd', 'gastro'],
+  Hepatology: ['liver', 'cirrhosis', 'jaundice', 'hepatitis', 'fatty liver', 'ascites'],
+  Nephrology: ['kidney', 'renal', 'dialysis', 'hemodialysis', 'kidney stone', 'ckd', 'creatinine', 'urea', 'nephro', 'renal failure'],
+  Oncology: ['cancer', 'tumor', 'tumour', 'chemo', 'chemotherapy', 'radiation', 'carcinoma', 'malignancy', 'oncology', 'biopsy', 'lymphoma', 'leukemia'],
+  Neurology: ['brain', 'neuro', 'stroke', 'paralysis', 'epilepsy', 'seizure', 'parkinson', 'dementia', 'alzheimer', 'headache', 'migraine', 'spine'],
+  Orthopedics: ['bone', 'joint', 'knee replacement', 'hip replacement', 'fracture', 'arthritis', 'ortho', 'ligament', 'cartilage'],
+  Endocrinology: ['diabetes', 'sugar', 'insulin', 'thyroid', 'hormone', 'endocrine', 'pcos'],
+  Rheumatology: ['rheumatoid', 'arthritis', 'lupus', 'sle', 'joint pain', 'autoimmune'],
+  Pulmonology: ['lung', 'respiratory', 'asthma', 'copd', 'breathing', 'bronchitis', 'pulmonary']
 };
 
-// Known Indian cities for sentence extraction
-const KNOWN_CITIES = [
-  'chandigarh', 'mohali', 'panchkula', 'delhi', 'new delhi', 'gurugram', 'noida',
+// Expanded to include States and Regions
+const KNOWN_LOCATIONS = [
+  'punjab', 'haryana', 'maharashtra', 'karnataka', 'tamil nadu', 'kerala', 'telangana', 'andhra pradesh', 
+  'west bengal', 'odisha', 'assam', 'gujarat', 'rajasthan', 'uttar pradesh', 'bihar', 'madhya pradesh',
+  'chandigarh', 'mohali', 'panchkula', 'delhi', 'new delhi', 'ncr', 'gurugram', 'noida',
   'mumbai', 'pune', 'nagpur', 'bengaluru', 'bangalore', 'chennai', 'hyderabad',
   'kolkata', 'ahmedabad', 'jaipur', 'lucknow', 'patna', 'bhopal', 'kochi',
   'coimbatore', 'guwahati', 'bhubaneswar', 'ludhiana', 'amritsar', 'surat', 'indore'
 ];
 
-// Common non-medical words to flag pure invalid inputs
+// Smart mapping: Translates a state search into its respective state AND major nearby cities
+const REGION_EXPANSION = {
+  'punjab': ['punjab', 'chandigarh', 'mohali', 'ludhiana', 'amritsar', 'jalandhar', 'panchkula'],
+  'haryana': ['haryana', 'chandigarh', 'gurugram', 'panchkula', 'faridabad'],
+  'ncr': ['delhi', 'new delhi', 'gurugram', 'noida', 'faridabad', 'ghaziabad'],
+  'delhi': ['delhi', 'new delhi', 'gurugram', 'noida'],
+  'maharashtra': ['maharashtra', 'mumbai', 'pune', 'nagpur', 'nashik']
+};
+
 const COMMON_GARBAGE_WORDS = [
   'apple', 'banana', 'orange', 'fruit', 'shoe', 'shirt', 'clothes', 'car', 'bike',
   'laptop', 'phone', 'mobile', 'games', 'movie', 'song', 'cricket', 'football',
   'pizza', 'burger', 'hotel', 'flight', 'shopping', 'random', 'test', 'hello', 'hi'
 ];
 
-// Helper to extract medical entities from natural text
 function parseNaturalQuery(rawQuery) {
   if (!rawQuery || typeof rawQuery !== 'string') return null;
-
   const text = rawQuery.toLowerCase().trim();
   const tokens = text.split(/[\s,?.!]+/);
 
-  // 1. Check if user typed obvious non-medical garbage
   const isPureGarbage = tokens.every(token => COMMON_GARBAGE_WORDS.includes(token));
   if (isPureGarbage && tokens.length > 0) {
     return { isValid: false, reason: "Input appears to be non-medical. Please search for a health condition, procedure, or hospital service." };
   }
 
-  // 2. Extract Specializations from taxonomy
   const matchedSpecialties = new Set();
-  const matchedKeywords = [];
-
   for (const [specialty, keywords] of Object.entries(MEDICAL_TAXONOMY)) {
     for (const kw of keywords) {
-      if (text.includes(kw)) {
-        matchedSpecialties.add(specialty);
-        matchedKeywords.push(kw);
+      if (text.includes(kw)) matchedSpecialties.add(specialty);
+    }
+  }
+
+  // Smart Location Extraction
+  let primaryLocationString = '';
+  let detectedLocations = [];
+  
+  // Sort by length so "new delhi" matches before "delhi"
+  const sortedLocs = [...KNOWN_LOCATIONS].sort((a, b) => b.length - a.length);
+  for (const loc of sortedLocs) {
+    const regex = new RegExp(`\\b${loc}\\b`, 'i');
+    if (regex.test(text)) {
+      primaryLocationString = loc.charAt(0).toUpperCase() + loc.slice(1);
+      if (REGION_EXPANSION[loc]) {
+        detectedLocations.push(...REGION_EXPANSION[loc]);
+      } else {
+        detectedLocations.push(loc);
       }
+      break; 
     }
   }
 
-  // 3. Extract City
-  let detectedCity = '';
-  for (const city of KNOWN_CITIES) {
-    if (text.includes(city)) {
-      detectedCity = city;
-      break;
-    }
-  }
-
-  // 4. Extract Budget Number
   let detectedBudget = null;
-  // Match "200000", "2,00,000", "2 lakh", "2l", "50k", etc.
   const lakhMatch = text.match(/(\d+(?:\.\d+)?)\s*(?:lakh|lac|l)\b/);
   const kMatch = text.match(/(\d+(?:\.\d+)?)\s*k\b/);
   const directNumMatch = text.match(/(?:in|within|under|budget|rs\.?|₹)?\s*([0-9]{4,8})\b/);
 
-  if (lakhMatch) {
-    detectedBudget = parseFloat(lakhMatch[1]) * 100000;
-  } else if (kMatch) {
-    detectedBudget = parseFloat(kMatch[1]) * 1000;
-  } else if (directNumMatch) {
-    detectedBudget = parseInt(directNumMatch[1], 10);
-  }
+  if (lakhMatch) detectedBudget = parseFloat(lakhMatch[1]) * 100000;
+  else if (kMatch) detectedBudget = parseFloat(kMatch[1]) * 1000;
+  else if (directNumMatch) detectedBudget = parseInt(directNumMatch[1], 10);
 
-  // If no specialties, cities, or budget detected, and query has no health resemblance
-  if (matchedSpecialties.size === 0 && !detectedCity && !detectedBudget) {
-    // Check if it might be a direct hospital name query
+  if (matchedSpecialties.size === 0 && detectedLocations.length === 0 && !detectedBudget) {
     if (tokens.length <= 3 && !COMMON_GARBAGE_WORDS.some(w => text.includes(w))) {
       return { isValid: true, isNameSearch: true, term: text };
     }
     return {
       isValid: false,
-      reason: "Could not identify a recognized health condition, medical specialty, or target hospital in your search. Please try terms like 'pancreatic diseases in Chandigarh', 'cardiology in Delhi', or 'kidney dialysis'."
+      reason: "Could not identify a recognized health condition, medical specialty, or target hospital in your search. Please try terms like 'pancreatic diseases in Punjab', 'cardiology in Delhi', or 'kidney dialysis'."
     };
   }
 
@@ -123,34 +99,29 @@ function parseNaturalQuery(rawQuery) {
     isValid: true,
     isNameSearch: false,
     specialties: Array.from(matchedSpecialties),
-    matchedKeywords,
-    city: detectedCity,
+    locations: detectedLocations,
+    primaryLocationString, // Used for UI display
     budget: detectedBudget
   };
 }
 
-// 1. SEARCH & MATCH HOSPITALS (NLP + Chronic-Priority + Transparent Scoring)
 export const searchHospitals = async (req, res) => {
   try {
-    const { q, city, specialization, maxBudget, sortBy } = req.query;
+    const { q, sortBy } = req.query;
 
     let targetSpecialties = [];
-    let targetCity = city || '';
-    let targetBudget = maxBudget ? Number(maxBudget) : null;
+    let targetLocations = [];
+    let primaryLocString = '';
+    let targetBudget = null;
     let isDirectName = false;
     let directNameTerm = '';
 
-    // If natural language query 'q' is provided
     if (q && q.trim().length > 0) {
       const parsed = parseNaturalQuery(q);
 
       if (!parsed.isValid) {
         return res.status(200).json({
-          success: true,
-          count: 0,
-          isInvalidQuery: true,
-          message: parsed.reason,
-          hospitals: []
+          success: true, count: 0, isInvalidQuery: true, message: parsed.reason, hospitals: []
         });
       }
 
@@ -159,112 +130,114 @@ export const searchHospitals = async (req, res) => {
         directNameTerm = parsed.term;
       } else {
         targetSpecialties = parsed.specialties;
-        if (parsed.city && !targetCity) targetCity = parsed.city;
-        if (parsed.budget && !targetBudget) targetBudget = parsed.budget;
+        targetLocations = parsed.locations;
+        primaryLocString = parsed.primaryLocationString;
+        targetBudget = parsed.budget;
       }
     }
 
-    if (specialization && !targetSpecialties.includes(specialization)) {
-      targetSpecialties.push(specialization);
-    }
-
-    // Build database query
     let dbQuery = {};
+    const andConditions = [];
+
     if (isDirectName) {
-      dbQuery.$or = [
-        { name: { $regex: directNameTerm,$options: 'i' } },
-        { specializations: { $regex: directNameTerm,$options: 'i' } }
-      ];
+      andConditions.push({
+        $or: [
+          { name: { $regex: directNameTerm,$options: 'i' } },
+          { specializations: { $regex: directNameTerm,$options: 'i' } }
+        ]
+      });
     } else {
-      if (targetCity) {
-        dbQuery['location.city'] = { $regex: targetCity,$options: 'i' };
+      // NEW: Search BOTH City and State fields with all regional keywords
+      if (targetLocations.length > 0) {
+        const locRegexes = targetLocations.map(l => new RegExp(l, 'i'));
+        andConditions.push({
+          $or: [
+            { 'location.city': { $in: locRegexes } },
+            { 'location.state': { $in: locRegexes } }
+          ]
+        });
       }
       if (targetSpecialties.length > 0) {
-        dbQuery.$or = [
-          { specializations: { $in: targetSpecialties.map(s => new RegExp(s, 'i')) } },
-          { chronicConditionsHandled: { $in: targetSpecialties.map(s => new RegExp(s, 'i')) } }
-        ];
+        const specRegexes = targetSpecialties.map(s => new RegExp(s, 'i'));
+        andConditions.push({
+          $or: [
+            { specializations: { $in: specRegexes } },
+            { chronicConditionsHandled: { $in: specRegexes } }
+          ]
+        });
       }
     }
 
-    // Fetch matching hospitals
+    if (andConditions.length > 0) {
+      dbQuery.$and = andConditions;
+    }
+
     let rawHospitals = await Hospital.find(dbQuery).limit(100).lean();
 
-    // If city was specified but yielded zero results (chronic disease care is flexible),
-    // fallback to nationwide hospitals for that medical condition
+    // Fallback: If regional search yields 0 results, drop location and search nationwide
     let locationRelaxed = false;
-    if (rawHospitals.length === 0 && targetCity && targetSpecialties.length > 0) {
+    if (rawHospitals.length === 0 && targetLocations.length > 0 && targetSpecialties.length > 0) {
+      const specRegexes = targetSpecialties.map(s => new RegExp(s, 'i'));
       rawHospitals = await Hospital.find({
         $or: [
-          { specializations: { $in: targetSpecialties.map(s => new RegExp(s, 'i')) } },
-          { chronicConditionsHandled: { $in: targetSpecialties.map(s => new RegExp(s, 'i')) } }
+          { specializations: { $in: specRegexes } },
+          { chronicConditionsHandled: { $in: specRegexes } }
         ]
       }).limit(50).lean();
       locationRelaxed = true;
     }
 
-    // Score calculations
     const scoredHospitals = rawHospitals.map(hospital => {
-      let matchScore = 50; // Neutral baseline
+      let matchScore = 50;
       const matchExplanations = [];
 
-      // 1. Specialty & Chronic Disease match (Weight: High)
       const hasSpec = targetSpecialties.some(ts =>
         hospital.specializations.some(s => s.toLowerCase() === ts.toLowerCase()) ||
         hospital.chronicConditionsHandled.some(c => c.toLowerCase().includes(ts.toLowerCase()))
       );
-
       if (hasSpec) {
         matchScore += 25;
-        matchExplanations.push(`Dedicated specialists in ${targetSpecialties.join(' & ')}`);
+        matchExplanations.push(`Specialists in ${targetSpecialties.join(' & ')}`);
       }
 
-      // 2. Budget Compatibility
       if (targetBudget) {
         const affordable = hospital.procedures.filter(p => p.estimatedCost.min <= targetBudget);
         if (affordable.length > 0) {
           matchScore += 15;
-          matchExplanations.push(`Procedures starting within your ₹${targetBudget.toLocaleString()} budget`);
+          matchExplanations.push(`Procedures starting within ₹${targetBudget.toLocaleString()}`);
         } else {
           matchScore -= 5;
-          matchExplanations.push(`Estimated procedure packages may exceed ₹${targetBudget.toLocaleString()}`);
+          matchExplanations.push(`Packages may exceed ₹${targetBudget.toLocaleString()}`);
         }
       }
 
-      // 3. Clinical Track Record
       if (hospital.metrics?.successRate >= 90) {
         matchScore += 10;
-        matchExplanations.push(`High clinical success rate of ${hospital.metrics.successRate}% (${hospital.metrics.successfulPatientsCount?.toLocaleString()}+ treated)`);
+        matchExplanations.push(`Clinical success rate: ${hospital.metrics.successRate}%`);
       }
 
-      // 4. Location Match
-      if (targetCity && hospital.location.city.toLowerCase().includes(targetCity.toLowerCase())) {
-        matchScore += 8;
-        matchExplanations.push(`Conveniently located in ${hospital.location.city}`);
-      } else if (locationRelaxed) {
-        matchExplanations.push(`High-specialty center outside ${targetCity} (Chronic condition care available)`);
+      if (targetLocations.length > 0) {
+        const hCity = hospital.location.city.toLowerCase();
+        const hState = hospital.location.state.toLowerCase();
+        const isLocMatch = targetLocations.some(l => hCity.includes(l.toLowerCase()) || hState.includes(l.toLowerCase()));
+
+        if (isLocMatch && !locationRelaxed) {
+          matchScore += 8;
+          matchExplanations.push(`Located in ${hospital.location.city}, ${hospital.location.state}`);
+        } else if (locationRelaxed) {
+          matchExplanations.push(`Nationwide specialized center (outside requested region)`);
+        }
       }
 
-      // Cap score to strictly avoid deceptive 100% "perfection" claims
       matchScore = Math.min(94, Math.max(50, matchScore));
-
-      return {
-        ...hospital,
-        matchScore,
-        matchExplanations
-      };
+      return { ...hospital, matchScore, matchExplanations };
     });
 
-    // Default Sorting: High Success Rate first!
     const sort = sortBy || 'successRate';
     if (sort === 'successRate') {
       scoredHospitals.sort((a, b) => (b.metrics?.successRate || 0) - (a.metrics?.successRate || 0));
     } else if (sort === 'budgetLow') {
-      scoredHospitals.sort((a, b) => {
-        const minA = a.procedures?.[0]?.estimatedCost?.min || 9999999;
-        const minB = b.procedures?.[0]?.estimatedCost?.min || 9999999;
-        return minA - minB;
-      });
+      scoredHospitals.sort((a, b) => (a.procedures?.[0]?.estimatedCost?.min || 9999999) - (b.procedures?.[0]?.estimatedCost?.min || 9999999));
     } else if (sort === 'patientCount') {
       scoredHospitals.sort((a, b) => (b.metrics?.successfulPatientsCount || 0) - (a.metrics?.successfulPatientsCount || 0));
     } else if (sort === 'matchScore') {
@@ -275,7 +248,7 @@ export const searchHospitals = async (req, res) => {
       success: true,
       count: scoredHospitals.length,
       parsedQuery: {
-        detectedCity: targetCity,
+        detectedLocation: primaryLocString, // Clean string for UI
         detectedSpecialties: targetSpecialties,
         detectedBudget: targetBudget
       },
@@ -288,45 +261,27 @@ export const searchHospitals = async (req, res) => {
   }
 };
 
-// 2. GET SINGLE HOSPITAL DETAILS
 export const getHospitalById = async (req, res) => {
   try {
     const hospital = await Hospital.findById(req.params.id);
-    if (!hospital) {
-      return res.status(404).json({ success: false, message: "Hospital not found" });
-    }
+    if (!hospital) return res.status(404).json({ success: false, message: "Hospital not found" });
     res.status(200).json({ success: true, hospital });
-  } catch (error) {
-    res.status(500).json({ success: false, message: "Failed to fetch hospital details" });
-  }
+  } catch (error) { res.status(500).json({ success: false, message: "Failed" }); }
 };
 
-// 3. COMPARE MULTIPLE HOSPITALS
 export const compareHospitals = async (req, res) => {
   try {
     const { hospitalIds } = req.body;
-    if (!hospitalIds || !Array.isArray(hospitalIds)) {
-      return res.status(400).json({ success: false, message: "Provide an array of hospital IDs" });
-    }
+    if (!hospitalIds || !Array.isArray(hospitalIds)) return res.status(400).json({ success: false, message: "Provide an array" });
     const hospitals = await Hospital.find({ _id: { $in: hospitalIds } });
     res.status(200).json({ success: true, hospitals });
-  } catch (error) {
-    res.status(500).json({ success: false, message: "Failed to fetch comparison data" });
-  }
+  } catch (error) { res.status(500).json({ success: false, message: "Failed" }); }
 };
 
-// 4. BULK SEED DIVERSE 100+ HOSPITALS
 export const seedDemoHospitals = async (req, res) => {
   try {
     await Hospital.deleteMany();
     const inserted = await Hospital.insertMany(completeHospitalList);
-    res.status(201).json({
-      success: true,
-      message: `Successfully seeded ${inserted.length} comprehensive hospital records across India!`,
-      count: inserted.length
-    });
-  } catch (error) {
-    console.error("Seeding Error:", error.message);
-    res.status(500).json({ success: false, message: "Failed to seed hospital dataset" });
-  }
+    res.status(201).json({ success: true, message: `Seeded ${inserted.length} records!`, count: inserted.length });
+  } catch (error) { res.status(500).json({ success: false, message: "Failed" }); }
 };
