@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../../context/AuthContext';
 
 const navigationItems = [
-  { label: 'Home', path: '/', icon: Home, end: true }, // end: true — otherwise NavLink matches every nested route
   { label: 'Find Services', path: '/services', icon: Search },
   { label: 'Specialists', path: '/specialists', icon: Stethoscope },
   { label: 'Live Map', path: '/map', icon: MapIcon },

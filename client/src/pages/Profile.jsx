@@ -181,7 +181,7 @@ export default function Profile() {
                       <span className="font-mono text-xs font-bold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded border border-slate-200 dark:border-slate-700">{report.reportId}</span>
                       <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${getStatusColor(report.status)}`}>{report.status}</span>
                     </div>
-                    <h3 className="font-bold text-slate-900 dark:text-white text-lg mt-2 font-serif">{report.hospital.name}</h3>
+                    <h3 className="font-bold text-slate-900 dark:text-white text-lg mt-2 font-serif">{report.hospital?.name || 'Unknown Hospital'}</h3>
                     <p className="text-sm text-slate-600 dark:text-slate-300 font-medium">{report.category}</p>
                     <p className="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-1 mt-1"><Clock size={14} /> Submitted: {new Date(report.createdAt).toLocaleDateString()}</p>
                   </div>

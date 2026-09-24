@@ -45,7 +45,9 @@ export const getMyRecords = async (req, res) => {
 // 3. SECURELY VIEW/DOWNLOAD A FILE
 export const viewSecureFile = async (req, res) => {
   try {
-    const record = await MedicalRecord.findById(req.params.id);
+    // Clean the ID in case it comes with a suffix like ':1'
+    const cleanId = req.params.id.split(':')[0];
+    const record = await MedicalRecord.findById(cleanId);
 
     if (!record) {
       return res.status(404).json({ success: false, message: "Record not found" });
