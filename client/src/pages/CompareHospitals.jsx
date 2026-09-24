@@ -142,6 +142,75 @@ export default function CompareHospitals() {
               })}
             </tr>
 
+            {/* Ratings: Patient Satisfaction Row */}
+            <tr className="divide-x divide-slate-200 dark:divide-slate-800">
+              <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">Patient Satisfaction (out of 5)</td>
+              {hospitals.map(h => (
+                <td key={h._id} className="p-4 text-slate-700 dark:text-slate-300 font-medium">
+                  {h.ratings?.patientSatisfaction ? `${h.ratings.patientSatisfaction.toFixed(1)} / 5.0` : <Minus size={16} className="text-slate-300 dark:text-slate-600"/>}
+                </td>
+              ))}
+            </tr>
+
+            {/* Ratings: Infrastructure Row */}
+            <tr className="divide-x divide-slate-200 dark:divide-slate-800">
+              <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">Infrastructure Score (out of 10)</td>
+              {hospitals.map(h => (
+                <td key={h._id} className="p-4 text-slate-700 dark:text-slate-300 font-medium">
+                  {h.ratings?.infrastructure ? `${h.ratings.infrastructure.toFixed(1)} / 10` : <Minus size={16} className="text-slate-300 dark:text-slate-600"/>}
+                </td>
+              ))}
+            </tr>
+
+            {/* Ratings: Care Quality Row */}
+            <tr className="divide-x divide-slate-200 dark:divide-slate-800">
+              <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">Care Quality Score (out of 10)</td>
+              {hospitals.map(h => (
+                <td key={h._id} className="p-4 text-slate-700 dark:text-slate-300 font-medium">
+                  {h.ratings?.careQuality ? `${h.ratings.careQuality.toFixed(1)} / 10` : <Minus size={16} className="text-slate-300 dark:text-slate-600"/>}
+                </td>
+              ))}
+            </tr>
+
+            {/* ICU Beds Row */}
+            <tr className="divide-x divide-slate-200 dark:divide-slate-800">
+              <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">ICU Beds Available</td>
+              {hospitals.map(h => (
+                <td key={h._id} className="p-4 text-slate-700 dark:text-slate-300 font-medium">
+                  {h.statistics?.icuBeds ? h.statistics.icuBeds : <Minus size={16} className="text-slate-300 dark:text-slate-600"/>}
+                </td>
+              ))}
+            </tr>
+
+            {/* Ambulances Row */}
+            <tr className="divide-x divide-slate-200 dark:divide-slate-800">
+              <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">Ambulances</td>
+              {hospitals.map(h => (
+                <td key={h._id} className="p-4 text-slate-700 dark:text-slate-300 font-medium">
+                  {h.statistics?.ambulances ? h.statistics.ambulances : <Minus size={16} className="text-slate-300 dark:text-slate-600"/>}
+                </td>
+              ))}
+            </tr>
+
+            {/* Disease Specific Success Row */}
+            <tr className="divide-x divide-slate-200 dark:divide-slate-800">
+              <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">Key Disease Success Rates</td>
+              {hospitals.map(h => (
+                <td key={h._id} className="p-4 text-slate-700 dark:text-slate-300 text-sm">
+                  {h.diseaseSpecificSuccess && h.diseaseSpecificSuccess.length > 0 ? (
+                    <ul className="space-y-2">
+                      {h.diseaseSpecificSuccess.map((d, idx) => (
+                        <li key={idx} className="border-b border-slate-200 dark:border-slate-800 pb-1 last:border-0 last:pb-0">
+                          <span className="font-semibold block">{d.disease}</span>
+                          <span className="text-xs text-slate-500">{d.successRate}% Success ({d.recoveredPatients.toLocaleString()} recovered)</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : <Minus size={16} className="text-slate-300 dark:text-slate-600"/>}
+                </td>
+              ))}
+            </tr>
+
             {/* Distance Row */}
             <tr className="divide-x divide-slate-200 dark:divide-slate-800">
               <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">Distance (approx.)</td>

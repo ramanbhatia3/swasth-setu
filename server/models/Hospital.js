@@ -34,7 +34,19 @@ const hospitalSchema = new mongoose.Schema({
   },
   statistics: {
     beds: { type: Number },
-    doctors: { type: Number }
+    doctors: { type: Number },
+    icuBeds: { type: Number },
+    ambulances: { type: Number }
+  },
+  diseaseSpecificSuccess: [{
+    disease: { type: String },
+    recoveredPatients: { type: Number },
+    successRate: { type: Number }
+  }],
+  ratings: {
+    patientSatisfaction: { type: Number, min: 1, max: 5 },
+    infrastructure: { type: Number, min: 1, max: 10 },
+    careQuality: { type: Number, min: 1, max: 10 }
   },
   contact: {
     phone: { type: String },

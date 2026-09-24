@@ -306,13 +306,9 @@ export default function FindServices() {
                             {hospital.matchScore}% Match
                           </span>
                         </div>
-                        <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-1 pl-1">
-                          {hospital.matchExplanations?.map((expl, i) => (
-                            <li key={i} className="flex items-start gap-1.5">
-                              <span className="text-primary-500 mt-0.5">•</span> {expl}
-                            </li>
-                          ))}
-                        </ul>
+                        <p className="text-sm text-slate-600 dark:text-slate-400 italic">
+                          Suggested because: {hospital.matchExplanations?.join(' • ')}
+                        </p>
                       </div>
                     )}
 
