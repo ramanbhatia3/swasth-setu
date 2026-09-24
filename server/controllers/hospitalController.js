@@ -1,6 +1,6 @@
 import Hospital from '../models/Hospital.js';
 import Report from '../models/Report.js';
-import { completeHospitalList } from '../seeders/hospitalData.js';
+import { indianHospitalsDataset } from '../seeders/hospitalData.js';
 
 // Comprehensive Medical Thesaurus
 const MEDICAL_TAXONOMY = {
@@ -264,7 +264,7 @@ export const compareHospitals = async (req, res) => {
 export const seedDemoHospitals = async (req, res) => {
   try {
     await Hospital.deleteMany();
-    const inserted = await Hospital.insertMany(completeHospitalList);
+    const inserted = await Hospital.insertMany(indianHospitalsDataset);
     res.status(201).json({ success: true, message: `Seeded ${inserted.length} records!`, count: inserted.length });
   } catch (error) { res.status(500).json({ success: false, message: "Failed" }); }
 };
