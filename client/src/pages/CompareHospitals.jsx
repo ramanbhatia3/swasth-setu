@@ -192,6 +192,56 @@ export default function CompareHospitals() {
               ))}
             </tr>
 
+            {/* Insurance & Empanelment Row */}
+            <tr className="divide-x divide-slate-200 dark:divide-slate-800">
+              <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">Insurance & Empanelment</td>
+              {hospitals.map(h => (
+                <td key={h._id} className="p-4 text-slate-700 dark:text-slate-300 text-sm">
+                  {h.insuranceEmpaneled && h.insuranceEmpaneled.length > 0 ? (
+                    <div className="flex flex-wrap gap-1">
+                      {h.insuranceEmpaneled.map((ins, idx) => (
+                        <span key={idx} className="bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 px-2 py-0.5 rounded text-xs border border-blue-200 dark:border-blue-800">{ins}</span>
+                      ))}
+                    </div>
+                  ) : <Minus size={16} className="text-slate-300 dark:text-slate-600"/>}
+                </td>
+              ))}
+            </tr>
+
+            {/* Awards Row */}
+            <tr className="divide-x divide-slate-200 dark:divide-slate-800">
+              <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">Awards & Recognitions</td>
+              {hospitals.map(h => (
+                <td key={h._id} className="p-4 text-slate-700 dark:text-slate-300 text-sm">
+                  {h.awards && h.awards.length > 0 ? (
+                    <ul className="list-disc pl-4 space-y-1">
+                      {h.awards.map((aw, idx) => <li key={idx}>{aw}</li>)}
+                    </ul>
+                  ) : <Minus size={16} className="text-slate-300 dark:text-slate-600"/>}
+                </td>
+              ))}
+            </tr>
+
+            {/* Languages Spoken Row */}
+            <tr className="divide-x divide-slate-200 dark:divide-slate-800">
+              <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">Languages Spoken</td>
+              {hospitals.map(h => (
+                <td key={h._id} className="p-4 text-slate-700 dark:text-slate-300 text-sm font-medium">
+                  {h.languagesSpoken && h.languagesSpoken.length > 0 ? h.languagesSpoken.join(', ') : <Minus size={16} className="text-slate-300 dark:text-slate-600"/>}
+                </td>
+              ))}
+            </tr>
+
+            {/* ED Wait Time Row */}
+            <tr className="divide-x divide-slate-200 dark:divide-slate-800">
+              <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">Avg. Emergency Wait Time</td>
+              {hospitals.map(h => (
+                <td key={h._id} className="p-4 text-slate-700 dark:text-slate-300 font-medium">
+                  {h.averageEDWaitTimeMins ? `~${h.averageEDWaitTimeMins} mins` : <Minus size={16} className="text-slate-300 dark:text-slate-600"/>}
+                </td>
+              ))}
+            </tr>
+
             {/* Disease Specific Success Row */}
             <tr className="divide-x divide-slate-200 dark:divide-slate-800">
               <td className="p-4 font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0f0e0c]/30">Key Disease Success Rates</td>

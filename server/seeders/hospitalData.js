@@ -99,7 +99,24 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 42796,
         "successRate": 67
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Punjabi",
+      "Telugu"
+    ],
+    "insuranceEmpaneled": [
+      "ICICI Lombard",
+      "Aditya Birla Health",
+      "Care Health Insurance",
+      "Ayushman Bharat (PM-JAY)",
+      "CGHS"
+    ],
+    "awards": [
+      "Green Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 33
   },
   {
     "name": "Government Medical College & Hospital (GMCH 32)",
@@ -188,7 +205,23 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 39056,
         "successRate": 76
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Punjabi",
+      "Bengali"
+    ],
+    "insuranceEmpaneled": [
+      "Aditya Birla Health",
+      "CGHS",
+      "Care Health Insurance",
+      "Ayushman Bharat (PM-JAY)"
+    ],
+    "awards": [
+      "Times Health Excellence"
+    ],
+    "averageEDWaitTimeMins": 59
   },
   {
     "name": "Max Super Speciality Hospital Mohali",
@@ -277,7 +310,26 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 40598,
         "successRate": 66
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Punjabi",
+      "Kannada"
+    ],
+    "insuranceEmpaneled": [
+      "CGHS",
+      "Star Health",
+      "Care Health Insurance",
+      "ICICI Lombard",
+      "Niva Bupa"
+    ],
+    "awards": [
+      "Green Hospital Award",
+      "Healthcare Asia Awards 2022",
+      "Times Health Excellence"
+    ],
+    "averageEDWaitTimeMins": 18
   },
   {
     "name": "Fortis Hospital Mohali",
@@ -366,7 +418,26 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 16663,
         "successRate": 65
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Punjabi",
+      "Gujarati"
+    ],
+    "insuranceEmpaneled": [
+      "HDFC ERGO",
+      "Star Health",
+      "ICICI Lombard",
+      "CGHS",
+      "Aditya Birla Health",
+      "Ayushman Bharat (PM-JAY)",
+      "Niva Bupa"
+    ],
+    "awards": [
+      "Green Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 16
   },
   {
     "name": "Homi Bhabha Cancer Hospital & Research Centre",
@@ -455,7 +526,25 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 37150,
         "successRate": 90
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Punjabi",
+      "Telugu",
+      "Tamil"
+    ],
+    "insuranceEmpaneled": [
+      "Care Health Insurance",
+      "HDFC ERGO",
+      "Star Health",
+      "Ayushman Bharat (PM-JAY)",
+      "CGHS"
+    ],
+    "awards": [
+      "JCI Accredited"
+    ],
+    "averageEDWaitTimeMins": 23
   },
   {
     "name": "Chandigarh Nephrology & Urology Institute",
@@ -531,7 +620,24 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 15782,
         "successRate": 89
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Punjabi",
+      "Bengali"
+    ],
+    "insuranceEmpaneled": [
+      "CGHS",
+      "HDFC ERGO",
+      "Ayushman Bharat (PM-JAY)",
+      "Star Health",
+      "ICICI Lombard"
+    ],
+    "awards": [
+      "Best Multi-Specialty Hospital"
+    ],
+    "averageEDWaitTimeMins": 8
   },
   {
     "name": "All India Institute of Medical Sciences (AIIMS)",
@@ -632,7 +738,25 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 39632,
         "successRate": 81
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Malayalam",
+      "Tamil"
+    ],
+    "insuranceEmpaneled": [
+      "Niva Bupa",
+      "CGHS",
+      "Star Health",
+      "Ayushman Bharat (PM-JAY)"
+    ],
+    "awards": [
+      "Best Oncology Care 2023",
+      "NABH Quality Champion",
+      "Excellence in Cardiology"
+    ],
+    "averageEDWaitTimeMins": 23
   },
   {
     "name": "Institute of Liver and Biliary Sciences (ILBS)",
@@ -720,7 +844,27 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 39144,
         "successRate": 82
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Kannada"
+    ],
+    "insuranceEmpaneled": [
+      "Aditya Birla Health",
+      "Niva Bupa",
+      "HDFC ERGO",
+      "Star Health",
+      "Care Health Insurance",
+      "Ayushman Bharat (PM-JAY)",
+      "CGHS"
+    ],
+    "awards": [
+      "Best Oncology Care 2023",
+      "Best Multi-Specialty Hospital",
+      "Times Health Excellence"
+    ],
+    "averageEDWaitTimeMins": 23
   },
   {
     "name": "Sir Ganga Ram Hospital",
@@ -808,7 +952,26 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 47511,
         "successRate": 82
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Kannada"
+    ],
+    "insuranceEmpaneled": [
+      "Ayushman Bharat (PM-JAY)",
+      "HDFC ERGO",
+      "Aditya Birla Health",
+      "Niva Bupa",
+      "Care Health Insurance",
+      "ICICI Lombard"
+    ],
+    "awards": [
+      "JCI Accredited",
+      "Best Oncology Care 2023",
+      "Healthcare Asia Awards 2022"
+    ],
+    "averageEDWaitTimeMins": 22
   },
   {
     "name": "Medanta - The Medicity",
@@ -897,7 +1060,23 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 23159,
         "successRate": 77
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Gujarati",
+      "Tamil"
+    ],
+    "insuranceEmpaneled": [
+      "Ayushman Bharat (PM-JAY)",
+      "HDFC ERGO",
+      "Care Health Insurance",
+      "Aditya Birla Health"
+    ],
+    "awards": [
+      "Excellence in Cardiology"
+    ],
+    "averageEDWaitTimeMins": 19
   },
   {
     "name": "GB Pant Institute of Post Graduate Medical Education and Research",
@@ -984,7 +1163,22 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 25735,
         "successRate": 82
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Telugu"
+    ],
+    "insuranceEmpaneled": [
+      "Star Health",
+      "CGHS",
+      "HDFC ERGO",
+      "Ayushman Bharat (PM-JAY)"
+    ],
+    "awards": [
+      "JCI Accredited"
+    ],
+    "averageEDWaitTimeMins": 29
   },
   {
     "name": "Tata Memorial Hospital",
@@ -1072,7 +1266,24 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 20268,
         "successRate": 77
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Marathi"
+    ],
+    "insuranceEmpaneled": [
+      "Star Health",
+      "Aditya Birla Health",
+      "Care Health Insurance",
+      "Ayushman Bharat (PM-JAY)",
+      "CGHS"
+    ],
+    "awards": [
+      "NABH Quality Champion",
+      "Times Health Excellence"
+    ],
+    "averageEDWaitTimeMins": 36
   },
   {
     "name": "King Edward Memorial (KEM) Hospital",
@@ -1160,7 +1371,24 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 48211,
         "successRate": 89
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Marathi",
+      "Kannada"
+    ],
+    "insuranceEmpaneled": [
+      "HDFC ERGO",
+      "Star Health",
+      "Aditya Birla Health",
+      "Ayushman Bharat (PM-JAY)",
+      "CGHS"
+    ],
+    "awards": [
+      "Green Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 43
   },
   {
     "name": "Kokilaben Dhirubhai Ambani Hospital",
@@ -1249,7 +1477,27 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 36645,
         "successRate": 91
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Marathi",
+      "Bengali"
+    ],
+    "insuranceEmpaneled": [
+      "Ayushman Bharat (PM-JAY)",
+      "HDFC ERGO",
+      "Aditya Birla Health",
+      "Care Health Insurance",
+      "CGHS",
+      "ICICI Lombard",
+      "Star Health"
+    ],
+    "awards": [
+      "Excellence in Cardiology",
+      "Healthcare Asia Awards 2022"
+    ],
+    "averageEDWaitTimeMins": 25
   },
   {
     "name": "Ruby Hall Clinic",
@@ -1335,7 +1583,25 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 15071,
         "successRate": 80
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Marathi",
+      "Bengali",
+      "Telugu"
+    ],
+    "insuranceEmpaneled": [
+      "Care Health Insurance",
+      "Niva Bupa",
+      "Aditya Birla Health",
+      "CGHS",
+      "Ayushman Bharat (PM-JAY)"
+    ],
+    "awards": [
+      "Best Multi-Specialty Hospital"
+    ],
+    "averageEDWaitTimeMins": 5
   },
   {
     "name": "Goa Medical College and Hospital (GMC)",
@@ -1421,7 +1687,22 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 29514,
         "successRate": 93
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi"
+    ],
+    "insuranceEmpaneled": [
+      "Ayushman Bharat (PM-JAY)",
+      "CGHS",
+      "Care Health Insurance"
+    ],
+    "awards": [
+      "NABH Quality Champion",
+      "Healthcare Asia Awards 2022",
+      "Best Oncology Care 2023"
+    ],
+    "averageEDWaitTimeMins": 38
   },
   {
     "name": "Christian Medical College (CMC) Vellore",
@@ -1513,7 +1794,25 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 41127,
         "successRate": 67
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Tamil"
+    ],
+    "insuranceEmpaneled": [
+      "Ayushman Bharat (PM-JAY)",
+      "CGHS",
+      "Star Health",
+      "Niva Bupa",
+      "HDFC ERGO"
+    ],
+    "awards": [
+      "Green Hospital Award",
+      "Best Oncology Care 2023",
+      "NABH Quality Champion"
+    ],
+    "averageEDWaitTimeMins": 20
   },
   {
     "name": "Rajiv Gandhi Government General Hospital & Madras Medical College",
@@ -1601,7 +1900,24 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 19916,
         "successRate": 91
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Tamil",
+      "Marathi",
+      "Kannada"
+    ],
+    "insuranceEmpaneled": [
+      "Aditya Birla Health",
+      "Ayushman Bharat (PM-JAY)",
+      "CGHS"
+    ],
+    "awards": [
+      "JCI Accredited",
+      "Best Multi-Specialty Hospital"
+    ],
+    "averageEDWaitTimeMins": 40
   },
   {
     "name": "Apollo Hospitals Greams Road",
@@ -1690,7 +2006,24 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 24080,
         "successRate": 78
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Tamil",
+      "Telugu",
+      "Gujarati"
+    ],
+    "insuranceEmpaneled": [
+      "CGHS",
+      "HDFC ERGO",
+      "Niva Bupa",
+      "Ayushman Bharat (PM-JAY)"
+    ],
+    "awards": [
+      "Best Multi-Specialty Hospital"
+    ],
+    "averageEDWaitTimeMins": 21
   },
   {
     "name": "Amrita Institute of Medical Sciences (AIMS)",
@@ -1778,7 +2111,26 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 11138,
         "successRate": 65
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Gujarati",
+      "Punjabi"
+    ],
+    "insuranceEmpaneled": [
+      "Aditya Birla Health",
+      "Care Health Insurance",
+      "Ayushman Bharat (PM-JAY)",
+      "CGHS",
+      "Star Health"
+    ],
+    "awards": [
+      "Green Hospital Award",
+      "Best Multi-Specialty Hospital",
+      "NABH Quality Champion"
+    ],
+    "averageEDWaitTimeMins": 14
   },
   {
     "name": "Government Medical College Thiruvananthapuram",
@@ -1865,7 +2217,22 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 22341,
         "successRate": 73
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Gujarati",
+      "Telugu"
+    ],
+    "insuranceEmpaneled": [
+      "Ayushman Bharat (PM-JAY)",
+      "CGHS",
+      "ICICI Lombard"
+    ],
+    "awards": [
+      "Times Health Excellence"
+    ],
+    "averageEDWaitTimeMins": 45
   },
   {
     "name": "NIMHANS (National Institute of Mental Health and Neuro-Sciences)",
@@ -1952,7 +2319,26 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 23597,
         "successRate": 86
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Kannada"
+    ],
+    "insuranceEmpaneled": [
+      "Care Health Insurance",
+      "CGHS",
+      "Ayushman Bharat (PM-JAY)",
+      "Star Health",
+      "HDFC ERGO",
+      "ICICI Lombard"
+    ],
+    "awards": [
+      "JCI Accredited",
+      "Excellence in Cardiology",
+      "Green Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 24
   },
   {
     "name": "Sri Jayadeva Institute of Cardiovascular Sciences and Research",
@@ -2038,7 +2424,26 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 25790,
         "successRate": 74
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Kannada",
+      "Gujarati"
+    ],
+    "insuranceEmpaneled": [
+      "ICICI Lombard",
+      "Niva Bupa",
+      "Aditya Birla Health",
+      "HDFC ERGO",
+      "CGHS",
+      "Ayushman Bharat (PM-JAY)"
+    ],
+    "awards": [
+      "NABH Quality Champion",
+      "Green Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 7
   },
   {
     "name": "Manipal Hospital Old Airport Road",
@@ -2127,7 +2532,26 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 33853,
         "successRate": 75
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Kannada",
+      "Punjabi"
+    ],
+    "insuranceEmpaneled": [
+      "Ayushman Bharat (PM-JAY)",
+      "CGHS",
+      "Star Health",
+      "HDFC ERGO",
+      "ICICI Lombard",
+      "Care Health Insurance",
+      "Niva Bupa"
+    ],
+    "awards": [
+      "Green Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 16
   },
   {
     "name": "Nizam's Institute of Medical Sciences (NIMS)",
@@ -2215,7 +2639,24 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 25487,
         "successRate": 71
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi"
+    ],
+    "insuranceEmpaneled": [
+      "CGHS",
+      "HDFC ERGO",
+      "Ayushman Bharat (PM-JAY)",
+      "Aditya Birla Health",
+      "Care Health Insurance",
+      "ICICI Lombard"
+    ],
+    "awards": [
+      "Green Hospital Award",
+      "Best Multi-Specialty Hospital"
+    ],
+    "averageEDWaitTimeMins": 15
   },
   {
     "name": "Asian Institute of Gastroenterology (AIG Hospitals)",
@@ -2304,7 +2745,24 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 35546,
         "successRate": 95
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Bengali"
+    ],
+    "insuranceEmpaneled": [
+      "HDFC ERGO",
+      "CGHS",
+      "Ayushman Bharat (PM-JAY)",
+      "Aditya Birla Health",
+      "Star Health"
+    ],
+    "awards": [
+      "Times Health Excellence",
+      "Green Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 6
   },
   {
     "name": "Institute of Post-Graduate Medical Education and Research (SSKM Hospital)",
@@ -2392,7 +2850,24 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 33778,
         "successRate": 67
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Bengali",
+      "Tamil"
+    ],
+    "insuranceEmpaneled": [
+      "CGHS",
+      "HDFC ERGO",
+      "Niva Bupa",
+      "Ayushman Bharat (PM-JAY)"
+    ],
+    "awards": [
+      "Times Health Excellence",
+      "JCI Accredited"
+    ],
+    "averageEDWaitTimeMins": 36
   },
   {
     "name": "Tata Medical Center",
@@ -2480,7 +2955,24 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 39662,
         "successRate": 66
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Bengali",
+      "Marathi",
+      "Gujarati"
+    ],
+    "insuranceEmpaneled": [
+      "Aditya Birla Health",
+      "Star Health",
+      "Ayushman Bharat (PM-JAY)",
+      "Care Health Insurance"
+    ],
+    "awards": [
+      "Best Oncology Care 2023"
+    ],
+    "averageEDWaitTimeMins": 11
   },
   {
     "name": "All India Institute of Medical Sciences (AIIMS) Bhubaneswar",
@@ -2567,7 +3059,22 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 14891,
         "successRate": 78
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi"
+    ],
+    "insuranceEmpaneled": [
+      "ICICI Lombard",
+      "HDFC ERGO",
+      "Care Health Insurance",
+      "Ayushman Bharat (PM-JAY)",
+      "CGHS"
+    ],
+    "awards": [
+      "Healthcare Asia Awards 2022"
+    ],
+    "averageEDWaitTimeMins": 52
   },
   {
     "name": "Gauhati Medical College and Hospital (GMCH)",
@@ -2653,7 +3160,24 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 26371,
         "successRate": 86
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Kannada",
+      "Tamil"
+    ],
+    "insuranceEmpaneled": [
+      "CGHS",
+      "HDFC ERGO",
+      "Ayushman Bharat (PM-JAY)"
+    ],
+    "awards": [
+      "Healthcare Asia Awards 2022",
+      "Excellence in Cardiology",
+      "Best Multi-Specialty Hospital"
+    ],
+    "averageEDWaitTimeMins": 60
   },
   {
     "name": "U.N. Mehta Institute of Cardiology and Research Centre",
@@ -2738,7 +3262,25 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 20031,
         "successRate": 78
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Gujarati"
+    ],
+    "insuranceEmpaneled": [
+      "Aditya Birla Health",
+      "Star Health",
+      "HDFC ERGO",
+      "ICICI Lombard",
+      "Ayushman Bharat (PM-JAY)",
+      "CGHS"
+    ],
+    "awards": [
+      "NABH Quality Champion",
+      "Green Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 23
   },
   {
     "name": "The Gujarat Cancer & Research Institute (M.P. Shah Cancer Hospital)",
@@ -2825,7 +3367,24 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 18808,
         "successRate": 69
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Gujarati",
+      "Punjabi"
+    ],
+    "insuranceEmpaneled": [
+      "CGHS",
+      "Ayushman Bharat (PM-JAY)",
+      "Niva Bupa",
+      "HDFC ERGO"
+    ],
+    "awards": [
+      "Healthcare Asia Awards 2022",
+      "Green Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 12
   },
   {
     "name": "Sawai Man Singh (SMS) Medical College and Hospital",
@@ -2913,7 +3472,24 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 35170,
         "successRate": 85
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Malayalam"
+    ],
+    "insuranceEmpaneled": [
+      "HDFC ERGO",
+      "Star Health",
+      "Care Health Insurance",
+      "Ayushman Bharat (PM-JAY)",
+      "CGHS"
+    ],
+    "awards": [
+      "Best Multi-Specialty Hospital",
+      "Green Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 49
   },
   {
     "name": "Eternal Hospital (Sancheti Hospital)",
@@ -2999,7 +3575,26 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 29864,
         "successRate": 80
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Bengali"
+    ],
+    "insuranceEmpaneled": [
+      "Star Health",
+      "Aditya Birla Health",
+      "ICICI Lombard",
+      "HDFC ERGO",
+      "CGHS",
+      "Ayushman Bharat (PM-JAY)",
+      "Niva Bupa"
+    ],
+    "awards": [
+      "Best Oncology Care 2023",
+      "NABH Quality Champion"
+    ],
+    "averageEDWaitTimeMins": 16
   },
   {
     "name": "Sanjay Gandhi Postgraduate Institute of Medical Sciences (SGPGIMS)",
@@ -3090,7 +3685,24 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 18193,
         "successRate": 93
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Tamil"
+    ],
+    "insuranceEmpaneled": [
+      "HDFC ERGO",
+      "Care Health Insurance",
+      "Star Health",
+      "Aditya Birla Health",
+      "Ayushman Bharat (PM-JAY)",
+      "CGHS"
+    ],
+    "awards": [
+      "JCI Accredited"
+    ],
+    "averageEDWaitTimeMins": 9
   },
   {
     "name": "King George's Medical University (KGMU)",
@@ -3178,7 +3790,25 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 38434,
         "successRate": 83
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Telugu",
+      "Marathi"
+    ],
+    "insuranceEmpaneled": [
+      "CGHS",
+      "Star Health",
+      "ICICI Lombard",
+      "Ayushman Bharat (PM-JAY)"
+    ],
+    "awards": [
+      "JCI Accredited",
+      "Times Health Excellence",
+      "Green Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 24
   },
   {
     "name": "All India Institute of Medical Sciences (AIIMS) Patna",
@@ -3266,7 +3896,24 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 43616,
         "successRate": 90
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi"
+    ],
+    "insuranceEmpaneled": [
+      "Aditya Birla Health",
+      "Care Health Insurance",
+      "ICICI Lombard",
+      "Ayushman Bharat (PM-JAY)",
+      "CGHS"
+    ],
+    "awards": [
+      "Best Multi-Specialty Hospital",
+      "Healthcare Asia Awards 2022",
+      "Excellence in Cardiology"
+    ],
+    "averageEDWaitTimeMins": 38
   },
   {
     "name": "All India Institute of Medical Sciences (AIIMS) Bhopal",
@@ -3354,6 +4001,21 @@ export const indianHospitalsDataset = [
         "recoveredPatients": 16563,
         "successRate": 72
       }
-    ]
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Marathi"
+    ],
+    "insuranceEmpaneled": [
+      "Star Health",
+      "Ayushman Bharat (PM-JAY)",
+      "ICICI Lombard",
+      "CGHS"
+    ],
+    "awards": [
+      "JCI Accredited"
+    ],
+    "averageEDWaitTimeMins": 29
   }
 ];

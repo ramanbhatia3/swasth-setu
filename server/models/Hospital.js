@@ -48,6 +48,10 @@ const hospitalSchema = new mongoose.Schema({
     infrastructure: { type: Number, min: 1, max: 10 },
     careQuality: { type: Number, min: 1, max: 10 }
   },
+  insuranceEmpaneled: [{ type: String }],
+  languagesSpoken: [{ type: String }],
+  awards: [{ type: String }],
+  averageEDWaitTimeMins: { type: Number },
   contact: {
     phone: { type: String },
     email: { type: String },

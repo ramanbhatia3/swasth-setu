@@ -202,6 +202,10 @@ export const executeSearch = async (q, city, specialization, maxBudget, sortBy) 
       if (isLocMatch && !locationRelaxed) { matchScore += 8; matchExplanations.push(`Located in ${hospital.location.city}, ${hospital.location.state}`); } 
       else if (locationRelaxed) { matchExplanations.push(`Nationwide specialized center (outside requested region)`); }
     }
+    if (hospital.ratings?.patientSatisfaction >= 4.5) { matchScore += 5; matchExplanations.push(`highly rated by patients (${hospital.ratings.patientSatisfaction}/5)`); }
+    if (hospital.ratings?.infrastructure >= 9.0) { matchScore += 2; matchExplanations.push(`top-tier infrastructure`); }
+    if (hospital.insuranceEmpaneled?.length > 0) { matchScore += 3; matchExplanations.push(`empaneled with ${hospital.insuranceEmpaneled[0]}`); }
+    if (hospital.averageEDWaitTimeMins <= 15) { matchScore += 3; matchExplanations.push(`fast emergency response (~${hospital.averageEDWaitTimeMins} mins)`); }
 
     matchScore = Math.min(94, Math.max(50, matchScore));
     return { ...hospital, matchScore, matchExplanations };
