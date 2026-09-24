@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   MapPin, ShieldCheck, Phone, Globe, ArrowLeft, Stethoscope, 
   Building2, IndianRupee, Star, MessageSquare, X, User, AlertCircle,
-  AlertTriangle, UploadCloud, CheckCircle
+  AlertTriangle, UploadCloud, CheckCircle, Activity
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
@@ -189,9 +189,82 @@ export default function HospitalDetails() {
                 {hospital.facilities.map((fac, i) => <span key={i} className="px-3 py-1.5 bg-primary-50 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 text-sm font-medium border border-primary-100 dark:border-primary-800/50 rounded-lg">{fac}</span>)}
               </div>
             </section>
+
+            {hospital.insuranceEmpaneled?.length > 0 && (
+              <section>
+                <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2"><ShieldCheck className="text-primary-600 dark:text-primary-400" /> Insurance & Empanelment</h2>
+                <div className="flex flex-wrap gap-2">
+                  {hospital.insuranceEmpaneled.map((ins, i) => <span key={i} className="px-3 py-1.5 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium border border-blue-200 dark:border-blue-800/50 rounded-lg">{ins}</span>)}
+                </div>
+              </section>
+            )}
+
+            {hospital.awards?.length > 0 && (
+              <section>
+                <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2"><Star className="text-primary-600 dark:text-primary-400" /> Awards & Recognitions</h2>
+                <ul className="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+                  {hospital.awards.map((aw, i) => <li key={i}>{aw}</li>)}
+                </ul>
+              </section>
+            )}
+
+            {hospital.diseaseSpecificSuccess?.length > 0 && (
+              <section>
+                <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2"><Activity className="text-primary-600 dark:text-primary-400" /> Key Disease Success Rates</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {hospital.diseaseSpecificSuccess.map((d, i) => (
+                    <div key={i} className="p-4 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-xl">
+                      <p className="font-bold text-slate-900 dark:text-white mb-1">{d.disease}</p>
+                      <div className="flex justify-between items-center text-sm">
+                        <span className="text-primary-700 dark:text-primary-400 font-bold">{d.successRate}% Success</span>
+                        <span className="text-slate-500">{d.recoveredPatients.toLocaleString()} recovered</span>
+                      </div>
+                      <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2 mt-2">
+                        <div className="bg-primary-500 h-2 rounded-full" style={{ width: `${d.successRate}%` }}></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
           
           <div className="col-span-1 space-y-6">
+            <div className="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-xl">
+              <h3 className="font-bold text-slate-900 dark:text-white mb-4">Stats & Metrics</h3>
+              <div className="space-y-4 text-sm">
+                {hospital.statistics?.beds && (
+                  <div className="flex justify-between items-center border-b border-slate-200 dark:border-slate-700 pb-2">
+                    <span className="text-slate-600 dark:text-slate-400">Total Beds</span>
+                    <span className="font-bold text-slate-900 dark:text-white">{hospital.statistics.beds}</span>
+                  </div>
+                )}
+                {hospital.statistics?.icuBeds && (
+                  <div className="flex justify-between items-center border-b border-slate-200 dark:border-slate-700 pb-2">
+                    <span className="text-slate-600 dark:text-slate-400">ICU Beds</span>
+                    <span className="font-bold text-slate-900 dark:text-white">{hospital.statistics.icuBeds}</span>
+                  </div>
+                )}
+                {hospital.statistics?.ambulances && (
+                  <div className="flex justify-between items-center border-b border-slate-200 dark:border-slate-700 pb-2">
+                    <span className="text-slate-600 dark:text-slate-400">Ambulances</span>
+                    <span className="font-bold text-slate-900 dark:text-white">{hospital.statistics.ambulances}</span>
+                  </div>
+                )}
+                {hospital.averageEDWaitTimeMins && (
+                  <div className="flex justify-between items-center border-b border-slate-200 dark:border-slate-700 pb-2">
+                    <span className="text-slate-600 dark:text-slate-400">Avg ED Wait Time</span>
+                    <span className="font-bold text-slate-900 dark:text-white">~{hospital.averageEDWaitTimeMins} mins</span>
+                  </div>
+                )}
+                {hospital.languagesSpoken?.length > 0 && (
+                  <div className="pt-1">
+                    <span className="text-slate-600 dark:text-slate-400 block mb-1">Languages Spoken</span>
+                    <span className="font-medium text-slate-900 dark:text-white leading-snug">{hospital.languagesSpoken.join(', ')}</span>
+                  </div>
+                )}
+              </div>
+            </div>
             <div className="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-xl">
               <h3 className="font-bold text-slate-900 dark:text-white mb-4">Contact Info</h3>
               <div className="space-y-3 text-sm">
