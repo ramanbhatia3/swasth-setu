@@ -4017,5 +4017,6948 @@ export const indianHospitalsDataset = [
       "JCI Accredited"
     ],
     "averageEDWaitTimeMins": 29
+  },
+  {
+    "name": "Apollo Hospitals Ahmedabad",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 80, Central Avenue",
+      "city": "Ahmedabad",
+      "state": "Gujarat",
+      "pincode": "769978"
+    },
+    "specializations": [
+      "Rheumatology",
+      "Pulmonology",
+      "Pediatrics",
+      "Orthopedics",
+      "Gynecology"
+    ],
+    "chronicConditionsHandled": [
+      "Chronic Kidney Disease",
+      "Chronic Pancreatitis",
+      "Thyroid Disorders"
+    ],
+    "facilities": [
+      "Organ Transplant Unit",
+      "PICU",
+      "Dialysis Unit",
+      "NICU",
+      "Pharmacy",
+      "Robotic Surgery Suite",
+      "ICU",
+      "Physiotherapy"
+    ],
+    "procedures": [
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 85,
+      "successfulPatientsCount": 447843,
+      "averageWaitTimeDays": 15,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 164,
+      "doctors": 519,
+      "icuBeds": 79,
+      "ambulances": 9
+    },
+    "ratings": {
+      "patientSatisfaction": 4.1,
+      "infrastructure": 7.3,
+      "careQuality": 9.5
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Thyroid Disorders",
+        "recoveredPatients": 40788,
+        "successRate": 76
+      }
+    ],
+    "languagesSpoken": [
+      "English",
+      "Malayalam",
+      "Punjabi",
+      "Tamil",
+      "Hindi"
+    ],
+    "insuranceEmpaneled": [
+      "ICICI Lombard",
+      "Aditya Birla Health",
+      "CGHS",
+      "HDFC ERGO"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 20
+  },
+  {
+    "name": "Fortis Hospital Nagpur",
+    "type": "Government",
+    "location": {
+      "address": "Plot No 38, Central Avenue",
+      "city": "Nagpur",
+      "state": "Maharashtra",
+      "pincode": "479577"
+    },
+    "specializations": [
+      "Pediatrics",
+      "Ophthalmology",
+      "Pulmonology",
+      "Dermatology",
+      "Neurology"
+    ],
+    "chronicConditionsHandled": [
+      "Coronary Artery Disease",
+      "Alzheimer's Disease",
+      "Diabetes Mellitus",
+      "Epilepsy"
+    ],
+    "facilities": [
+      "PICU",
+      "Robotic Surgery Suite",
+      "Organ Transplant Unit",
+      "Cath Lab"
+    ],
+    "procedures": [
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Normal Delivery",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 30000,
+          "max": 80000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 93,
+      "successfulPatientsCount": 464958,
+      "averageWaitTimeDays": 8,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 958,
+      "doctors": 672,
+      "icuBeds": 159,
+      "ambulances": 15
+    },
+    "ratings": {
+      "patientSatisfaction": 4.5,
+      "infrastructure": 7.8,
+      "careQuality": 7.7
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Diabetes Mellitus",
+        "recoveredPatients": 26860,
+        "successRate": 84
+      },
+      {
+        "disease": "Epilepsy",
+        "recoveredPatients": 30115,
+        "successRate": 79
+      }
+    ],
+    "languagesSpoken": [
+      "Malayalam",
+      "Hindi",
+      "Kannada",
+      "Bengali"
+    ],
+    "insuranceEmpaneled": [
+      "Aditya Birla Health",
+      "Care Health Insurance",
+      "HDFC ERGO",
+      "CGHS",
+      "Star Health"
+    ],
+    "awards": [],
+    "averageEDWaitTimeMins": 10
+  },
+  {
+    "name": "Max Super Speciality Hospital Hyderabad",
+    "type": "Government",
+    "location": {
+      "address": "Plot No 45, Central Avenue",
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "pincode": "379203"
+    },
+    "specializations": [
+      "Endocrinology",
+      "Cardiology",
+      "Rheumatology",
+      "Orthopedics",
+      "Pediatrics",
+      "Psychiatry",
+      "Gynecology"
+    ],
+    "chronicConditionsHandled": [
+      "Chronic Kidney Disease",
+      "Hypertension",
+      "Chronic Pancreatitis",
+      "Asthma"
+    ],
+    "facilities": [
+      "24x7 Emergency",
+      "Physiotherapy",
+      "Ambulance Services",
+      "Robotic Surgery Suite",
+      "Organ Transplant Unit",
+      "ICU",
+      "Dialysis Unit"
+    ],
+    "procedures": [
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      },
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      },
+      {
+        "name": "C-Section",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 50000,
+          "max": 120000
+        }
+      },
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 93,
+      "successfulPatientsCount": 160547,
+      "averageWaitTimeDays": 8,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1628,
+      "doctors": 139,
+      "icuBeds": 156,
+      "ambulances": 12
+    },
+    "ratings": {
+      "patientSatisfaction": 3.5,
+      "infrastructure": 9.2,
+      "careQuality": 8.3
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Chronic Kidney Disease",
+        "recoveredPatients": 31391,
+        "successRate": 74
+      },
+      {
+        "disease": "Chronic Pancreatitis",
+        "recoveredPatients": 26125,
+        "successRate": 67
+      }
+    ],
+    "languagesSpoken": [
+      "Hindi",
+      "Gujarati"
+    ],
+    "insuranceEmpaneled": [
+      "Niva Bupa",
+      "Ayushman Bharat (PM-JAY)",
+      "CGHS",
+      "Care Health Insurance",
+      "Star Health",
+      "HDFC ERGO"
+    ],
+    "awards": [
+      "Excellence in Healthcare"
+    ],
+    "averageEDWaitTimeMins": 35
+  },
+  {
+    "name": "Manipal Hospital Bhopal",
+    "type": "Government",
+    "location": {
+      "address": "Plot No 73, Central Avenue",
+      "city": "Bhopal",
+      "state": "Madhya Pradesh",
+      "pincode": "742196"
+    },
+    "specializations": [
+      "Gastroenterology",
+      "Oncology",
+      "Endocrinology",
+      "Pediatrics"
+    ],
+    "chronicConditionsHandled": [
+      "Parkinson's Disease",
+      "Chronic Pancreatitis",
+      "Osteoarthritis"
+    ],
+    "facilities": [
+      "ICU",
+      "Ambulance Services",
+      "Telemedicine",
+      "Dialysis Unit"
+    ],
+    "procedures": [
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      },
+      {
+        "name": "C-Section",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 50000,
+          "max": 120000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 92,
+      "successfulPatientsCount": 460450,
+      "averageWaitTimeDays": 6,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1059,
+      "doctors": 538,
+      "icuBeds": 221,
+      "ambulances": 15
+    },
+    "ratings": {
+      "patientSatisfaction": 4.3,
+      "infrastructure": 10,
+      "careQuality": 8.7
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Parkinson's Disease",
+        "recoveredPatients": 44799,
+        "successRate": 89
+      }
+    ],
+    "languagesSpoken": [
+      "Odia",
+      "Telugu",
+      "Gujarati"
+    ],
+    "insuranceEmpaneled": [
+      "Aditya Birla Health",
+      "ICICI Lombard",
+      "CGHS",
+      "Star Health"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 30
+  },
+  {
+    "name": "Medanta - The Medicity Hyderabad",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 1, Central Avenue",
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "pincode": "316860"
+    },
+    "specializations": [
+      "Gastroenterology",
+      "Urology",
+      "Ophthalmology",
+      "Orthopedics",
+      "Pulmonology"
+    ],
+    "chronicConditionsHandled": [
+      "Parkinson's Disease",
+      "Hypertension",
+      "Alzheimer's Disease",
+      "Rheumatoid Arthritis",
+      "Asthma"
+    ],
+    "facilities": [
+      "NICU",
+      "Advanced Diagnostics",
+      "Dialysis Unit",
+      "ICU"
+    ],
+    "procedures": [
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "C-Section",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 50000,
+          "max": 120000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 94,
+      "successfulPatientsCount": 309319,
+      "averageWaitTimeDays": 1,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1972,
+      "doctors": 211,
+      "icuBeds": 99,
+      "ambulances": 12
+    },
+    "ratings": {
+      "patientSatisfaction": 4.6,
+      "infrastructure": 9.6,
+      "careQuality": 8.3
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Hypertension",
+        "recoveredPatients": 9163,
+        "successRate": 63
+      },
+      {
+        "disease": "Alzheimer's Disease",
+        "recoveredPatients": 1935,
+        "successRate": 67
+      },
+      {
+        "disease": "Rheumatoid Arthritis",
+        "recoveredPatients": 45893,
+        "successRate": 85
+      }
+    ],
+    "languagesSpoken": [
+      "Urdu",
+      "Bengali",
+      "English"
+    ],
+    "insuranceEmpaneled": [
+      "ICICI Lombard",
+      "Star Health",
+      "Care Health Insurance",
+      "Aditya Birla Health",
+      "HDFC ERGO",
+      "CGHS"
+    ],
+    "awards": [],
+    "averageEDWaitTimeMins": 44
+  },
+  {
+    "name": "Narayana Multispeciality Hospital Hyderabad",
+    "type": "Government",
+    "location": {
+      "address": "Plot No 59, Central Avenue",
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "pincode": "253251"
+    },
+    "specializations": [
+      "Rheumatology",
+      "Endocrinology",
+      "Gynecology",
+      "Pulmonology",
+      "Orthopedics",
+      "Urology"
+    ],
+    "chronicConditionsHandled": [
+      "Osteoarthritis",
+      "Epilepsy",
+      "COPD",
+      "Alzheimer's Disease",
+      "Rheumatoid Arthritis"
+    ],
+    "facilities": [
+      "24x7 Emergency",
+      "Telemedicine",
+      "Organ Transplant Unit",
+      "ICU"
+    ],
+    "procedures": [
+      {
+        "name": "Normal Delivery",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 30000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      },
+      {
+        "name": "C-Section",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 50000,
+          "max": 120000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 92,
+      "successfulPatientsCount": 179227,
+      "averageWaitTimeDays": 8,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1234,
+      "doctors": 226,
+      "icuBeds": 34,
+      "ambulances": 16
+    },
+    "ratings": {
+      "patientSatisfaction": 3.7,
+      "infrastructure": 7.2,
+      "careQuality": 7.8
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Osteoarthritis",
+        "recoveredPatients": 4623,
+        "successRate": 94
+      },
+      {
+        "disease": "COPD",
+        "recoveredPatients": 17371,
+        "successRate": 67
+      },
+      {
+        "disease": "Rheumatoid Arthritis",
+        "recoveredPatients": 12547,
+        "successRate": 61
+      }
+    ],
+    "languagesSpoken": [
+      "Marathi",
+      "Hindi"
+    ],
+    "insuranceEmpaneled": [
+      "Niva Bupa",
+      "ICICI Lombard",
+      "Star Health",
+      "CGHS",
+      "HDFC ERGO",
+      "Aditya Birla Health"
+    ],
+    "awards": [],
+    "averageEDWaitTimeMins": 40
+  },
+  {
+    "name": "Aster CMI Hospital Nagpur",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 79, Central Avenue",
+      "city": "Nagpur",
+      "state": "Maharashtra",
+      "pincode": "563408"
+    },
+    "specializations": [
+      "Urology",
+      "Cardiology",
+      "Ophthalmology",
+      "Neurology",
+      "Oncology"
+    ],
+    "chronicConditionsHandled": [
+      "Chronic Pancreatitis",
+      "Osteoarthritis",
+      "Parkinson's Disease",
+      "Diabetes Mellitus",
+      "Psoriasis"
+    ],
+    "facilities": [
+      "Ambulance Services",
+      "NICU",
+      "24x7 Emergency",
+      "Pharmacy"
+    ],
+    "procedures": [
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      },
+      {
+        "name": "C-Section",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 50000,
+          "max": 120000
+        }
+      },
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 90,
+      "successfulPatientsCount": 477546,
+      "averageWaitTimeDays": 2,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 108,
+      "doctors": 462,
+      "icuBeds": 69,
+      "ambulances": 14
+    },
+    "ratings": {
+      "patientSatisfaction": 4.7,
+      "infrastructure": 8.5,
+      "careQuality": 8.4
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Chronic Pancreatitis",
+        "recoveredPatients": 32866,
+        "successRate": 89
+      },
+      {
+        "disease": "Diabetes Mellitus",
+        "recoveredPatients": 42179,
+        "successRate": 88
+      },
+      {
+        "disease": "Psoriasis",
+        "recoveredPatients": 27650,
+        "successRate": 65
+      }
+    ],
+    "languagesSpoken": [
+      "Marathi",
+      "Odia",
+      "Urdu",
+      "Bengali"
+    ],
+    "insuranceEmpaneled": [
+      "CGHS",
+      "Niva Bupa",
+      "Star Health",
+      "Aditya Birla Health"
+    ],
+    "awards": [
+      "Excellence in Healthcare"
+    ],
+    "averageEDWaitTimeMins": 40
+  },
+  {
+    "name": "Columbia Asia Hospital Visakhapatnam",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 10, Central Avenue",
+      "city": "Visakhapatnam",
+      "state": "Andhra Pradesh",
+      "pincode": "225861"
+    },
+    "specializations": [
+      "Gynecology",
+      "Oncology",
+      "Psychiatry"
+    ],
+    "chronicConditionsHandled": [
+      "Psoriasis",
+      "Hypertension",
+      "Rheumatoid Arthritis",
+      "Chronic Kidney Disease",
+      "Diabetes Mellitus"
+    ],
+    "facilities": [
+      "Cath Lab",
+      "Blood Bank",
+      "PICU",
+      "NICU",
+      "ICU"
+    ],
+    "procedures": [
+      {
+        "name": "Normal Delivery",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 30000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 95,
+      "successfulPatientsCount": 406472,
+      "averageWaitTimeDays": 9,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 495,
+      "doctors": 92,
+      "icuBeds": 118,
+      "ambulances": 15
+    },
+    "ratings": {
+      "patientSatisfaction": 4.1,
+      "infrastructure": 9.2,
+      "careQuality": 7.2
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Rheumatoid Arthritis",
+        "recoveredPatients": 27386,
+        "successRate": 85
+      }
+    ],
+    "languagesSpoken": [
+      "Odia",
+      "Kannada",
+      "Telugu",
+      "Urdu"
+    ],
+    "insuranceEmpaneled": [
+      "Aditya Birla Health",
+      "CGHS",
+      "HDFC ERGO",
+      "Ayushman Bharat (PM-JAY)",
+      "Care Health Insurance"
+    ],
+    "awards": [
+      "Excellence in Healthcare"
+    ],
+    "averageEDWaitTimeMins": 54
+  },
+  {
+    "name": "KIMS Hospitals Chennai",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 94, Central Avenue",
+      "city": "Chennai",
+      "state": "Tamil Nadu",
+      "pincode": "258937"
+    },
+    "specializations": [
+      "Cardiology",
+      "Neurology",
+      "Rheumatology",
+      "Nephrology"
+    ],
+    "chronicConditionsHandled": [
+      "Epilepsy",
+      "Asthma",
+      "Parkinson's Disease",
+      "Osteoarthritis",
+      "Psoriasis",
+      "COPD"
+    ],
+    "facilities": [
+      "Telemedicine",
+      "Cath Lab",
+      "Robotic Surgery Suite",
+      "Organ Transplant Unit",
+      "Advanced Diagnostics",
+      "Ambulance Services",
+      "Dialysis Unit",
+      "Pharmacy"
+    ],
+    "procedures": [
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      },
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      },
+      {
+        "name": "C-Section",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 50000,
+          "max": 120000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 94,
+      "successfulPatientsCount": 386859,
+      "averageWaitTimeDays": 6,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 649,
+      "doctors": 401,
+      "icuBeds": 251,
+      "ambulances": 12
+    },
+    "ratings": {
+      "patientSatisfaction": 3.5,
+      "infrastructure": 7.8,
+      "careQuality": 8.3
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Psoriasis",
+        "recoveredPatients": 14392,
+        "successRate": 66
+      }
+    ],
+    "languagesSpoken": [
+      "Odia",
+      "Punjabi"
+    ],
+    "insuranceEmpaneled": [
+      "CGHS",
+      "Care Health Insurance",
+      "Aditya Birla Health"
+    ],
+    "awards": [],
+    "averageEDWaitTimeMins": 43
+  },
+  {
+    "name": "Yashoda Hospitals Delhi",
+    "type": "Government",
+    "location": {
+      "address": "Plot No 53, Central Avenue",
+      "city": "Delhi",
+      "state": "Delhi",
+      "pincode": "318036"
+    },
+    "specializations": [
+      "Psychiatry",
+      "Rheumatology",
+      "Neurology"
+    ],
+    "chronicConditionsHandled": [
+      "Asthma",
+      "Osteoarthritis",
+      "Coronary Artery Disease",
+      "Rheumatoid Arthritis"
+    ],
+    "facilities": [
+      "Robotic Surgery Suite",
+      "Blood Bank",
+      "Radiation Oncology",
+      "Cath Lab",
+      "Pharmacy",
+      "Organ Transplant Unit",
+      "24x7 Emergency"
+    ],
+    "procedures": [
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 85,
+      "successfulPatientsCount": 108882,
+      "averageWaitTimeDays": 3,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1131,
+      "doctors": 799,
+      "icuBeds": 229,
+      "ambulances": 8
+    },
+    "ratings": {
+      "patientSatisfaction": 4.2,
+      "infrastructure": 8.8,
+      "careQuality": 9.4
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Asthma",
+        "recoveredPatients": 30311,
+        "successRate": 63
+      },
+      {
+        "disease": "Coronary Artery Disease",
+        "recoveredPatients": 28684,
+        "successRate": 73
+      },
+      {
+        "disease": "Rheumatoid Arthritis",
+        "recoveredPatients": 45451,
+        "successRate": 93
+      }
+    ],
+    "languagesSpoken": [
+      "English",
+      "Tamil",
+      "Telugu",
+      "Kannada",
+      "Odia"
+    ],
+    "insuranceEmpaneled": [
+      "ICICI Lombard",
+      "Aditya Birla Health",
+      "Ayushman Bharat (PM-JAY)",
+      "Star Health"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 20
+  },
+  {
+    "name": "Care Hospitals Coimbatore",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 5, Central Avenue",
+      "city": "Coimbatore",
+      "state": "Tamil Nadu",
+      "pincode": "254622"
+    },
+    "specializations": [
+      "Nephrology",
+      "Orthopedics",
+      "Cardiology",
+      "Gastroenterology"
+    ],
+    "chronicConditionsHandled": [
+      "Thyroid Disorders",
+      "Alzheimer's Disease",
+      "Chronic Pancreatitis",
+      "Liver Cirrhosis",
+      "Asthma"
+    ],
+    "facilities": [
+      "Telemedicine",
+      "24x7 Emergency",
+      "Ambulance Services",
+      "ICU",
+      "Cath Lab"
+    ],
+    "procedures": [
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "Normal Delivery",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 30000,
+          "max": 80000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 91,
+      "successfulPatientsCount": 127888,
+      "averageWaitTimeDays": 6,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 361,
+      "doctors": 499,
+      "icuBeds": 251,
+      "ambulances": 20
+    },
+    "ratings": {
+      "patientSatisfaction": 4.2,
+      "infrastructure": 7.1,
+      "careQuality": 8.6
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Thyroid Disorders",
+        "recoveredPatients": 20845,
+        "successRate": 82
+      },
+      {
+        "disease": "Alzheimer's Disease",
+        "recoveredPatients": 23834,
+        "successRate": 60
+      },
+      {
+        "disease": "Liver Cirrhosis",
+        "recoveredPatients": 21113,
+        "successRate": 89
+      },
+      {
+        "disease": "Asthma",
+        "recoveredPatients": 42187,
+        "successRate": 84
+      }
+    ],
+    "languagesSpoken": [
+      "Telugu",
+      "Urdu"
+    ],
+    "insuranceEmpaneled": [
+      "Star Health",
+      "Care Health Insurance",
+      "Niva Bupa"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 38
+  },
+  {
+    "name": "Global Hospitals Hyderabad",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 4, Central Avenue",
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "pincode": "204963"
+    },
+    "specializations": [
+      "Oncology",
+      "Pulmonology",
+      "Dermatology",
+      "Urology"
+    ],
+    "chronicConditionsHandled": [
+      "COPD",
+      "Asthma",
+      "Chronic Pancreatitis",
+      "Epilepsy",
+      "Liver Cirrhosis",
+      "Chronic Kidney Disease"
+    ],
+    "facilities": [
+      "Ambulance Services",
+      "Pharmacy",
+      "PICU",
+      "Radiation Oncology",
+      "Blood Bank",
+      "Advanced Diagnostics",
+      "Cath Lab"
+    ],
+    "procedures": [
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Normal Delivery",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 30000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 98,
+      "successfulPatientsCount": 172907,
+      "averageWaitTimeDays": 14,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1210,
+      "doctors": 84,
+      "icuBeds": 271,
+      "ambulances": 4
+    },
+    "ratings": {
+      "patientSatisfaction": 3.2,
+      "infrastructure": 8.8,
+      "careQuality": 9.1
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "COPD",
+        "recoveredPatients": 11332,
+        "successRate": 68
+      },
+      {
+        "disease": "Chronic Pancreatitis",
+        "recoveredPatients": 31476,
+        "successRate": 72
+      },
+      {
+        "disease": "Chronic Kidney Disease",
+        "recoveredPatients": 28658,
+        "successRate": 84
+      }
+    ],
+    "languagesSpoken": [
+      "Tamil",
+      "Bengali",
+      "Urdu",
+      "Odia",
+      "Punjabi"
+    ],
+    "insuranceEmpaneled": [
+      "Aditya Birla Health",
+      "Star Health",
+      "Niva Bupa"
+    ],
+    "awards": [
+      "Excellence in Healthcare"
+    ],
+    "averageEDWaitTimeMins": 30
+  },
+  {
+    "name": "Sir Ganga Ram Hospital Bhubaneswar",
+    "type": "Government",
+    "location": {
+      "address": "Plot No 73, Central Avenue",
+      "city": "Bhubaneswar",
+      "state": "Odisha",
+      "pincode": "146132"
+    },
+    "specializations": [
+      "Dermatology",
+      "Nephrology",
+      "Oncology",
+      "Pulmonology",
+      "Pediatrics",
+      "Orthopedics",
+      "Neurology"
+    ],
+    "chronicConditionsHandled": [
+      "Alzheimer's Disease",
+      "Rheumatoid Arthritis",
+      "Coronary Artery Disease",
+      "Epilepsy"
+    ],
+    "facilities": [
+      "Advanced Diagnostics",
+      "Pharmacy",
+      "Physiotherapy",
+      "PICU"
+    ],
+    "procedures": [
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 85,
+      "successfulPatientsCount": 133671,
+      "averageWaitTimeDays": 7,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1711,
+      "doctors": 765,
+      "icuBeds": 38,
+      "ambulances": 13
+    },
+    "ratings": {
+      "patientSatisfaction": 4.2,
+      "infrastructure": 8.5,
+      "careQuality": 9
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Rheumatoid Arthritis",
+        "recoveredPatients": 23408,
+        "successRate": 71
+      },
+      {
+        "disease": "Epilepsy",
+        "recoveredPatients": 37928,
+        "successRate": 82
+      }
+    ],
+    "languagesSpoken": [
+      "Hindi",
+      "Urdu",
+      "Malayalam"
+    ],
+    "insuranceEmpaneled": [
+      "HDFC ERGO",
+      "Ayushman Bharat (PM-JAY)",
+      "Aditya Birla Health",
+      "Niva Bupa"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 22
+  },
+  {
+    "name": "Lilavati Hospital Jaipur",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 98, Central Avenue",
+      "city": "Jaipur",
+      "state": "Rajasthan",
+      "pincode": "791790"
+    },
+    "specializations": [
+      "Nephrology",
+      "Neurology",
+      "Urology",
+      "Cardiology",
+      "Oncology",
+      "Orthopedics"
+    ],
+    "chronicConditionsHandled": [
+      "Coronary Artery Disease",
+      "Osteoarthritis",
+      "Chronic Pancreatitis",
+      "Chronic Kidney Disease",
+      "Diabetes Mellitus"
+    ],
+    "facilities": [
+      "PICU",
+      "Blood Bank",
+      "Cath Lab",
+      "Ambulance Services",
+      "Advanced Diagnostics",
+      "Organ Transplant Unit",
+      "Dialysis Unit",
+      "NICU"
+    ],
+    "procedures": [
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 90,
+      "successfulPatientsCount": 157938,
+      "averageWaitTimeDays": 10,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1442,
+      "doctors": 551,
+      "icuBeds": 90,
+      "ambulances": 11
+    },
+    "ratings": {
+      "patientSatisfaction": 4.1,
+      "infrastructure": 7.2,
+      "careQuality": 7.3
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Coronary Artery Disease",
+        "recoveredPatients": 5263,
+        "successRate": 92
+      },
+      {
+        "disease": "Chronic Pancreatitis",
+        "recoveredPatients": 17939,
+        "successRate": 74
+      },
+      {
+        "disease": "Diabetes Mellitus",
+        "recoveredPatients": 19143,
+        "successRate": 75
+      }
+    ],
+    "languagesSpoken": [
+      "Marathi",
+      "English",
+      "Urdu"
+    ],
+    "insuranceEmpaneled": [
+      "CGHS",
+      "HDFC ERGO",
+      "Niva Bupa"
+    ],
+    "awards": [
+      "Excellence in Healthcare"
+    ],
+    "averageEDWaitTimeMins": 28
+  },
+  {
+    "name": "Kokilaben Dhirubhai Ambani Hospital Bhopal",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 33, Central Avenue",
+      "city": "Bhopal",
+      "state": "Madhya Pradesh",
+      "pincode": "294731"
+    },
+    "specializations": [
+      "Dermatology",
+      "Nephrology",
+      "Ophthalmology",
+      "Pulmonology"
+    ],
+    "chronicConditionsHandled": [
+      "Rheumatoid Arthritis",
+      "Liver Cirrhosis",
+      "Coronary Artery Disease"
+    ],
+    "facilities": [
+      "Dialysis Unit",
+      "Cath Lab",
+      "PICU",
+      "ICU",
+      "24x7 Emergency",
+      "Radiation Oncology",
+      "Organ Transplant Unit",
+      "NICU"
+    ],
+    "procedures": [
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 94,
+      "successfulPatientsCount": 171467,
+      "averageWaitTimeDays": 14,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 499,
+      "doctors": 799,
+      "icuBeds": 237,
+      "ambulances": 9
+    },
+    "ratings": {
+      "patientSatisfaction": 4.3,
+      "infrastructure": 7.4,
+      "careQuality": 8
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Rheumatoid Arthritis",
+        "recoveredPatients": 9545,
+        "successRate": 74
+      }
+    ],
+    "languagesSpoken": [
+      "Punjabi",
+      "Malayalam",
+      "Hindi",
+      "English",
+      "Urdu"
+    ],
+    "insuranceEmpaneled": [
+      "ICICI Lombard",
+      "CGHS",
+      "Ayushman Bharat (PM-JAY)",
+      "Care Health Insurance"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 33
+  },
+  {
+    "name": "Breach Candy Hospital Mumbai",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 1, Central Avenue",
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "pincode": "570802"
+    },
+    "specializations": [
+      "Orthopedics",
+      "Oncology",
+      "Rheumatology"
+    ],
+    "chronicConditionsHandled": [
+      "Thyroid Disorders",
+      "COPD",
+      "Chronic Pancreatitis",
+      "Asthma",
+      "Chronic Kidney Disease",
+      "Coronary Artery Disease"
+    ],
+    "facilities": [
+      "Cath Lab",
+      "24x7 Emergency",
+      "Ambulance Services",
+      "Radiation Oncology",
+      "Pharmacy",
+      "ICU",
+      "Dialysis Unit",
+      "PICU"
+    ],
+    "procedures": [
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 92,
+      "successfulPatientsCount": 132971,
+      "averageWaitTimeDays": 11,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1263,
+      "doctors": 557,
+      "icuBeds": 175,
+      "ambulances": 18
+    },
+    "ratings": {
+      "patientSatisfaction": 3.7,
+      "infrastructure": 9.1,
+      "careQuality": 9.3
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "COPD",
+        "recoveredPatients": 33216,
+        "successRate": 67
+      },
+      {
+        "disease": "Chronic Pancreatitis",
+        "recoveredPatients": 45023,
+        "successRate": 69
+      },
+      {
+        "disease": "Chronic Kidney Disease",
+        "recoveredPatients": 19332,
+        "successRate": 79
+      },
+      {
+        "disease": "Coronary Artery Disease",
+        "recoveredPatients": 26807,
+        "successRate": 72
+      }
+    ],
+    "languagesSpoken": [
+      "Telugu",
+      "Malayalam",
+      "Tamil",
+      "Marathi"
+    ],
+    "insuranceEmpaneled": [
+      "Care Health Insurance",
+      "Ayushman Bharat (PM-JAY)",
+      "ICICI Lombard"
+    ],
+    "awards": [],
+    "averageEDWaitTimeMins": 58
+  },
+  {
+    "name": "Hinduja Hospital Delhi",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 51, Central Avenue",
+      "city": "Delhi",
+      "state": "Delhi",
+      "pincode": "668015"
+    },
+    "specializations": [
+      "Pediatrics",
+      "Neurology",
+      "Ophthalmology",
+      "Pulmonology",
+      "Rheumatology",
+      "Orthopedics",
+      "Dermatology"
+    ],
+    "chronicConditionsHandled": [
+      "Chronic Kidney Disease",
+      "Thyroid Disorders",
+      "Chronic Pancreatitis",
+      "Coronary Artery Disease",
+      "Asthma",
+      "COPD"
+    ],
+    "facilities": [
+      "24x7 Emergency",
+      "Ambulance Services",
+      "Cath Lab",
+      "Blood Bank"
+    ],
+    "procedures": [
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "C-Section",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 50000,
+          "max": 120000
+        }
+      },
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 98,
+      "successfulPatientsCount": 115797,
+      "averageWaitTimeDays": 3,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 839,
+      "doctors": 798,
+      "icuBeds": 222,
+      "ambulances": 7
+    },
+    "ratings": {
+      "patientSatisfaction": 4.7,
+      "infrastructure": 9.9,
+      "careQuality": 9.2
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Thyroid Disorders",
+        "recoveredPatients": 40453,
+        "successRate": 66
+      },
+      {
+        "disease": "Chronic Pancreatitis",
+        "recoveredPatients": 24602,
+        "successRate": 68
+      }
+    ],
+    "languagesSpoken": [
+      "Kannada",
+      "Gujarati"
+    ],
+    "insuranceEmpaneled": [
+      "Star Health",
+      "ICICI Lombard",
+      "Aditya Birla Health"
+    ],
+    "awards": [
+      "Excellence in Healthcare"
+    ],
+    "averageEDWaitTimeMins": 53
+  },
+  {
+    "name": "Nanavati Super Speciality Hospital Kochi",
+    "type": "Government",
+    "location": {
+      "address": "Plot No 11, Central Avenue",
+      "city": "Kochi",
+      "state": "Kerala",
+      "pincode": "382293"
+    },
+    "specializations": [
+      "Cardiology",
+      "Gastroenterology",
+      "Rheumatology",
+      "Neurology",
+      "Gynecology",
+      "Urology",
+      "Pediatrics"
+    ],
+    "chronicConditionsHandled": [
+      "Coronary Artery Disease",
+      "Asthma",
+      "Chronic Kidney Disease",
+      "Parkinson's Disease",
+      "Liver Cirrhosis"
+    ],
+    "facilities": [
+      "24x7 Emergency",
+      "Cath Lab",
+      "Physiotherapy",
+      "ICU",
+      "NICU",
+      "Dialysis Unit"
+    ],
+    "procedures": [
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      },
+      {
+        "name": "Normal Delivery",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 30000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "C-Section",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 50000,
+          "max": 120000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 90,
+      "successfulPatientsCount": 5149,
+      "averageWaitTimeDays": 4,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 857,
+      "doctors": 307,
+      "icuBeds": 286,
+      "ambulances": 3
+    },
+    "ratings": {
+      "patientSatisfaction": 4.6,
+      "infrastructure": 9.1,
+      "careQuality": 8.9
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Coronary Artery Disease",
+        "recoveredPatients": 10164,
+        "successRate": 87
+      }
+    ],
+    "languagesSpoken": [
+      "Odia",
+      "Marathi"
+    ],
+    "insuranceEmpaneled": [
+      "ICICI Lombard",
+      "Aditya Birla Health",
+      "HDFC ERGO"
+    ],
+    "awards": [
+      "Excellence in Healthcare"
+    ],
+    "averageEDWaitTimeMins": 35
+  },
+  {
+    "name": "Tata Memorial Hospital Nagpur",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 56, Central Avenue",
+      "city": "Nagpur",
+      "state": "Maharashtra",
+      "pincode": "177512"
+    },
+    "specializations": [
+      "Orthopedics",
+      "Neurology",
+      "Gynecology",
+      "Urology",
+      "Endocrinology",
+      "Oncology",
+      "Cardiology"
+    ],
+    "chronicConditionsHandled": [
+      "Parkinson's Disease",
+      "Diabetes Mellitus",
+      "Osteoarthritis"
+    ],
+    "facilities": [
+      "PICU",
+      "NICU",
+      "Robotic Surgery Suite",
+      "Cath Lab",
+      "Blood Bank",
+      "Physiotherapy",
+      "ICU",
+      "Telemedicine"
+    ],
+    "procedures": [
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 93,
+      "successfulPatientsCount": 301550,
+      "averageWaitTimeDays": 13,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 443,
+      "doctors": 443,
+      "icuBeds": 71,
+      "ambulances": 13
+    },
+    "ratings": {
+      "patientSatisfaction": 3.2,
+      "infrastructure": 9.6,
+      "careQuality": 9.7
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Osteoarthritis",
+        "recoveredPatients": 44596,
+        "successRate": 79
+      }
+    ],
+    "languagesSpoken": [
+      "Odia",
+      "Marathi"
+    ],
+    "insuranceEmpaneled": [
+      "Niva Bupa",
+      "ICICI Lombard",
+      "Star Health",
+      "Care Health Insurance",
+      "CGHS"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 59
+  },
+  {
+    "name": "Christian Medical College (CMC) Indore",
+    "type": "Government",
+    "location": {
+      "address": "Plot No 44, Central Avenue",
+      "city": "Indore",
+      "state": "Madhya Pradesh",
+      "pincode": "449175"
+    },
+    "specializations": [
+      "Endocrinology",
+      "Dermatology",
+      "Cardiology",
+      "Neurology",
+      "Pediatrics",
+      "Psychiatry"
+    ],
+    "chronicConditionsHandled": [
+      "Coronary Artery Disease",
+      "Asthma",
+      "Chronic Pancreatitis",
+      "Thyroid Disorders"
+    ],
+    "facilities": [
+      "Advanced Diagnostics",
+      "Dialysis Unit",
+      "24x7 Emergency",
+      "Cath Lab",
+      "Ambulance Services",
+      "ICU",
+      "NICU"
+    ],
+    "procedures": [
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      },
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 96,
+      "successfulPatientsCount": 132000,
+      "averageWaitTimeDays": 9,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1322,
+      "doctors": 189,
+      "icuBeds": 52,
+      "ambulances": 6
+    },
+    "ratings": {
+      "patientSatisfaction": 3.2,
+      "infrastructure": 9.4,
+      "careQuality": 9.5
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Asthma",
+        "recoveredPatients": 5067,
+        "successRate": 87
+      },
+      {
+        "disease": "Chronic Pancreatitis",
+        "recoveredPatients": 4641,
+        "successRate": 61
+      },
+      {
+        "disease": "Thyroid Disorders",
+        "recoveredPatients": 2249,
+        "successRate": 61
+      }
+    ],
+    "languagesSpoken": [
+      "Gujarati",
+      "English",
+      "Punjabi",
+      "Odia"
+    ],
+    "insuranceEmpaneled": [
+      "Ayushman Bharat (PM-JAY)",
+      "ICICI Lombard",
+      "HDFC ERGO",
+      "Niva Bupa"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 24
+  },
+  {
+    "name": "Amrita Institute of Medical Sciences Delhi",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 7, Central Avenue",
+      "city": "Delhi",
+      "state": "Delhi",
+      "pincode": "192905"
+    },
+    "specializations": [
+      "Oncology",
+      "Ophthalmology",
+      "Gynecology",
+      "Nephrology",
+      "Neurology",
+      "Psychiatry"
+    ],
+    "chronicConditionsHandled": [
+      "Diabetes Mellitus",
+      "Thyroid Disorders",
+      "Chronic Pancreatitis",
+      "Osteoarthritis",
+      "Hypertension",
+      "Coronary Artery Disease"
+    ],
+    "facilities": [
+      "PICU",
+      "Cath Lab",
+      "Dialysis Unit",
+      "Robotic Surgery Suite"
+    ],
+    "procedures": [
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 88,
+      "successfulPatientsCount": 162033,
+      "averageWaitTimeDays": 11,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1708,
+      "doctors": 365,
+      "icuBeds": 286,
+      "ambulances": 16
+    },
+    "ratings": {
+      "patientSatisfaction": 4,
+      "infrastructure": 8,
+      "careQuality": 9.8
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Diabetes Mellitus",
+        "recoveredPatients": 41331,
+        "successRate": 60
+      },
+      {
+        "disease": "Chronic Pancreatitis",
+        "recoveredPatients": 28096,
+        "successRate": 84
+      },
+      {
+        "disease": "Coronary Artery Disease",
+        "recoveredPatients": 2923,
+        "successRate": 76
+      }
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Tamil"
+    ],
+    "insuranceEmpaneled": [
+      "Niva Bupa",
+      "CGHS",
+      "Aditya Birla Health"
+    ],
+    "awards": [],
+    "averageEDWaitTimeMins": 27
+  },
+  {
+    "name": "MIOT International Pune",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 61, Central Avenue",
+      "city": "Pune",
+      "state": "Maharashtra",
+      "pincode": "799397"
+    },
+    "specializations": [
+      "Orthopedics",
+      "Ophthalmology",
+      "Pediatrics",
+      "Cardiology",
+      "Urology",
+      "Nephrology",
+      "Rheumatology"
+    ],
+    "chronicConditionsHandled": [
+      "Diabetes Mellitus",
+      "Hypertension",
+      "Alzheimer's Disease",
+      "Coronary Artery Disease",
+      "Osteoarthritis"
+    ],
+    "facilities": [
+      "Organ Transplant Unit",
+      "Robotic Surgery Suite",
+      "Cath Lab",
+      "ICU",
+      "Telemedicine",
+      "Blood Bank",
+      "Pharmacy"
+    ],
+    "procedures": [
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "Normal Delivery",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 30000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 87,
+      "successfulPatientsCount": 231790,
+      "averageWaitTimeDays": 12,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1320,
+      "doctors": 119,
+      "icuBeds": 29,
+      "ambulances": 10
+    },
+    "ratings": {
+      "patientSatisfaction": 5,
+      "infrastructure": 8.4,
+      "careQuality": 7
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Hypertension",
+        "recoveredPatients": 18241,
+        "successRate": 68
+      },
+      {
+        "disease": "Coronary Artery Disease",
+        "recoveredPatients": 11911,
+        "successRate": 87
+      },
+      {
+        "disease": "Osteoarthritis",
+        "recoveredPatients": 10970,
+        "successRate": 71
+      }
+    ],
+    "languagesSpoken": [
+      "Malayalam",
+      "English",
+      "Telugu",
+      "Urdu"
+    ],
+    "insuranceEmpaneled": [
+      "Care Health Insurance",
+      "Aditya Birla Health",
+      "ICICI Lombard",
+      "CGHS",
+      "Ayushman Bharat (PM-JAY)",
+      "Niva Bupa"
+    ],
+    "awards": [],
+    "averageEDWaitTimeMins": 27
+  },
+  {
+    "name": "Sri Ramachandra Medical Centre Bhopal",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 52, Central Avenue",
+      "city": "Bhopal",
+      "state": "Madhya Pradesh",
+      "pincode": "507012"
+    },
+    "specializations": [
+      "Rheumatology",
+      "Pulmonology",
+      "Gynecology",
+      "Oncology",
+      "Dermatology",
+      "Neurology",
+      "Cardiology"
+    ],
+    "chronicConditionsHandled": [
+      "Asthma",
+      "Coronary Artery Disease",
+      "Liver Cirrhosis",
+      "Alzheimer's Disease",
+      "Parkinson's Disease"
+    ],
+    "facilities": [
+      "Ambulance Services",
+      "Physiotherapy",
+      "PICU",
+      "Telemedicine",
+      "Dialysis Unit",
+      "Robotic Surgery Suite",
+      "NICU"
+    ],
+    "procedures": [
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "C-Section",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 50000,
+          "max": 120000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 91,
+      "successfulPatientsCount": 52098,
+      "averageWaitTimeDays": 13,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1503,
+      "doctors": 99,
+      "icuBeds": 256,
+      "ambulances": 6
+    },
+    "ratings": {
+      "patientSatisfaction": 3.1,
+      "infrastructure": 8.8,
+      "careQuality": 7.7
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Asthma",
+        "recoveredPatients": 21382,
+        "successRate": 87
+      },
+      {
+        "disease": "Liver Cirrhosis",
+        "recoveredPatients": 27126,
+        "successRate": 79
+      },
+      {
+        "disease": "Alzheimer's Disease",
+        "recoveredPatients": 37349,
+        "successRate": 80
+      }
+    ],
+    "languagesSpoken": [
+      "Urdu",
+      "Telugu",
+      "Tamil"
+    ],
+    "insuranceEmpaneled": [
+      "Niva Bupa",
+      "Ayushman Bharat (PM-JAY)",
+      "Care Health Insurance",
+      "CGHS",
+      "Star Health",
+      "ICICI Lombard"
+    ],
+    "awards": [],
+    "averageEDWaitTimeMins": 39
+  },
+  {
+    "name": "Kauvery Hospital Visakhapatnam",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 81, Central Avenue",
+      "city": "Visakhapatnam",
+      "state": "Andhra Pradesh",
+      "pincode": "476823"
+    },
+    "specializations": [
+      "Gastroenterology",
+      "Orthopedics",
+      "Pediatrics",
+      "Rheumatology",
+      "Dermatology",
+      "Oncology",
+      "Ophthalmology"
+    ],
+    "chronicConditionsHandled": [
+      "Osteoarthritis",
+      "Thyroid Disorders",
+      "Diabetes Mellitus",
+      "Hypertension"
+    ],
+    "facilities": [
+      "24x7 Emergency",
+      "ICU",
+      "Pharmacy",
+      "Telemedicine"
+    ],
+    "procedures": [
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      },
+      {
+        "name": "Normal Delivery",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 30000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "C-Section",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 50000,
+          "max": 120000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 93,
+      "successfulPatientsCount": 460288,
+      "averageWaitTimeDays": 4,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1321,
+      "doctors": 455,
+      "icuBeds": 59,
+      "ambulances": 3
+    },
+    "ratings": {
+      "patientSatisfaction": 3.8,
+      "infrastructure": 7.3,
+      "careQuality": 8.2
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Osteoarthritis",
+        "recoveredPatients": 3108,
+        "successRate": 83
+      },
+      {
+        "disease": "Thyroid Disorders",
+        "recoveredPatients": 35106,
+        "successRate": 75
+      },
+      {
+        "disease": "Diabetes Mellitus",
+        "recoveredPatients": 49710,
+        "successRate": 70
+      }
+    ],
+    "languagesSpoken": [
+      "Malayalam",
+      "Odia",
+      "English",
+      "Hindi",
+      "Punjabi"
+    ],
+    "insuranceEmpaneled": [
+      "ICICI Lombard",
+      "Star Health",
+      "Care Health Insurance",
+      "CGHS",
+      "Ayushman Bharat (PM-JAY)"
+    ],
+    "awards": [
+      "Excellence in Healthcare"
+    ],
+    "averageEDWaitTimeMins": 25
+  },
+  {
+    "name": "SIMS Hospital Nagpur",
+    "type": "Government",
+    "location": {
+      "address": "Plot No 80, Central Avenue",
+      "city": "Nagpur",
+      "state": "Maharashtra",
+      "pincode": "323840"
+    },
+    "specializations": [
+      "Cardiology",
+      "Gastroenterology",
+      "Pulmonology",
+      "Rheumatology",
+      "Urology",
+      "Psychiatry"
+    ],
+    "chronicConditionsHandled": [
+      "Parkinson's Disease",
+      "Coronary Artery Disease",
+      "Psoriasis",
+      "Liver Cirrhosis"
+    ],
+    "facilities": [
+      "24x7 Emergency",
+      "Ambulance Services",
+      "Physiotherapy",
+      "Advanced Diagnostics",
+      "Pharmacy"
+    ],
+    "procedures": [
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      },
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      },
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 94,
+      "successfulPatientsCount": 405829,
+      "averageWaitTimeDays": 2,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 128,
+      "doctors": 796,
+      "icuBeds": 214,
+      "ambulances": 4
+    },
+    "ratings": {
+      "patientSatisfaction": 4.6,
+      "infrastructure": 7.1,
+      "careQuality": 8.1
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Parkinson's Disease",
+        "recoveredPatients": 26420,
+        "successRate": 88
+      },
+      {
+        "disease": "Coronary Artery Disease",
+        "recoveredPatients": 38508,
+        "successRate": 61
+      },
+      {
+        "disease": "Liver Cirrhosis",
+        "recoveredPatients": 7129,
+        "successRate": 72
+      }
+    ],
+    "languagesSpoken": [
+      "Bengali",
+      "Malayalam"
+    ],
+    "insuranceEmpaneled": [
+      "CGHS",
+      "Ayushman Bharat (PM-JAY)",
+      "Niva Bupa"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 43
+  },
+  {
+    "name": "Gleneagles Global Health City Chandigarh",
+    "type": "Government",
+    "location": {
+      "address": "Plot No 71, Central Avenue",
+      "city": "Chandigarh",
+      "state": "Chandigarh",
+      "pincode": "641631"
+    },
+    "specializations": [
+      "Oncology",
+      "Psychiatry",
+      "Orthopedics"
+    ],
+    "chronicConditionsHandled": [
+      "Thyroid Disorders",
+      "Hypertension",
+      "Diabetes Mellitus"
+    ],
+    "facilities": [
+      "Radiation Oncology",
+      "ICU",
+      "Robotic Surgery Suite",
+      "Advanced Diagnostics",
+      "Dialysis Unit",
+      "Cath Lab",
+      "Telemedicine"
+    ],
+    "procedures": [
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 88,
+      "successfulPatientsCount": 75289,
+      "averageWaitTimeDays": 9,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1504,
+      "doctors": 595,
+      "icuBeds": 61,
+      "ambulances": 14
+    },
+    "ratings": {
+      "patientSatisfaction": 4.1,
+      "infrastructure": 10,
+      "careQuality": 8.6
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Thyroid Disorders",
+        "recoveredPatients": 22141,
+        "successRate": 72
+      }
+    ],
+    "languagesSpoken": [
+      "Marathi",
+      "Gujarati",
+      "Malayalam"
+    ],
+    "insuranceEmpaneled": [
+      "Niva Bupa",
+      "ICICI Lombard",
+      "HDFC ERGO",
+      "Star Health"
+    ],
+    "awards": [
+      "Excellence in Healthcare"
+    ],
+    "averageEDWaitTimeMins": 23
+  },
+  {
+    "name": "Vijaya Hospital Lucknow",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 89, Central Avenue",
+      "city": "Lucknow",
+      "state": "Uttar Pradesh",
+      "pincode": "547593"
+    },
+    "specializations": [
+      "Pediatrics",
+      "Orthopedics",
+      "Nephrology"
+    ],
+    "chronicConditionsHandled": [
+      "Chronic Kidney Disease",
+      "Epilepsy",
+      "Diabetes Mellitus",
+      "Liver Cirrhosis",
+      "Osteoarthritis",
+      "Psoriasis"
+    ],
+    "facilities": [
+      "24x7 Emergency",
+      "Advanced Diagnostics",
+      "Physiotherapy",
+      "Telemedicine",
+      "Ambulance Services",
+      "Cath Lab"
+    ],
+    "procedures": [
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 97,
+      "successfulPatientsCount": 44399,
+      "averageWaitTimeDays": 14,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1027,
+      "doctors": 458,
+      "icuBeds": 274,
+      "ambulances": 10
+    },
+    "ratings": {
+      "patientSatisfaction": 4.5,
+      "infrastructure": 9.5,
+      "careQuality": 9
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Liver Cirrhosis",
+        "recoveredPatients": 27748,
+        "successRate": 65
+      }
+    ],
+    "languagesSpoken": [
+      "Gujarati",
+      "Telugu",
+      "Marathi",
+      "Malayalam",
+      "Bengali"
+    ],
+    "insuranceEmpaneled": [
+      "ICICI Lombard",
+      "Niva Bupa",
+      "CGHS",
+      "Star Health",
+      "Aditya Birla Health"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 54
+  },
+  {
+    "name": "Ruby Hall Clinic Chandigarh",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 96, Central Avenue",
+      "city": "Chandigarh",
+      "state": "Chandigarh",
+      "pincode": "251285"
+    },
+    "specializations": [
+      "Pediatrics",
+      "Cardiology",
+      "Neurology",
+      "Dermatology"
+    ],
+    "chronicConditionsHandled": [
+      "Diabetes Mellitus",
+      "Hypertension",
+      "Parkinson's Disease",
+      "Osteoarthritis",
+      "Epilepsy"
+    ],
+    "facilities": [
+      "NICU",
+      "PICU",
+      "Robotic Surgery Suite",
+      "Dialysis Unit",
+      "Radiation Oncology",
+      "Physiotherapy",
+      "Advanced Diagnostics"
+    ],
+    "procedures": [
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Normal Delivery",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 30000,
+          "max": 80000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 86,
+      "successfulPatientsCount": 316763,
+      "averageWaitTimeDays": 5,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1013,
+      "doctors": 439,
+      "icuBeds": 257,
+      "ambulances": 6
+    },
+    "ratings": {
+      "patientSatisfaction": 3.4,
+      "infrastructure": 9.4,
+      "careQuality": 7.5
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Diabetes Mellitus",
+        "recoveredPatients": 24817,
+        "successRate": 93
+      },
+      {
+        "disease": "Hypertension",
+        "recoveredPatients": 18770,
+        "successRate": 71
+      }
+    ],
+    "languagesSpoken": [
+      "Tamil",
+      "Kannada",
+      "Odia",
+      "Hindi",
+      "Gujarati"
+    ],
+    "insuranceEmpaneled": [
+      "ICICI Lombard",
+      "HDFC ERGO",
+      "Niva Bupa"
+    ],
+    "awards": [
+      "Excellence in Healthcare"
+    ],
+    "averageEDWaitTimeMins": 56
+  },
+  {
+    "name": "Sahyadri Super Speciality Hospital Kochi",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 17, Central Avenue",
+      "city": "Kochi",
+      "state": "Kerala",
+      "pincode": "502468"
+    },
+    "specializations": [
+      "Orthopedics",
+      "Cardiology",
+      "Ophthalmology",
+      "Nephrology"
+    ],
+    "chronicConditionsHandled": [
+      "COPD",
+      "Coronary Artery Disease",
+      "Thyroid Disorders",
+      "Epilepsy",
+      "Osteoarthritis"
+    ],
+    "facilities": [
+      "PICU",
+      "NICU",
+      "Dialysis Unit",
+      "Cath Lab",
+      "Ambulance Services"
+    ],
+    "procedures": [
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      },
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Normal Delivery",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 30000,
+          "max": 80000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 95,
+      "successfulPatientsCount": 176591,
+      "averageWaitTimeDays": 11,
+      "nabhAccredited": false
+    },
+    "statistics": {
+      "beds": 1837,
+      "doctors": 225,
+      "icuBeds": 152,
+      "ambulances": 7
+    },
+    "ratings": {
+      "patientSatisfaction": 4,
+      "infrastructure": 8.9,
+      "careQuality": 9.9
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Thyroid Disorders",
+        "recoveredPatients": 42797,
+        "successRate": 91
+      },
+      {
+        "disease": "Epilepsy",
+        "recoveredPatients": 11472,
+        "successRate": 71
+      },
+      {
+        "disease": "Osteoarthritis",
+        "recoveredPatients": 43541,
+        "successRate": 74
+      }
+    ],
+    "languagesSpoken": [
+      "Marathi",
+      "Telugu",
+      "Punjabi",
+      "English",
+      "Gujarati"
+    ],
+    "insuranceEmpaneled": [
+      "Niva Bupa",
+      "HDFC ERGO",
+      "Aditya Birla Health",
+      "Ayushman Bharat (PM-JAY)",
+      "Care Health Insurance",
+      "CGHS"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 42
+  },
+  {
+    "name": "Deenanath Mangeshkar Hospital Kochi",
+    "type": "Government",
+    "location": {
+      "address": "Plot No 56, Central Avenue",
+      "city": "Kochi",
+      "state": "Kerala",
+      "pincode": "393967"
+    },
+    "specializations": [
+      "Orthopedics",
+      "Pulmonology",
+      "Cardiology"
+    ],
+    "chronicConditionsHandled": [
+      "Diabetes Mellitus",
+      "Parkinson's Disease",
+      "Liver Cirrhosis",
+      "Asthma"
+    ],
+    "facilities": [
+      "Telemedicine",
+      "Dialysis Unit",
+      "PICU",
+      "ICU",
+      "Robotic Surgery Suite"
+    ],
+    "procedures": [
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      },
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 93,
+      "successfulPatientsCount": 116386,
+      "averageWaitTimeDays": 5,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1672,
+      "doctors": 151,
+      "icuBeds": 292,
+      "ambulances": 8
+    },
+    "ratings": {
+      "patientSatisfaction": 3.9,
+      "infrastructure": 7.3,
+      "careQuality": 8.9
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Asthma",
+        "recoveredPatients": 43964,
+        "successRate": 60
+      }
+    ],
+    "languagesSpoken": [
+      "Bengali",
+      "Telugu",
+      "Tamil",
+      "Gujarati"
+    ],
+    "insuranceEmpaneled": [
+      "CGHS",
+      "Ayushman Bharat (PM-JAY)",
+      "HDFC ERGO"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 38
+  },
+  {
+    "name": "Jehangir Hospital Guwahati",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 12, Central Avenue",
+      "city": "Guwahati",
+      "state": "Assam",
+      "pincode": "424605"
+    },
+    "specializations": [
+      "Endocrinology",
+      "Dermatology",
+      "Orthopedics",
+      "Rheumatology",
+      "Ophthalmology",
+      "Neurology"
+    ],
+    "chronicConditionsHandled": [
+      "Parkinson's Disease",
+      "Rheumatoid Arthritis",
+      "Liver Cirrhosis"
+    ],
+    "facilities": [
+      "ICU",
+      "24x7 Emergency",
+      "Dialysis Unit",
+      "NICU",
+      "PICU",
+      "Ambulance Services"
+    ],
+    "procedures": [
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "C-Section",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 50000,
+          "max": 120000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 98,
+      "successfulPatientsCount": 468290,
+      "averageWaitTimeDays": 12,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1501,
+      "doctors": 361,
+      "icuBeds": 89,
+      "ambulances": 11
+    },
+    "ratings": {
+      "patientSatisfaction": 4.9,
+      "infrastructure": 9.3,
+      "careQuality": 8.3
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Rheumatoid Arthritis",
+        "recoveredPatients": 38755,
+        "successRate": 64
+      },
+      {
+        "disease": "Liver Cirrhosis",
+        "recoveredPatients": 31558,
+        "successRate": 94
+      }
+    ],
+    "languagesSpoken": [
+      "Tamil",
+      "Punjabi",
+      "Odia",
+      "Hindi"
+    ],
+    "insuranceEmpaneled": [
+      "ICICI Lombard",
+      "Star Health",
+      "Care Health Insurance"
+    ],
+    "awards": [
+      "Excellence in Healthcare"
+    ],
+    "averageEDWaitTimeMins": 40
+  },
+  {
+    "name": "Aditya Birla Memorial Hospital Lucknow",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 26, Central Avenue",
+      "city": "Lucknow",
+      "state": "Uttar Pradesh",
+      "pincode": "449862"
+    },
+    "specializations": [
+      "Endocrinology",
+      "Rheumatology",
+      "Pulmonology",
+      "Nephrology",
+      "Gastroenterology",
+      "Pediatrics"
+    ],
+    "chronicConditionsHandled": [
+      "COPD",
+      "Osteoarthritis",
+      "Asthma",
+      "Coronary Artery Disease"
+    ],
+    "facilities": [
+      "PICU",
+      "Ambulance Services",
+      "Cath Lab",
+      "Blood Bank",
+      "Pharmacy",
+      "Advanced Diagnostics",
+      "Organ Transplant Unit"
+    ],
+    "procedures": [
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      },
+      {
+        "name": "Normal Delivery",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 30000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 91,
+      "successfulPatientsCount": 283900,
+      "averageWaitTimeDays": 7,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1384,
+      "doctors": 520,
+      "icuBeds": 222,
+      "ambulances": 10
+    },
+    "ratings": {
+      "patientSatisfaction": 3,
+      "infrastructure": 7.1,
+      "careQuality": 8.6
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "COPD",
+        "recoveredPatients": 49199,
+        "successRate": 89
+      },
+      {
+        "disease": "Osteoarthritis",
+        "recoveredPatients": 15487,
+        "successRate": 83
+      }
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi"
+    ],
+    "insuranceEmpaneled": [
+      "ICICI Lombard",
+      "Star Health",
+      "Care Health Insurance",
+      "Aditya Birla Health",
+      "HDFC ERGO"
+    ],
+    "awards": [],
+    "averageEDWaitTimeMins": 25
+  },
+  {
+    "name": "Sakra World Hospital Hyderabad",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 77, Central Avenue",
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "pincode": "247661"
+    },
+    "specializations": [
+      "Pulmonology",
+      "Orthopedics",
+      "Nephrology",
+      "Gynecology",
+      "Endocrinology",
+      "Urology",
+      "Rheumatology"
+    ],
+    "chronicConditionsHandled": [
+      "Alzheimer's Disease",
+      "Osteoarthritis",
+      "Hypertension",
+      "Coronary Artery Disease"
+    ],
+    "facilities": [
+      "Pharmacy",
+      "Cath Lab",
+      "Dialysis Unit",
+      "PICU"
+    ],
+    "procedures": [
+      {
+        "name": "Normal Delivery",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 30000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 95,
+      "successfulPatientsCount": 195442,
+      "averageWaitTimeDays": 5,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 613,
+      "doctors": 756,
+      "icuBeds": 180,
+      "ambulances": 10
+    },
+    "ratings": {
+      "patientSatisfaction": 3.3,
+      "infrastructure": 7.7,
+      "careQuality": 7.5
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Alzheimer's Disease",
+        "recoveredPatients": 30737,
+        "successRate": 74
+      }
+    ],
+    "languagesSpoken": [
+      "Urdu",
+      "Telugu"
+    ],
+    "insuranceEmpaneled": [
+      "Star Health",
+      "Aditya Birla Health",
+      "Care Health Insurance",
+      "HDFC ERGO",
+      "Ayushman Bharat (PM-JAY)",
+      "CGHS"
+    ],
+    "awards": [
+      "Excellence in Healthcare"
+    ],
+    "averageEDWaitTimeMins": 30
+  },
+  {
+    "name": "BGS Gleneagles Global Hospital Kolkata",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 32, Central Avenue",
+      "city": "Kolkata",
+      "state": "West Bengal",
+      "pincode": "380983"
+    },
+    "specializations": [
+      "Neurology",
+      "Oncology",
+      "Dermatology",
+      "Nephrology",
+      "Gastroenterology"
+    ],
+    "chronicConditionsHandled": [
+      "Coronary Artery Disease",
+      "Hypertension",
+      "COPD",
+      "Chronic Pancreatitis",
+      "Psoriasis"
+    ],
+    "facilities": [
+      "Telemedicine",
+      "Ambulance Services",
+      "Cath Lab",
+      "24x7 Emergency"
+    ],
+    "procedures": [
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      },
+      {
+        "name": "Normal Delivery",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 30000,
+          "max": 80000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 96,
+      "successfulPatientsCount": 374912,
+      "averageWaitTimeDays": 1,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1346,
+      "doctors": 430,
+      "icuBeds": 233,
+      "ambulances": 12
+    },
+    "ratings": {
+      "patientSatisfaction": 4.9,
+      "infrastructure": 8.5,
+      "careQuality": 9
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Coronary Artery Disease",
+        "recoveredPatients": 46426,
+        "successRate": 85
+      },
+      {
+        "disease": "Hypertension",
+        "recoveredPatients": 24399,
+        "successRate": 71
+      },
+      {
+        "disease": "Chronic Pancreatitis",
+        "recoveredPatients": 19874,
+        "successRate": 71
+      }
+    ],
+    "languagesSpoken": [
+      "Punjabi",
+      "Malayalam",
+      "Marathi",
+      "Telugu"
+    ],
+    "insuranceEmpaneled": [
+      "ICICI Lombard",
+      "CGHS",
+      "Star Health",
+      "Care Health Insurance"
+    ],
+    "awards": [
+      "Excellence in Healthcare"
+    ],
+    "averageEDWaitTimeMins": 34
+  },
+  {
+    "name": "Fortis La Femme Patna",
+    "type": "Government",
+    "location": {
+      "address": "Plot No 45, Central Avenue",
+      "city": "Patna",
+      "state": "Bihar",
+      "pincode": "482103"
+    },
+    "specializations": [
+      "Dermatology",
+      "Orthopedics",
+      "Cardiology",
+      "Rheumatology",
+      "Oncology",
+      "Gastroenterology"
+    ],
+    "chronicConditionsHandled": [
+      "Coronary Artery Disease",
+      "Parkinson's Disease",
+      "Asthma",
+      "COPD",
+      "Rheumatoid Arthritis"
+    ],
+    "facilities": [
+      "NICU",
+      "Ambulance Services",
+      "Telemedicine",
+      "Cath Lab",
+      "ICU",
+      "Radiation Oncology",
+      "PICU",
+      "Organ Transplant Unit"
+    ],
+    "procedures": [
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 86,
+      "successfulPatientsCount": 109490,
+      "averageWaitTimeDays": 11,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 520,
+      "doctors": 590,
+      "icuBeds": 108,
+      "ambulances": 17
+    },
+    "ratings": {
+      "patientSatisfaction": 3.9,
+      "infrastructure": 9.2,
+      "careQuality": 7.7
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Parkinson's Disease",
+        "recoveredPatients": 17799,
+        "successRate": 93
+      },
+      {
+        "disease": "Asthma",
+        "recoveredPatients": 29172,
+        "successRate": 69
+      },
+      {
+        "disease": "COPD",
+        "recoveredPatients": 38910,
+        "successRate": 92
+      },
+      {
+        "disease": "Rheumatoid Arthritis",
+        "recoveredPatients": 1926,
+        "successRate": 93
+      }
+    ],
+    "languagesSpoken": [
+      "Malayalam",
+      "Hindi"
+    ],
+    "insuranceEmpaneled": [
+      "ICICI Lombard",
+      "Star Health",
+      "Niva Bupa"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 33
+  },
+  {
+    "name": "Artemis Hospital Bhopal",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 55, Central Avenue",
+      "city": "Bhopal",
+      "state": "Madhya Pradesh",
+      "pincode": "683946"
+    },
+    "specializations": [
+      "Urology",
+      "Oncology",
+      "Pediatrics",
+      "Orthopedics",
+      "Gastroenterology",
+      "Cardiology"
+    ],
+    "chronicConditionsHandled": [
+      "Rheumatoid Arthritis",
+      "Psoriasis",
+      "Thyroid Disorders",
+      "Epilepsy",
+      "Osteoarthritis"
+    ],
+    "facilities": [
+      "24x7 Emergency",
+      "Physiotherapy",
+      "ICU",
+      "Advanced Diagnostics",
+      "NICU",
+      "Cath Lab",
+      "Ambulance Services"
+    ],
+    "procedures": [
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      },
+      {
+        "name": "Normal Delivery",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 30000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 97,
+      "successfulPatientsCount": 263879,
+      "averageWaitTimeDays": 3,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 905,
+      "doctors": 189,
+      "icuBeds": 277,
+      "ambulances": 6
+    },
+    "ratings": {
+      "patientSatisfaction": 3.3,
+      "infrastructure": 9.6,
+      "careQuality": 7.7
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Epilepsy",
+        "recoveredPatients": 47629,
+        "successRate": 69
+      }
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Odia"
+    ],
+    "insuranceEmpaneled": [
+      "Ayushman Bharat (PM-JAY)",
+      "Niva Bupa",
+      "Star Health",
+      "ICICI Lombard",
+      "Aditya Birla Health",
+      "CGHS"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 17
+  },
+  {
+    "name": "Batra Hospital Bangalore",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 74, Central Avenue",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "pincode": "201292"
+    },
+    "specializations": [
+      "Gastroenterology",
+      "Endocrinology",
+      "Orthopedics"
+    ],
+    "chronicConditionsHandled": [
+      "Osteoarthritis",
+      "Liver Cirrhosis",
+      "Coronary Artery Disease",
+      "COPD",
+      "Alzheimer's Disease"
+    ],
+    "facilities": [
+      "NICU",
+      "ICU",
+      "Organ Transplant Unit",
+      "Pharmacy",
+      "Radiation Oncology",
+      "Physiotherapy",
+      "Blood Bank",
+      "Advanced Diagnostics"
+    ],
+    "procedures": [
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "C-Section",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 50000,
+          "max": 120000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 90,
+      "successfulPatientsCount": 145231,
+      "averageWaitTimeDays": 9,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 704,
+      "doctors": 528,
+      "icuBeds": 240,
+      "ambulances": 20
+    },
+    "ratings": {
+      "patientSatisfaction": 3.1,
+      "infrastructure": 8.8,
+      "careQuality": 9.1
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Osteoarthritis",
+        "recoveredPatients": 49816,
+        "successRate": 74
+      },
+      {
+        "disease": "Liver Cirrhosis",
+        "recoveredPatients": 1964,
+        "successRate": 81
+      },
+      {
+        "disease": "COPD",
+        "recoveredPatients": 41038,
+        "successRate": 91
+      },
+      {
+        "disease": "Alzheimer's Disease",
+        "recoveredPatients": 27885,
+        "successRate": 78
+      }
+    ],
+    "languagesSpoken": [
+      "Telugu",
+      "Tamil",
+      "Malayalam"
+    ],
+    "insuranceEmpaneled": [
+      "Niva Bupa",
+      "CGHS",
+      "Care Health Insurance",
+      "ICICI Lombard",
+      "Aditya Birla Health"
+    ],
+    "awards": [],
+    "averageEDWaitTimeMins": 34
+  },
+  {
+    "name": "BLK Super Speciality Hospital Chandigarh",
+    "type": "Government",
+    "location": {
+      "address": "Plot No 25, Central Avenue",
+      "city": "Chandigarh",
+      "state": "Chandigarh",
+      "pincode": "346960"
+    },
+    "specializations": [
+      "Ophthalmology",
+      "Endocrinology",
+      "Gastroenterology",
+      "Nephrology",
+      "Pulmonology",
+      "Gynecology"
+    ],
+    "chronicConditionsHandled": [
+      "Epilepsy",
+      "Chronic Kidney Disease",
+      "Parkinson's Disease",
+      "Alzheimer's Disease"
+    ],
+    "facilities": [
+      "Telemedicine",
+      "24x7 Emergency",
+      "NICU",
+      "Organ Transplant Unit",
+      "Dialysis Unit",
+      "Robotic Surgery Suite"
+    ],
+    "procedures": [
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 89,
+      "successfulPatientsCount": 384720,
+      "averageWaitTimeDays": 15,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 505,
+      "doctors": 623,
+      "icuBeds": 126,
+      "ambulances": 17
+    },
+    "ratings": {
+      "patientSatisfaction": 3.7,
+      "infrastructure": 7.7,
+      "careQuality": 8.8
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Chronic Kidney Disease",
+        "recoveredPatients": 12066,
+        "successRate": 65
+      },
+      {
+        "disease": "Parkinson's Disease",
+        "recoveredPatients": 38853,
+        "successRate": 71
+      }
+    ],
+    "languagesSpoken": [
+      "Bengali",
+      "Punjabi"
+    ],
+    "insuranceEmpaneled": [
+      "ICICI Lombard",
+      "Ayushman Bharat (PM-JAY)",
+      "CGHS"
+    ],
+    "awards": [
+      "Excellence in Healthcare"
+    ],
+    "averageEDWaitTimeMins": 53
+  },
+  {
+    "name": "Indraprastha Apollo Hospitals Pune",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 48, Central Avenue",
+      "city": "Pune",
+      "state": "Maharashtra",
+      "pincode": "416050"
+    },
+    "specializations": [
+      "Neurology",
+      "Cardiology",
+      "Nephrology",
+      "Gastroenterology",
+      "Urology"
+    ],
+    "chronicConditionsHandled": [
+      "Coronary Artery Disease",
+      "Chronic Pancreatitis",
+      "Diabetes Mellitus"
+    ],
+    "facilities": [
+      "24x7 Emergency",
+      "Organ Transplant Unit",
+      "Robotic Surgery Suite",
+      "Radiation Oncology"
+    ],
+    "procedures": [
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "C-Section",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 50000,
+          "max": 120000
+        }
+      },
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 85,
+      "successfulPatientsCount": 37594,
+      "averageWaitTimeDays": 14,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1044,
+      "doctors": 403,
+      "icuBeds": 280,
+      "ambulances": 4
+    },
+    "ratings": {
+      "patientSatisfaction": 3.3,
+      "infrastructure": 7.7,
+      "careQuality": 7.7
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Coronary Artery Disease",
+        "recoveredPatients": 43378,
+        "successRate": 81
+      }
+    ],
+    "languagesSpoken": [
+      "Tamil",
+      "Kannada"
+    ],
+    "insuranceEmpaneled": [
+      "Aditya Birla Health",
+      "ICICI Lombard",
+      "CGHS",
+      "Niva Bupa",
+      "Star Health",
+      "Care Health Insurance"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 41
+  },
+  {
+    "name": "Rajiv Gandhi Cancer Institute Bhubaneswar",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 100, Central Avenue",
+      "city": "Bhubaneswar",
+      "state": "Odisha",
+      "pincode": "768029"
+    },
+    "specializations": [
+      "Endocrinology",
+      "Pulmonology",
+      "Cardiology",
+      "Nephrology"
+    ],
+    "chronicConditionsHandled": [
+      "Diabetes Mellitus",
+      "Epilepsy",
+      "Rheumatoid Arthritis"
+    ],
+    "facilities": [
+      "24x7 Emergency",
+      "Physiotherapy",
+      "Blood Bank",
+      "ICU",
+      "Advanced Diagnostics",
+      "Robotic Surgery Suite",
+      "Organ Transplant Unit",
+      "NICU"
+    ],
+    "procedures": [
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 97,
+      "successfulPatientsCount": 306702,
+      "averageWaitTimeDays": 7,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 759,
+      "doctors": 615,
+      "icuBeds": 90,
+      "ambulances": 14
+    },
+    "ratings": {
+      "patientSatisfaction": 4.2,
+      "infrastructure": 8.2,
+      "careQuality": 9.1
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Diabetes Mellitus",
+        "recoveredPatients": 47263,
+        "successRate": 73
+      },
+      {
+        "disease": "Rheumatoid Arthritis",
+        "recoveredPatients": 32096,
+        "successRate": 86
+      }
+    ],
+    "languagesSpoken": [
+      "Telugu",
+      "Malayalam",
+      "Punjabi",
+      "English",
+      "Bengali"
+    ],
+    "insuranceEmpaneled": [
+      "Ayushman Bharat (PM-JAY)",
+      "Star Health",
+      "Niva Bupa",
+      "ICICI Lombard"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 47
+  },
+  {
+    "name": "Sanjeevani Hospital Bhubaneswar",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 38, Central Avenue",
+      "city": "Bhubaneswar",
+      "state": "Odisha",
+      "pincode": "552864"
+    },
+    "specializations": [
+      "Nephrology",
+      "Cardiology",
+      "Orthopedics",
+      "Rheumatology",
+      "Endocrinology"
+    ],
+    "chronicConditionsHandled": [
+      "Thyroid Disorders",
+      "Diabetes Mellitus",
+      "Chronic Kidney Disease",
+      "Hypertension",
+      "Rheumatoid Arthritis",
+      "Chronic Pancreatitis"
+    ],
+    "facilities": [
+      "Pharmacy",
+      "NICU",
+      "Cath Lab",
+      "Physiotherapy",
+      "Organ Transplant Unit",
+      "Radiation Oncology",
+      "Ambulance Services"
+    ],
+    "procedures": [
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 96,
+      "successfulPatientsCount": 180578,
+      "averageWaitTimeDays": 2,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1858,
+      "doctors": 677,
+      "icuBeds": 67,
+      "ambulances": 5
+    },
+    "ratings": {
+      "patientSatisfaction": 3.9,
+      "infrastructure": 7.6,
+      "careQuality": 8.4
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Thyroid Disorders",
+        "recoveredPatients": 40859,
+        "successRate": 85
+      },
+      {
+        "disease": "Diabetes Mellitus",
+        "recoveredPatients": 46637,
+        "successRate": 78
+      },
+      {
+        "disease": "Hypertension",
+        "recoveredPatients": 13905,
+        "successRate": 70
+      }
+    ],
+    "languagesSpoken": [
+      "Telugu",
+      "Malayalam",
+      "Gujarati",
+      "Marathi"
+    ],
+    "insuranceEmpaneled": [
+      "Aditya Birla Health",
+      "HDFC ERGO",
+      "Niva Bupa",
+      "ICICI Lombard",
+      "Star Health"
+    ],
+    "awards": [
+      "Excellence in Healthcare"
+    ],
+    "averageEDWaitTimeMins": 48
+  },
+  {
+    "name": "Wockhardt Hospital Bhubaneswar",
+    "type": "Government",
+    "location": {
+      "address": "Plot No 57, Central Avenue",
+      "city": "Bhubaneswar",
+      "state": "Odisha",
+      "pincode": "659864"
+    },
+    "specializations": [
+      "Cardiology",
+      "Dermatology",
+      "Oncology"
+    ],
+    "chronicConditionsHandled": [
+      "Coronary Artery Disease",
+      "Alzheimer's Disease",
+      "Asthma",
+      "COPD",
+      "Chronic Kidney Disease"
+    ],
+    "facilities": [
+      "Robotic Surgery Suite",
+      "Telemedicine",
+      "PICU",
+      "Dialysis Unit"
+    ],
+    "procedures": [
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "Normal Delivery",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 30000,
+          "max": 80000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 95,
+      "successfulPatientsCount": 321545,
+      "averageWaitTimeDays": 3,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1004,
+      "doctors": 365,
+      "icuBeds": 239,
+      "ambulances": 7
+    },
+    "ratings": {
+      "patientSatisfaction": 3.1,
+      "infrastructure": 8.8,
+      "careQuality": 9.4
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Alzheimer's Disease",
+        "recoveredPatients": 2273,
+        "successRate": 85
+      },
+      {
+        "disease": "COPD",
+        "recoveredPatients": 35845,
+        "successRate": 65
+      },
+      {
+        "disease": "Chronic Kidney Disease",
+        "recoveredPatients": 9785,
+        "successRate": 82
+      }
+    ],
+    "languagesSpoken": [
+      "Telugu",
+      "Kannada",
+      "Tamil"
+    ],
+    "insuranceEmpaneled": [
+      "HDFC ERGO",
+      "Niva Bupa",
+      "Star Health",
+      "Aditya Birla Health",
+      "ICICI Lombard"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 28
+  },
+  {
+    "name": "Sterling Hospital Pune",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 18, Central Avenue",
+      "city": "Pune",
+      "state": "Maharashtra",
+      "pincode": "752776"
+    },
+    "specializations": [
+      "Pulmonology",
+      "Cardiology",
+      "Endocrinology",
+      "Pediatrics",
+      "Neurology",
+      "Oncology",
+      "Dermatology"
+    ],
+    "chronicConditionsHandled": [
+      "Epilepsy",
+      "Diabetes Mellitus",
+      "Chronic Kidney Disease",
+      "COPD",
+      "Asthma",
+      "Thyroid Disorders"
+    ],
+    "facilities": [
+      "24x7 Emergency",
+      "Telemedicine",
+      "NICU",
+      "Cath Lab",
+      "PICU"
+    ],
+    "procedures": [
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      },
+      {
+        "name": "Normal Delivery",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 30000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 97,
+      "successfulPatientsCount": 264546,
+      "averageWaitTimeDays": 8,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1963,
+      "doctors": 757,
+      "icuBeds": 183,
+      "ambulances": 16
+    },
+    "ratings": {
+      "patientSatisfaction": 4.9,
+      "infrastructure": 7,
+      "careQuality": 8.5
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Diabetes Mellitus",
+        "recoveredPatients": 46904,
+        "successRate": 60
+      },
+      {
+        "disease": "Asthma",
+        "recoveredPatients": 15627,
+        "successRate": 95
+      }
+    ],
+    "languagesSpoken": [
+      "Bengali",
+      "Odia",
+      "Urdu"
+    ],
+    "insuranceEmpaneled": [
+      "ICICI Lombard",
+      "Aditya Birla Health",
+      "Ayushman Bharat (PM-JAY)",
+      "HDFC ERGO"
+    ],
+    "awards": [],
+    "averageEDWaitTimeMins": 29
+  },
+  {
+    "name": "Zydus Hospital Kolkata",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 73, Central Avenue",
+      "city": "Kolkata",
+      "state": "West Bengal",
+      "pincode": "427886"
+    },
+    "specializations": [
+      "Gynecology",
+      "Pediatrics",
+      "Pulmonology",
+      "Cardiology"
+    ],
+    "chronicConditionsHandled": [
+      "Thyroid Disorders",
+      "Liver Cirrhosis",
+      "COPD",
+      "Coronary Artery Disease"
+    ],
+    "facilities": [
+      "Pharmacy",
+      "Ambulance Services",
+      "Robotic Surgery Suite",
+      "24x7 Emergency",
+      "Cath Lab"
+    ],
+    "procedures": [
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "Normal Delivery",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 30000,
+          "max": 80000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 95,
+      "successfulPatientsCount": 442107,
+      "averageWaitTimeDays": 11,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 763,
+      "doctors": 350,
+      "icuBeds": 75,
+      "ambulances": 19
+    },
+    "ratings": {
+      "patientSatisfaction": 4.8,
+      "infrastructure": 7.4,
+      "careQuality": 8.9
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Liver Cirrhosis",
+        "recoveredPatients": 18799,
+        "successRate": 89
+      },
+      {
+        "disease": "Coronary Artery Disease",
+        "recoveredPatients": 2363,
+        "successRate": 78
+      }
+    ],
+    "languagesSpoken": [
+      "Marathi",
+      "English",
+      "Urdu",
+      "Punjabi"
+    ],
+    "insuranceEmpaneled": [
+      "HDFC ERGO",
+      "CGHS",
+      "Ayushman Bharat (PM-JAY)"
+    ],
+    "awards": [],
+    "averageEDWaitTimeMins": 59
+  },
+  {
+    "name": "CIMS Hospital Nagpur",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 96, Central Avenue",
+      "city": "Nagpur",
+      "state": "Maharashtra",
+      "pincode": "702882"
+    },
+    "specializations": [
+      "Pulmonology",
+      "Cardiology",
+      "Endocrinology"
+    ],
+    "chronicConditionsHandled": [
+      "Asthma",
+      "Osteoarthritis",
+      "Alzheimer's Disease",
+      "Rheumatoid Arthritis"
+    ],
+    "facilities": [
+      "NICU",
+      "Advanced Diagnostics",
+      "Cath Lab",
+      "Ambulance Services",
+      "ICU"
+    ],
+    "procedures": [
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 85,
+      "successfulPatientsCount": 384631,
+      "averageWaitTimeDays": 2,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 228,
+      "doctors": 445,
+      "icuBeds": 178,
+      "ambulances": 14
+    },
+    "ratings": {
+      "patientSatisfaction": 3.8,
+      "infrastructure": 8.1,
+      "careQuality": 7.8
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Osteoarthritis",
+        "recoveredPatients": 43489,
+        "successRate": 93
+      },
+      {
+        "disease": "Rheumatoid Arthritis",
+        "recoveredPatients": 24587,
+        "successRate": 95
+      }
+    ],
+    "languagesSpoken": [
+      "Telugu",
+      "Tamil",
+      "Punjabi",
+      "Gujarati"
+    ],
+    "insuranceEmpaneled": [
+      "CGHS",
+      "ICICI Lombard",
+      "Ayushman Bharat (PM-JAY)",
+      "Star Health"
+    ],
+    "awards": [
+      "Excellence in Healthcare"
+    ],
+    "averageEDWaitTimeMins": 56
+  },
+  {
+    "name": "Shalby Hospital Hyderabad",
+    "type": "Government",
+    "location": {
+      "address": "Plot No 82, Central Avenue",
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "pincode": "389122"
+    },
+    "specializations": [
+      "Urology",
+      "Pediatrics",
+      "Endocrinology",
+      "Cardiology",
+      "Ophthalmology"
+    ],
+    "chronicConditionsHandled": [
+      "COPD",
+      "Diabetes Mellitus",
+      "Epilepsy",
+      "Osteoarthritis"
+    ],
+    "facilities": [
+      "24x7 Emergency",
+      "Radiation Oncology",
+      "Robotic Surgery Suite",
+      "Pharmacy",
+      "Ambulance Services",
+      "Physiotherapy",
+      "ICU"
+    ],
+    "procedures": [
+      {
+        "name": "Normal Delivery",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 30000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      },
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 96,
+      "successfulPatientsCount": 132240,
+      "averageWaitTimeDays": 7,
+      "nabhAccredited": false
+    },
+    "statistics": {
+      "beds": 1529,
+      "doctors": 619,
+      "icuBeds": 117,
+      "ambulances": 15
+    },
+    "ratings": {
+      "patientSatisfaction": 3.9,
+      "infrastructure": 9.6,
+      "careQuality": 9.8
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Osteoarthritis",
+        "recoveredPatients": 21008,
+        "successRate": 70
+      }
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi"
+    ],
+    "insuranceEmpaneled": [
+      "CGHS",
+      "HDFC ERGO",
+      "Aditya Birla Health",
+      "Care Health Insurance",
+      "Star Health",
+      "Niva Bupa"
+    ],
+    "awards": [],
+    "averageEDWaitTimeMins": 23
+  },
+  {
+    "name": "Apollo CBCC Cancer Care Jaipur",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 42, Central Avenue",
+      "city": "Jaipur",
+      "state": "Rajasthan",
+      "pincode": "399549"
+    },
+    "specializations": [
+      "Pediatrics",
+      "Psychiatry",
+      "Urology",
+      "Gynecology",
+      "Orthopedics"
+    ],
+    "chronicConditionsHandled": [
+      "COPD",
+      "Thyroid Disorders",
+      "Rheumatoid Arthritis",
+      "Asthma",
+      "Epilepsy"
+    ],
+    "facilities": [
+      "Advanced Diagnostics",
+      "PICU",
+      "NICU",
+      "Physiotherapy",
+      "Organ Transplant Unit"
+    ],
+    "procedures": [
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 89,
+      "successfulPatientsCount": 133735,
+      "averageWaitTimeDays": 10,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1582,
+      "doctors": 329,
+      "icuBeds": 292,
+      "ambulances": 17
+    },
+    "ratings": {
+      "patientSatisfaction": 4.3,
+      "infrastructure": 9.4,
+      "careQuality": 7.6
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "COPD",
+        "recoveredPatients": 41076,
+        "successRate": 72
+      },
+      {
+        "disease": "Thyroid Disorders",
+        "recoveredPatients": 28380,
+        "successRate": 86
+      },
+      {
+        "disease": "Rheumatoid Arthritis",
+        "recoveredPatients": 21106,
+        "successRate": 85
+      },
+      {
+        "disease": "Asthma",
+        "recoveredPatients": 6866,
+        "successRate": 75
+      },
+      {
+        "disease": "Epilepsy",
+        "recoveredPatients": 4493,
+        "successRate": 92
+      }
+    ],
+    "languagesSpoken": [
+      "English",
+      "Bengali",
+      "Hindi",
+      "Kannada"
+    ],
+    "insuranceEmpaneled": [
+      "Aditya Birla Health",
+      "Ayushman Bharat (PM-JAY)",
+      "Care Health Insurance",
+      "Star Health"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 42
+  },
+  {
+    "name": "Apex Hospital Indore",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 26, Central Avenue",
+      "city": "Indore",
+      "state": "Madhya Pradesh",
+      "pincode": "353321"
+    },
+    "specializations": [
+      "Psychiatry",
+      "Pulmonology",
+      "Gastroenterology",
+      "Nephrology"
+    ],
+    "chronicConditionsHandled": [
+      "Asthma",
+      "Thyroid Disorders",
+      "Hypertension",
+      "Parkinson's Disease",
+      "Diabetes Mellitus"
+    ],
+    "facilities": [
+      "Robotic Surgery Suite",
+      "Ambulance Services",
+      "Telemedicine",
+      "Physiotherapy",
+      "PICU",
+      "Organ Transplant Unit"
+    ],
+    "procedures": [
+      {
+        "name": "C-Section",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 50000,
+          "max": 120000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      },
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 98,
+      "successfulPatientsCount": 309276,
+      "averageWaitTimeDays": 6,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1961,
+      "doctors": 409,
+      "icuBeds": 27,
+      "ambulances": 2
+    },
+    "ratings": {
+      "patientSatisfaction": 5,
+      "infrastructure": 9.9,
+      "careQuality": 9.8
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Asthma",
+        "recoveredPatients": 25372,
+        "successRate": 67
+      },
+      {
+        "disease": "Thyroid Disorders",
+        "recoveredPatients": 16048,
+        "successRate": 68
+      },
+      {
+        "disease": "Diabetes Mellitus",
+        "recoveredPatients": 46988,
+        "successRate": 78
+      }
+    ],
+    "languagesSpoken": [
+      "Telugu",
+      "Odia",
+      "English",
+      "Punjabi",
+      "Hindi"
+    ],
+    "insuranceEmpaneled": [
+      "Aditya Birla Health",
+      "CGHS",
+      "Ayushman Bharat (PM-JAY)"
+    ],
+    "awards": [],
+    "averageEDWaitTimeMins": 12
+  },
+  {
+    "name": "Bombay Hospital Jaipur",
+    "type": "Government",
+    "location": {
+      "address": "Plot No 15, Central Avenue",
+      "city": "Jaipur",
+      "state": "Rajasthan",
+      "pincode": "636625"
+    },
+    "specializations": [
+      "Ophthalmology",
+      "Oncology",
+      "Gynecology"
+    ],
+    "chronicConditionsHandled": [
+      "COPD",
+      "Psoriasis",
+      "Coronary Artery Disease",
+      "Chronic Kidney Disease",
+      "Parkinson's Disease",
+      "Thyroid Disorders"
+    ],
+    "facilities": [
+      "Pharmacy",
+      "24x7 Emergency",
+      "Advanced Diagnostics",
+      "Robotic Surgery Suite",
+      "Cath Lab"
+    ],
+    "procedures": [
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "C-Section",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 50000,
+          "max": 120000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 91,
+      "successfulPatientsCount": 322892,
+      "averageWaitTimeDays": 11,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 725,
+      "doctors": 666,
+      "icuBeds": 144,
+      "ambulances": 11
+    },
+    "ratings": {
+      "patientSatisfaction": 3.7,
+      "infrastructure": 8.7,
+      "careQuality": 7.9
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "COPD",
+        "recoveredPatients": 41976,
+        "successRate": 68
+      },
+      {
+        "disease": "Psoriasis",
+        "recoveredPatients": 10984,
+        "successRate": 70
+      },
+      {
+        "disease": "Chronic Kidney Disease",
+        "recoveredPatients": 35272,
+        "successRate": 69
+      }
+    ],
+    "languagesSpoken": [
+      "Telugu",
+      "Tamil",
+      "Gujarati",
+      "Punjabi",
+      "Hindi"
+    ],
+    "insuranceEmpaneled": [
+      "Care Health Insurance",
+      "Star Health",
+      "CGHS"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 35
+  },
+  {
+    "name": "Hiranandani Hospital Nagpur",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 60, Central Avenue",
+      "city": "Nagpur",
+      "state": "Maharashtra",
+      "pincode": "269058"
+    },
+    "specializations": [
+      "Cardiology",
+      "Orthopedics",
+      "Rheumatology"
+    ],
+    "chronicConditionsHandled": [
+      "Diabetes Mellitus",
+      "Osteoarthritis",
+      "Hypertension",
+      "Coronary Artery Disease",
+      "Thyroid Disorders",
+      "Asthma"
+    ],
+    "facilities": [
+      "Organ Transplant Unit",
+      "Ambulance Services",
+      "24x7 Emergency",
+      "Radiation Oncology",
+      "PICU",
+      "Pharmacy",
+      "Telemedicine"
+    ],
+    "procedures": [
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      },
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "C-Section",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 50000,
+          "max": 120000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 86,
+      "successfulPatientsCount": 86301,
+      "averageWaitTimeDays": 5,
+      "nabhAccredited": false
+    },
+    "statistics": {
+      "beds": 912,
+      "doctors": 192,
+      "icuBeds": 109,
+      "ambulances": 18
+    },
+    "ratings": {
+      "patientSatisfaction": 3.8,
+      "infrastructure": 7.7,
+      "careQuality": 8.3
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Hypertension",
+        "recoveredPatients": 35014,
+        "successRate": 89
+      }
+    ],
+    "languagesSpoken": [
+      "Telugu",
+      "Marathi"
+    ],
+    "insuranceEmpaneled": [
+      "CGHS",
+      "ICICI Lombard",
+      "Star Health"
+    ],
+    "awards": [
+      "Excellence in Healthcare"
+    ],
+    "averageEDWaitTimeMins": 51
+  },
+  {
+    "name": "Holy Family Hospital Chennai",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 10, Central Avenue",
+      "city": "Chennai",
+      "state": "Tamil Nadu",
+      "pincode": "664209"
+    },
+    "specializations": [
+      "Dermatology",
+      "Orthopedics",
+      "Neurology",
+      "Urology",
+      "Cardiology",
+      "Ophthalmology"
+    ],
+    "chronicConditionsHandled": [
+      "Epilepsy",
+      "Osteoarthritis",
+      "Rheumatoid Arthritis",
+      "Chronic Kidney Disease",
+      "Chronic Pancreatitis",
+      "Liver Cirrhosis"
+    ],
+    "facilities": [
+      "Dialysis Unit",
+      "Pharmacy",
+      "Radiation Oncology",
+      "Robotic Surgery Suite"
+    ],
+    "procedures": [
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      },
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 96,
+      "successfulPatientsCount": 465504,
+      "averageWaitTimeDays": 10,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 476,
+      "doctors": 372,
+      "icuBeds": 284,
+      "ambulances": 2
+    },
+    "ratings": {
+      "patientSatisfaction": 4,
+      "infrastructure": 9.8,
+      "careQuality": 7.4
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Osteoarthritis",
+        "recoveredPatients": 43793,
+        "successRate": 73
+      },
+      {
+        "disease": "Rheumatoid Arthritis",
+        "recoveredPatients": 33771,
+        "successRate": 80
+      }
+    ],
+    "languagesSpoken": [
+      "Urdu",
+      "Telugu",
+      "Tamil",
+      "Malayalam",
+      "Hindi"
+    ],
+    "insuranceEmpaneled": [
+      "Aditya Birla Health",
+      "Star Health",
+      "HDFC ERGO",
+      "Care Health Insurance"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 45
+  },
+  {
+    "name": "Jupiter Hospital Kolkata",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 97, Central Avenue",
+      "city": "Kolkata",
+      "state": "West Bengal",
+      "pincode": "409142"
+    },
+    "specializations": [
+      "Ophthalmology",
+      "Cardiology",
+      "Neurology",
+      "Oncology",
+      "Orthopedics"
+    ],
+    "chronicConditionsHandled": [
+      "COPD",
+      "Parkinson's Disease",
+      "Liver Cirrhosis",
+      "Asthma",
+      "Coronary Artery Disease"
+    ],
+    "facilities": [
+      "NICU",
+      "Ambulance Services",
+      "PICU",
+      "Radiation Oncology",
+      "ICU",
+      "24x7 Emergency"
+    ],
+    "procedures": [
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      },
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 90,
+      "successfulPatientsCount": 465060,
+      "averageWaitTimeDays": 4,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 268,
+      "doctors": 266,
+      "icuBeds": 87,
+      "ambulances": 11
+    },
+    "ratings": {
+      "patientSatisfaction": 3,
+      "infrastructure": 8.7,
+      "careQuality": 9.7
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "COPD",
+        "recoveredPatients": 14311,
+        "successRate": 93
+      }
+    ],
+    "languagesSpoken": [
+      "Marathi",
+      "English",
+      "Kannada"
+    ],
+    "insuranceEmpaneled": [
+      "CGHS",
+      "ICICI Lombard",
+      "Star Health",
+      "Niva Bupa"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 37
+  },
+  {
+    "name": "KEM Hospital Visakhapatnam",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 94, Central Avenue",
+      "city": "Visakhapatnam",
+      "state": "Andhra Pradesh",
+      "pincode": "290494"
+    },
+    "specializations": [
+      "Urology",
+      "Psychiatry",
+      "Neurology",
+      "Endocrinology",
+      "Pediatrics",
+      "Gastroenterology"
+    ],
+    "chronicConditionsHandled": [
+      "Psoriasis",
+      "COPD",
+      "Rheumatoid Arthritis",
+      "Chronic Kidney Disease",
+      "Asthma"
+    ],
+    "facilities": [
+      "Advanced Diagnostics",
+      "ICU",
+      "24x7 Emergency",
+      "Organ Transplant Unit",
+      "Physiotherapy",
+      "NICU",
+      "PICU",
+      "Robotic Surgery Suite"
+    ],
+    "procedures": [
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "C-Section",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 50000,
+          "max": 120000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 97,
+      "successfulPatientsCount": 413239,
+      "averageWaitTimeDays": 13,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 711,
+      "doctors": 756,
+      "icuBeds": 129,
+      "ambulances": 15
+    },
+    "ratings": {
+      "patientSatisfaction": 3.5,
+      "infrastructure": 7.4,
+      "careQuality": 8.1
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Psoriasis",
+        "recoveredPatients": 6683,
+        "successRate": 85
+      },
+      {
+        "disease": "COPD",
+        "recoveredPatients": 43748,
+        "successRate": 84
+      },
+      {
+        "disease": "Chronic Kidney Disease",
+        "recoveredPatients": 36072,
+        "successRate": 61
+      }
+    ],
+    "languagesSpoken": [
+      "Gujarati",
+      "English"
+    ],
+    "insuranceEmpaneled": [
+      "Aditya Birla Health",
+      "Niva Bupa",
+      "Ayushman Bharat (PM-JAY)",
+      "HDFC ERGO",
+      "Care Health Insurance"
+    ],
+    "awards": [
+      "Excellence in Healthcare"
+    ],
+    "averageEDWaitTimeMins": 45
+  },
+  {
+    "name": "Sassoon General Hospital Visakhapatnam",
+    "type": "Government",
+    "location": {
+      "address": "Plot No 1, Central Avenue",
+      "city": "Visakhapatnam",
+      "state": "Andhra Pradesh",
+      "pincode": "411116"
+    },
+    "specializations": [
+      "Pulmonology",
+      "Nephrology",
+      "Urology",
+      "Rheumatology",
+      "Gynecology",
+      "Pediatrics"
+    ],
+    "chronicConditionsHandled": [
+      "Hypertension",
+      "Rheumatoid Arthritis",
+      "Diabetes Mellitus",
+      "Coronary Artery Disease"
+    ],
+    "facilities": [
+      "Cath Lab",
+      "PICU",
+      "24x7 Emergency",
+      "Dialysis Unit",
+      "Robotic Surgery Suite"
+    ],
+    "procedures": [
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      },
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 87,
+      "successfulPatientsCount": 353655,
+      "averageWaitTimeDays": 9,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 575,
+      "doctors": 580,
+      "icuBeds": 35,
+      "ambulances": 7
+    },
+    "ratings": {
+      "patientSatisfaction": 3.7,
+      "infrastructure": 8.1,
+      "careQuality": 8.2
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Hypertension",
+        "recoveredPatients": 29331,
+        "successRate": 82
+      },
+      {
+        "disease": "Rheumatoid Arthritis",
+        "recoveredPatients": 42808,
+        "successRate": 67
+      },
+      {
+        "disease": "Diabetes Mellitus",
+        "recoveredPatients": 35748,
+        "successRate": 78
+      },
+      {
+        "disease": "Coronary Artery Disease",
+        "recoveredPatients": 3167,
+        "successRate": 63
+      }
+    ],
+    "languagesSpoken": [
+      "Malayalam",
+      "Kannada"
+    ],
+    "insuranceEmpaneled": [
+      "Care Health Insurance",
+      "CGHS",
+      "Star Health",
+      "Niva Bupa",
+      "HDFC ERGO",
+      "ICICI Lombard"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 38
+  },
+  {
+    "name": "Nizam's Institute of Medical Sciences (NIMS) Indore",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 72, Central Avenue",
+      "city": "Indore",
+      "state": "Madhya Pradesh",
+      "pincode": "668863"
+    },
+    "specializations": [
+      "Endocrinology",
+      "Pediatrics",
+      "Pulmonology"
+    ],
+    "chronicConditionsHandled": [
+      "Alzheimer's Disease",
+      "Parkinson's Disease",
+      "Osteoarthritis"
+    ],
+    "facilities": [
+      "Physiotherapy",
+      "24x7 Emergency",
+      "Ambulance Services",
+      "Telemedicine",
+      "ICU",
+      "Pharmacy",
+      "Robotic Surgery Suite"
+    ],
+    "procedures": [
+      {
+        "name": "Normal Delivery",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 30000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 98,
+      "successfulPatientsCount": 109955,
+      "averageWaitTimeDays": 15,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1810,
+      "doctors": 191,
+      "icuBeds": 143,
+      "ambulances": 20
+    },
+    "ratings": {
+      "patientSatisfaction": 5,
+      "infrastructure": 7.1,
+      "careQuality": 8.7
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Alzheimer's Disease",
+        "recoveredPatients": 19563,
+        "successRate": 77
+      },
+      {
+        "disease": "Parkinson's Disease",
+        "recoveredPatients": 43935,
+        "successRate": 82
+      },
+      {
+        "disease": "Osteoarthritis",
+        "recoveredPatients": 4063,
+        "successRate": 94
+      }
+    ],
+    "languagesSpoken": [
+      "Telugu",
+      "Tamil"
+    ],
+    "insuranceEmpaneled": [
+      "ICICI Lombard",
+      "Star Health",
+      "Care Health Insurance",
+      "Aditya Birla Health"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 58
+  },
+  {
+    "name": "Osmania General Hospital Guwahati",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 65, Central Avenue",
+      "city": "Guwahati",
+      "state": "Assam",
+      "pincode": "212669"
+    },
+    "specializations": [
+      "Cardiology",
+      "Gynecology",
+      "Nephrology",
+      "Neurology",
+      "Rheumatology"
+    ],
+    "chronicConditionsHandled": [
+      "Parkinson's Disease",
+      "Osteoarthritis",
+      "Diabetes Mellitus",
+      "Hypertension",
+      "Coronary Artery Disease"
+    ],
+    "facilities": [
+      "24x7 Emergency",
+      "ICU",
+      "Ambulance Services",
+      "NICU",
+      "Robotic Surgery Suite",
+      "Blood Bank",
+      "Organ Transplant Unit"
+    ],
+    "procedures": [
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 86,
+      "successfulPatientsCount": 51520,
+      "averageWaitTimeDays": 3,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 208,
+      "doctors": 461,
+      "icuBeds": 156,
+      "ambulances": 14
+    },
+    "ratings": {
+      "patientSatisfaction": 3.5,
+      "infrastructure": 8.9,
+      "careQuality": 9.4
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Diabetes Mellitus",
+        "recoveredPatients": 31539,
+        "successRate": 68
+      },
+      {
+        "disease": "Hypertension",
+        "recoveredPatients": 47579,
+        "successRate": 64
+      },
+      {
+        "disease": "Coronary Artery Disease",
+        "recoveredPatients": 28611,
+        "successRate": 91
+      }
+    ],
+    "languagesSpoken": [
+      "Marathi",
+      "Malayalam",
+      "Hindi"
+    ],
+    "insuranceEmpaneled": [
+      "ICICI Lombard",
+      "Star Health",
+      "HDFC ERGO",
+      "CGHS"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 49
+  },
+  {
+    "name": "Gandhi Hospital Delhi",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 44, Central Avenue",
+      "city": "Delhi",
+      "state": "Delhi",
+      "pincode": "410909"
+    },
+    "specializations": [
+      "Gynecology",
+      "Ophthalmology",
+      "Cardiology",
+      "Neurology"
+    ],
+    "chronicConditionsHandled": [
+      "COPD",
+      "Thyroid Disorders",
+      "Chronic Kidney Disease",
+      "Osteoarthritis"
+    ],
+    "facilities": [
+      "ICU",
+      "PICU",
+      "Radiation Oncology",
+      "24x7 Emergency",
+      "Physiotherapy",
+      "Blood Bank",
+      "Telemedicine",
+      "Cath Lab"
+    ],
+    "procedures": [
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 91,
+      "successfulPatientsCount": 78343,
+      "averageWaitTimeDays": 13,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 831,
+      "doctors": 661,
+      "icuBeds": 237,
+      "ambulances": 8
+    },
+    "ratings": {
+      "patientSatisfaction": 4.6,
+      "infrastructure": 7.8,
+      "careQuality": 9.8
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "COPD",
+        "recoveredPatients": 12408,
+        "successRate": 86
+      },
+      {
+        "disease": "Chronic Kidney Disease",
+        "recoveredPatients": 9745,
+        "successRate": 83
+      }
+    ],
+    "languagesSpoken": [
+      "Hindi",
+      "Punjabi",
+      "Gujarati",
+      "Marathi",
+      "Tamil"
+    ],
+    "insuranceEmpaneled": [
+      "HDFC ERGO",
+      "Star Health",
+      "Aditya Birla Health",
+      "Niva Bupa"
+    ],
+    "awards": [
+      "Excellence in Healthcare"
+    ],
+    "averageEDWaitTimeMins": 60
+  },
+  {
+    "name": "Continental Hospitals Guwahati",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 29, Central Avenue",
+      "city": "Guwahati",
+      "state": "Assam",
+      "pincode": "225504"
+    },
+    "specializations": [
+      "Cardiology",
+      "Ophthalmology",
+      "Nephrology"
+    ],
+    "chronicConditionsHandled": [
+      "Diabetes Mellitus",
+      "Liver Cirrhosis",
+      "Thyroid Disorders",
+      "Hypertension",
+      "Asthma",
+      "Epilepsy"
+    ],
+    "facilities": [
+      "24x7 Emergency",
+      "ICU",
+      "Cath Lab",
+      "Physiotherapy"
+    ],
+    "procedures": [
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      },
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 95,
+      "successfulPatientsCount": 385006,
+      "averageWaitTimeDays": 14,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 919,
+      "doctors": 500,
+      "icuBeds": 126,
+      "ambulances": 16
+    },
+    "ratings": {
+      "patientSatisfaction": 4.9,
+      "infrastructure": 8.2,
+      "careQuality": 7.4
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Diabetes Mellitus",
+        "recoveredPatients": 16612,
+        "successRate": 78
+      },
+      {
+        "disease": "Thyroid Disorders",
+        "recoveredPatients": 44017,
+        "successRate": 63
+      },
+      {
+        "disease": "Hypertension",
+        "recoveredPatients": 15820,
+        "successRate": 95
+      },
+      {
+        "disease": "Asthma",
+        "recoveredPatients": 42051,
+        "successRate": 94
+      }
+    ],
+    "languagesSpoken": [
+      "Hindi",
+      "English",
+      "Odia"
+    ],
+    "insuranceEmpaneled": [
+      "ICICI Lombard",
+      "Star Health",
+      "Care Health Insurance",
+      "Aditya Birla Health"
+    ],
+    "awards": [],
+    "averageEDWaitTimeMins": 18
+  },
+  {
+    "name": "AIG Hospitals Kochi",
+    "type": "Government",
+    "location": {
+      "address": "Plot No 37, Central Avenue",
+      "city": "Kochi",
+      "state": "Kerala",
+      "pincode": "586920"
+    },
+    "specializations": [
+      "Gynecology",
+      "Pediatrics",
+      "Orthopedics",
+      "Dermatology",
+      "Psychiatry",
+      "Cardiology",
+      "Rheumatology"
+    ],
+    "chronicConditionsHandled": [
+      "COPD",
+      "Chronic Pancreatitis",
+      "Epilepsy"
+    ],
+    "facilities": [
+      "Pharmacy",
+      "Blood Bank",
+      "Physiotherapy",
+      "PICU",
+      "NICU",
+      "Robotic Surgery Suite",
+      "ICU"
+    ],
+    "procedures": [
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      },
+      {
+        "name": "Hernia Repair",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 40000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "Total Knee Replacement",
+        "category": "Orthopedics",
+        "estimatedCost": {
+          "min": 150000,
+          "max": 300000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 87,
+      "successfulPatientsCount": 136186,
+      "averageWaitTimeDays": 12,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1227,
+      "doctors": 227,
+      "icuBeds": 199,
+      "ambulances": 8
+    },
+    "ratings": {
+      "patientSatisfaction": 4.9,
+      "infrastructure": 7.6,
+      "careQuality": 9.8
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Epilepsy",
+        "recoveredPatients": 1738,
+        "successRate": 63
+      }
+    ],
+    "languagesSpoken": [
+      "Hindi",
+      "Odia",
+      "Punjabi",
+      "Kannada"
+    ],
+    "insuranceEmpaneled": [
+      "Star Health",
+      "CGHS",
+      "Aditya Birla Health",
+      "Niva Bupa",
+      "ICICI Lombard",
+      "Care Health Insurance"
+    ],
+    "awards": [],
+    "averageEDWaitTimeMins": 21
+  },
+  {
+    "name": "Medicover Hospitals Bhubaneswar",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 31, Central Avenue",
+      "city": "Bhubaneswar",
+      "state": "Odisha",
+      "pincode": "147894"
+    },
+    "specializations": [
+      "Pulmonology",
+      "Cardiology",
+      "Nephrology",
+      "Rheumatology",
+      "Gastroenterology"
+    ],
+    "chronicConditionsHandled": [
+      "Chronic Pancreatitis",
+      "Parkinson's Disease",
+      "Diabetes Mellitus",
+      "Hypertension",
+      "Osteoarthritis",
+      "Chronic Kidney Disease"
+    ],
+    "facilities": [
+      "24x7 Emergency",
+      "ICU",
+      "NICU",
+      "PICU",
+      "Telemedicine",
+      "Organ Transplant Unit",
+      "Blood Bank",
+      "Ambulance Services"
+    ],
+    "procedures": [
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      },
+      {
+        "name": "Normal Delivery",
+        "category": "Gynecology",
+        "estimatedCost": {
+          "min": 30000,
+          "max": 80000
+        }
+      },
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "CABG",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 200000,
+          "max": 400000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 92,
+      "successfulPatientsCount": 240277,
+      "averageWaitTimeDays": 1,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1715,
+      "doctors": 661,
+      "icuBeds": 149,
+      "ambulances": 14
+    },
+    "ratings": {
+      "patientSatisfaction": 4.6,
+      "infrastructure": 8.3,
+      "careQuality": 9.4
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Diabetes Mellitus",
+        "recoveredPatients": 14615,
+        "successRate": 61
+      },
+      {
+        "disease": "Osteoarthritis",
+        "recoveredPatients": 34308,
+        "successRate": 95
+      }
+    ],
+    "languagesSpoken": [
+      "English",
+      "Hindi",
+      "Marathi",
+      "Gujarati"
+    ],
+    "insuranceEmpaneled": [
+      "Niva Bupa",
+      "Care Health Insurance",
+      "Star Health"
+    ],
+    "awards": [],
+    "averageEDWaitTimeMins": 49
+  },
+  {
+    "name": "Sunshine Hospitals Hyderabad",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 34, Central Avenue",
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "pincode": "533617"
+    },
+    "specializations": [
+      "Cardiology",
+      "Nephrology",
+      "Rheumatology",
+      "Ophthalmology",
+      "Neurology",
+      "Endocrinology",
+      "Gastroenterology"
+    ],
+    "chronicConditionsHandled": [
+      "Chronic Pancreatitis",
+      "Osteoarthritis",
+      "Liver Cirrhosis",
+      "Psoriasis",
+      "Asthma",
+      "Rheumatoid Arthritis"
+    ],
+    "facilities": [
+      "Ambulance Services",
+      "Physiotherapy",
+      "Robotic Surgery Suite",
+      "NICU",
+      "PICU",
+      "Blood Bank"
+    ],
+    "procedures": [
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      },
+      {
+        "name": "Coronary Angioplasty",
+        "category": "Cardiology",
+        "estimatedCost": {
+          "min": 60000,
+          "max": 150000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 91,
+      "successfulPatientsCount": 177174,
+      "averageWaitTimeDays": 4,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 373,
+      "doctors": 479,
+      "icuBeds": 198,
+      "ambulances": 9
+    },
+    "ratings": {
+      "patientSatisfaction": 4.1,
+      "infrastructure": 9.4,
+      "careQuality": 9.4
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Osteoarthritis",
+        "recoveredPatients": 30889,
+        "successRate": 76
+      },
+      {
+        "disease": "Psoriasis",
+        "recoveredPatients": 10234,
+        "successRate": 63
+      }
+    ],
+    "languagesSpoken": [
+      "Tamil",
+      "Hindi",
+      "English"
+    ],
+    "insuranceEmpaneled": [
+      "HDFC ERGO",
+      "Aditya Birla Health",
+      "Care Health Insurance",
+      "Star Health",
+      "Niva Bupa",
+      "CGHS"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 30
+  },
+  {
+    "name": "Oasis Fertility Bhopal",
+    "type": "Private",
+    "location": {
+      "address": "Plot No 76, Central Avenue",
+      "city": "Bhopal",
+      "state": "Madhya Pradesh",
+      "pincode": "315595"
+    },
+    "specializations": [
+      "Ophthalmology",
+      "Pulmonology",
+      "Orthopedics",
+      "Gynecology",
+      "Nephrology"
+    ],
+    "chronicConditionsHandled": [
+      "Liver Cirrhosis",
+      "Coronary Artery Disease",
+      "Alzheimer's Disease",
+      "Thyroid Disorders"
+    ],
+    "facilities": [
+      "NICU",
+      "ICU",
+      "Organ Transplant Unit",
+      "24x7 Emergency",
+      "Dialysis Unit",
+      "PICU",
+      "Telemedicine",
+      "Physiotherapy"
+    ],
+    "procedures": [
+      {
+        "name": "Cataract Surgery",
+        "category": "Ophthalmology",
+        "estimatedCost": {
+          "min": 20000,
+          "max": 60000
+        }
+      },
+      {
+        "name": "Chemotherapy Cycle",
+        "category": "Oncology",
+        "estimatedCost": {
+          "min": 10000,
+          "max": 50000
+        }
+      },
+      {
+        "name": "Dialysis Session",
+        "category": "Dialysis",
+        "estimatedCost": {
+          "min": 1500,
+          "max": 4000
+        }
+      },
+      {
+        "name": "Kidney Transplant",
+        "category": "Surgery",
+        "estimatedCost": {
+          "min": 400000,
+          "max": 800000
+        }
+      }
+    ],
+    "metrics": {
+      "successRate": 86,
+      "successfulPatientsCount": 494904,
+      "averageWaitTimeDays": 8,
+      "nabhAccredited": true
+    },
+    "statistics": {
+      "beds": 1208,
+      "doctors": 639,
+      "icuBeds": 296,
+      "ambulances": 17
+    },
+    "ratings": {
+      "patientSatisfaction": 4.3,
+      "infrastructure": 8.5,
+      "careQuality": 9
+    },
+    "diseaseSpecificSuccess": [
+      {
+        "disease": "Liver Cirrhosis",
+        "recoveredPatients": 18748,
+        "successRate": 85
+      }
+    ],
+    "languagesSpoken": [
+      "Malayalam",
+      "English",
+      "Odia"
+    ],
+    "insuranceEmpaneled": [
+      "Aditya Birla Health",
+      "Niva Bupa",
+      "HDFC ERGO"
+    ],
+    "awards": [
+      "Excellence in Healthcare",
+      "Best Hospital Award"
+    ],
+    "averageEDWaitTimeMins": 30
   }
 ];
