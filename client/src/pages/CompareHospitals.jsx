@@ -68,7 +68,7 @@ export default function CompareHospitals() {
 
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2 font-serif">{t('Compare Hospitals')}</h1>
-        <p className="text-slate-600 dark:text-slate-400">Side-by-side comparison of your selected healthcare facilities.</p>
+        <p className="text-slate-600 dark:text-slate-400">{t('compare_desc')}</p>
       </div>
 
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="overflow-x-auto">

@@ -45,7 +45,7 @@ export default function Home() {
               </span>
             </h1>
             <p className="text-xl text-slate-600 dark:text-slate-400 mb-10 leading-relaxed max-w-2xl mx-auto">
-              Swasth Setu bridges the gap between citizens and healthcare providers. Find verified hospitals, compare treatment costs, secure your medical records, and get instant AI guidance.
+              {t('home_desc')}
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -88,8 +88,8 @@ export default function Home() {
       {/* CORE FEATURES */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div {...fadeIn} className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4 font-serif">Everything You Need in One Platform</h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400">Built to ensure transparency, accessibility, and accountability.</p>
+          <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4 font-serif">{t('Everything You Need in One Platform')}</h2>
+          <p className="text-lg text-slate-600 dark:text-slate-400">{t('home_features_desc')}</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -157,9 +157,9 @@ export default function Home() {
       <section className="bg-primary-800 dark:bg-primary-900 py-20 mt-auto transition-colors">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <HeartPulse size={48} className="text-white/80 mx-auto mb-6" />
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 font-serif">Ready to take control of your healthcare?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 font-serif">{t('Ready to take control of your healthcare?')}</h2>
           <p className="text-primary-100 text-lg mb-10 max-w-2xl mx-auto">
-            Join Swasth Setu today. It's completely free for citizens and takes less than a minute to set up your secure profile.
+            {t('home_cta_desc')}
           </p>
           {!user ? (
             <Link to="/register" className="px-8 py-4 bg-white text-primary-800 rounded-xl font-bold text-lg hover:bg-slate-50 transition-colors shadow-lg inline-block">

@@ -106,7 +106,7 @@ export default function Specialists() {
       <div className="mb-10 text-center">
         <h1 className="text-3xl font-bold text-slate-900 dark:text-white font-serif mb-3">{t('Specialist Directory')}</h1>
         <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-          Consult with top-tier specialists from across the country. Find the right doctor for your specific medical needs and book an appointment instantly.
+          {t('specialists_desc')}
         </p>
       </div>
 

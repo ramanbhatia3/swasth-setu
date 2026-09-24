@@ -134,7 +134,7 @@ export default function MedicalRecords() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
         <div>
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white font-serif">{t('Medical Records')}</h1>
-          <p className="text-slate-600 dark:text-slate-400">Securely manage and view your uploaded health documents.</p>
+          <p className="text-slate-600 dark:text-slate-400">{t('records_desc')}</p>
         </div>
         <button 
           onClick={() => setIsModalOpen(true)}

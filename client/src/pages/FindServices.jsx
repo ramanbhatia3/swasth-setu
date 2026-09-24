@@ -132,7 +132,7 @@ export default function FindServices() {
         </div>
         <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3 font-serif">{t('Find Specialized Care')}</h1>
         <p className="text-slate-600 dark:text-slate-400 mb-6">
-          Search the complete directory below, or use the AI Concierge for an instant single #1 recommendation.
+          {t('services_desc')}
         </p>
 
         {/* Action Toolbar: Search + AI Single Match Button */}

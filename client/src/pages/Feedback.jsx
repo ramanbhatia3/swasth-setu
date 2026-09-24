@@ -58,7 +58,7 @@ export default function Feedback() {
         </div>
         <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-4 font-serif">{t('Share Your Experience')}</h1>
         <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-          Your feedback brings transparency to the healthcare system. Search for a hospital below to leave a User Experience Rating (cleanliness, waiting times, and staff behavior).
+          {t('feedback_desc')}
         </p>
       </motion.div>
 

@@ -24,7 +24,17 @@ const resources = {
       "Medical Records": "Medical Records",
       "Find Specialized Care": "Find Specialized Care",
       "Share Your Experience": "Share Your Experience",
-      "Compare Hospitals": "Compare Hospitals"
+      "Compare Hospitals": "Compare Hospitals",
+      "home_desc": "Swasth Setu bridges the gap between citizens and healthcare providers. Find verified hospitals, compare treatment costs, secure your medical records, and get instant AI guidance.",
+      "Everything You Need in One Platform": "Everything You Need in One Platform",
+      "home_features_desc": "Built to ensure transparency, accessibility, and accountability.",
+      "Ready to take control of your healthcare?": "Ready to take control of your healthcare?",
+      "home_cta_desc": "Join Swasth Setu today. It's completely free for citizens and takes less than a minute to set up your secure profile.",
+      "services_desc": "Search the complete directory below, or use the AI Concierge for an instant single #1 recommendation.",
+      "specialists_desc": "Consult with top-tier specialists from across the country. Find the right doctor for your specific medical needs and book an appointment instantly.",
+      "records_desc": "Securely manage and view your uploaded health documents.",
+      "compare_desc": "Side-by-side comparison of your selected healthcare facilities.",
+      "feedback_desc": "Your feedback brings transparency to the healthcare system. Search for a hospital below to leave a User Experience Rating (cleanliness, waiting times, and staff behavior)."
     }
   },
   hi: {
@@ -49,7 +59,17 @@ const resources = {
       "Medical Records": "मेडिकल रिकॉर्ड्स",
       "Find Specialized Care": "विशेषज्ञ देखभाल खोजें",
       "Share Your Experience": "अपना अनुभव साझा करें",
-      "Compare Hospitals": "अस्पतालों की तुलना करें"
+      "Compare Hospitals": "अस्पतालों की तुलना करें",
+      "home_desc": "स्वस्थ सेतु नागरिकों और स्वास्थ्य सेवा प्रदाताओं के बीच की खाई को पाटता है। सत्यापित अस्पताल खोजें, उपचार लागतों की तुलना करें, अपने मेडिकल रिकॉर्ड सुरक्षित करें और त्वरित AI मार्गदर्शन प्राप्त करें।",
+      "Everything You Need in One Platform": "एक ही मंच में आपकी जरूरत की हर चीज",
+      "home_features_desc": "पारदर्शिता, सुलभता और जवाबदेही सुनिश्चित करने के लिए बनाया गया।",
+      "Ready to take control of your healthcare?": "क्या आप अपनी स्वास्थ्य सेवा पर नियंत्रण रखने के लिए तैयार हैं?",
+      "home_cta_desc": "आज ही स्वस्थ सेतु से जुड़ें। यह नागरिकों के लिए पूरी तरह से मुफ़्त है और आपकी सुरक्षित प्रोफ़ाइल सेट करने में एक मिनट से भी कम समय लगता है।",
+      "services_desc": "नीचे पूरी निर्देशिका खोजें, या तुरंत #1 अनुशंसा के लिए AI कंसीयज का उपयोग करें।",
+      "specialists_desc": "देश भर के शीर्ष विशेषज्ञों से परामर्श लें। अपनी विशिष्ट चिकित्सा आवश्यकताओं के लिए सही डॉक्टर खोजें और तुरंत अपॉइंटमेंट बुक करें।",
+      "records_desc": "अपने अपलोड किए गए स्वास्थ्य दस्तावेजों को सुरक्षित रूप से प्रबंधित करें और देखें।",
+      "compare_desc": "आपकी चयनित स्वास्थ्य सुविधाओं की आमने-सामने तुलना।",
+      "feedback_desc": "आपकी प्रतिक्रिया स्वास्थ्य सेवा प्रणाली में पारदर्शिता लाती है। उपयोगकर्ता अनुभव रेटिंग (स्वच्छता, प्रतीक्षा समय और कर्मचारियों का व्यवहार) छोड़ने के लिए नीचे एक अस्पताल खोजें।"
     }
   },
   pa: {
@@ -74,7 +94,17 @@ const resources = {
       "Medical Records": "ਮੈਡੀਕਲ ਰਿਕਾਰਡ",
       "Find Specialized Care": "ਵਿਸ਼ੇਸ਼ ਦੇਖਭਾਲ ਲੱਭੋ",
       "Share Your Experience": "ਆਪਣਾ ਅਨੁਭਵ ਸਾਂਝਾ ਕਰੋ",
-      "Compare Hospitals": "ਹਸਪਤਾਲਾਂ ਦੀ ਤੁਲਨਾ ਕਰੋ"
+      "Compare Hospitals": "ਹਸਪਤਾਲਾਂ ਦੀ ਤੁਲਨਾ ਕਰੋ",
+      "home_desc": "ਸਵਸਥ ਸੇਤੂ ਨਾਗਰਿਕਾਂ ਅਤੇ ਸਿਹਤ ਸੰਭਾਲ ਪ੍ਰਦਾਤਾਵਾਂ ਵਿਚਕਾਰ ਪਾੜੇ ਨੂੰ ਪੂਰਾ ਕਰਦਾ ਹੈ। ਪ੍ਰਮਾਣਿਤ ਹਸਪਤਾਲ ਲੱਭੋ, ਇਲਾਜ ਦੇ ਖਰਚਿਆਂ ਦੀ ਤੁਲਨਾ ਕਰੋ, ਆਪਣੇ ਮੈਡੀਕਲ ਰਿਕਾਰਡਾਂ ਨੂੰ ਸੁਰੱਖਿਅਤ ਕਰੋ, ਅਤੇ ਤੁਰੰਤ AI ਮਾਰਗਦਰਸ਼ਨ ਪ੍ਰਾਪਤ ਕਰੋ।",
+      "Everything You Need in One Platform": "ਉਹ ਸਭ ਕੁਝ ਜੋ ਤੁਹਾਨੂੰ ਇੱਕ ਪਲੇਟਫਾਰਮ ਵਿੱਚ ਚਾਹੀਦਾ ਹੈ",
+      "home_features_desc": "ਪਾਰਦਰਸ਼ਤਾ, ਪਹੁੰਚਯੋਗਤਾ ਅਤੇ ਜਵਾਬਦੇਹੀ ਨੂੰ ਯਕੀਨੀ ਬਣਾਉਣ ਲਈ ਬਣਾਇਆ ਗਿਆ।",
+      "Ready to take control of your healthcare?": "ਕੀ ਤੁਸੀਂ ਆਪਣੀ ਸਿਹਤ ਸੰਭਾਲ ਦਾ ਨਿਯੰਤਰਣ ਲੈਣ ਲਈ ਤਿਆਰ ਹੋ?",
+      "home_cta_desc": "ਅੱਜ ਹੀ ਸਵਸਥ ਸੇਤੂ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ। ਇਹ ਨਾਗਰਿਕਾਂ ਲਈ ਪੂਰੀ ਤਰ੍ਹਾਂ ਮੁਫ਼ਤ ਹੈ ਅਤੇ ਤੁਹਾਡੀ ਸੁਰੱਖਿਅਤ ਪ੍ਰੋਫਾਈਲ ਸੈਟ ਅਪ ਕਰਨ ਵਿੱਚ ਇੱਕ ਮਿੰਟ ਤੋਂ ਵੀ ਘੱਟ ਸਮਾਂ ਲੱਗਦਾ ਹੈ।",
+      "services_desc": "ਹੇਠਾਂ ਪੂਰੀ ਡਾਇਰੈਕਟਰੀ ਖੋਜੋ, ਜਾਂ ਤੁਰੰਤ #1 ਸਿਫ਼ਾਰਸ਼ ਲਈ AI ਦਰਬਾਨ ਦੀ ਵਰਤੋਂ ਕਰੋ।",
+      "specialists_desc": "ਦੇਸ਼ ਭਰ ਦੇ ਚੋਟੀ ਦੇ ਮਾਹਰਾਂ ਨਾਲ ਸਲਾਹ ਕਰੋ। ਆਪਣੀਆਂ ਖਾਸ ਡਾਕਟਰੀ ਲੋੜਾਂ ਲਈ ਸਹੀ ਡਾਕਟਰ ਲੱਭੋ ਅਤੇ ਤੁਰੰਤ ਮੁਲਾਕਾਤ ਬੁੱਕ ਕਰੋ।",
+      "records_desc": "ਆਪਣੇ ਅੱਪਲੋਡ ਕੀਤੇ ਸਿਹਤ ਦਸਤਾਵੇਜ਼ਾਂ ਦਾ ਸੁਰੱਖਿਅਤ ਢੰਗ ਨਾਲ ਪ੍ਰਬੰਧਨ ਕਰੋ ਅਤੇ ਦੇਖੋ।",
+      "compare_desc": "ਤੁਹਾਡੀਆਂ ਚੁਣੀਆਂ ਗਈਆਂ ਸਿਹਤ ਸੰਭਾਲ ਸਹੂਲਤਾਂ ਦੀ ਨਾਲ-ਨਾਲ ਤੁਲਨਾ।",
+      "feedback_desc": "ਤੁਹਾਡਾ ਫੀਡਬੈਕ ਸਿਹਤ ਸੰਭਾਲ ਪ੍ਰਣਾਲੀ ਵਿੱਚ ਪਾਰਦਰਸ਼ਤਾ ਲਿਆਉਂਦਾ ਹੈ। ਉਪਭੋਗਤਾ ਅਨੁਭਵ ਰੇਟਿੰਗ (ਸਫਾਈ, ਉਡੀਕ ਸਮਾਂ, ਅਤੇ ਸਟਾਫ ਦਾ ਵਿਵਹਾਰ) ਛੱਡਣ ਲਈ ਹੇਠਾਂ ਇੱਕ ਹਸਪਤਾਲ ਲੱਭੋ।"
     }
   },
   ta: {
@@ -99,7 +129,17 @@ const resources = {
       "Medical Records": "மருத்துவ பதிவுகள்",
       "Find Specialized Care": "சிறப்புப் பராமரிப்பைத் தேடு",
       "Share Your Experience": "உங்கள் அனுபவத்தைப் பகிரவும்",
-      "Compare Hospitals": "மருத்துவமனைகளை ஒப்பிடுக"
+      "Compare Hospitals": "மருத்துவமனைகளை ஒப்பிடுக",
+      "home_desc": "ஸ்வஸ்த் சேது குடிமக்களுக்கும் சுகாதார வழங்குநர்களுக்கும் இடையிலான இடைவெளியைக் குறைக்கிறது. சரிபார்க்கப்பட்ட மருத்துவமனைகளைக் கண்டறியவும், சிகிச்சைச் செலவுகளை ஒப்பிடவும், உங்கள் மருத்துவப் பதிவுகளைப் பாதுகாக்கவும் மற்றும் உடனடி AI வழிகாட்டுதலைப் பெறவும்.",
+      "Everything You Need in One Platform": "உங்களுக்குத் தேவையான அனைத்தும் ஒரே தளத்தில்",
+      "home_features_desc": "வெளிப்படைத்தன்மை, அணுகல் மற்றும் பொறுப்புக்கூறலை உறுதி செய்வதற்காக உருவாக்கப்பட்டது.",
+      "Ready to take control of your healthcare?": "உங்கள் சுகாதாரத்தை கட்டுப்படுத்த தயாரா?",
+      "home_cta_desc": "இன்றே ஸ்வஸ்த் சேதுவில் சேரவும். இது குடிமக்களுக்கு முற்றிலும் இலவசம் மற்றும் உங்கள் பாதுகாப்பான சுயவிவரத்தை அமைக்க ஒரு நிமிடத்திற்கும் குறைவான நேரம் எடுக்கும்.",
+      "services_desc": "கீழே உள்ள முழு கோப்பகத்தையும் தேடவும் அல்லது உடனடி ஒற்றை #1 பரிந்துரைக்கு AI உதவியாளரைப் பயன்படுத்தவும்.",
+      "specialists_desc": "நாடு முழுவதிலும் உள்ள சிறந்த நிபுணர்களுடன் கலந்தாலோசிக்கவும். உங்கள் குறிப்பிட்ட மருத்துவத் தேவைகளுக்கு சரியான மருத்துவரைக் கண்டறிந்து உடனடியாக சந்திப்பை முன்பதிவு செய்யுங்கள்.",
+      "records_desc": "நீங்கள் பதிவேற்றிய சுகாதார ஆவணங்களை பாதுகாப்பாக நிர்வகிக்கவும் மற்றும் பார்க்கவும்.",
+      "compare_desc": "நீங்கள் தேர்ந்தெடுத்த சுகாதார வசதிகளின் பக்கவாட்டு ஒப்பீடு.",
+      "feedback_desc": "உங்கள் பின்னூட்டம் சுகாதார அமைப்பில் வெளிப்படைத்தன்மையைக் கொண்டுவருகிறது. பயனர் அனுபவ மதிப்பீட்டை (தூய்மை, காத்திருக்கும் நேரம் மற்றும் பணியாளர்களின் நடத்தை) வழங்க கீழே உள்ள மருத்துவமனையைத் தேடுங்கள்."
     }
   },
   te: {
@@ -124,7 +164,17 @@ const resources = {
       "Medical Records": "వైద్య రికార్డులు",
       "Find Specialized Care": "ప్రత్యేక సంరక్షణను కనుగొనండి",
       "Share Your Experience": "మీ అనుభవాన్ని పంచుకోండి",
-      "Compare Hospitals": "ఆసుపత్రులను సరిపోల్చండి"
+      "Compare Hospitals": "ఆసుపత్రులను సరిపోల్చండి",
+      "home_desc": "స్వస్థ్ సేతు పౌరులు మరియు ఆరోగ్య సంరక్షణ ప్రదాతల మధ్య అంతరాన్ని తగ్గిస్తుంది. ధృవీకరించబడిన ఆసుపత్రులను కనుగొనండి, చికిత్స ఖర్చులను సరిపోల్చండి, మీ వైద్య రికార్డులను సురక్షితం చేయండి మరియు తక్షణ AI మార్గదర్శకత్వాన్ని పొందండి.",
+      "Everything You Need in One Platform": "మీకు కావలసినదంతా ఒకే ప్లాట్‌ఫారమ్‌లో",
+      "home_features_desc": "పారదర్శకత, ప్రాప్యత మరియు జవాబుదారీతనం నిర్ధారించడానికి నిర్మించబడింది.",
+      "Ready to take control of your healthcare?": "మీ ఆరోగ్య సంరక్షణను నియంత్రించడానికి సిద్ధంగా ఉన్నారా?",
+      "home_cta_desc": "ఈరోజే స్వస్థ్ సేతులో చేరండి. ఇది పౌరులకు పూర్తిగా ఉచితం మరియు మీ సురక్షిత ప్రొఫైల్‌ను సెటప్ చేయడానికి ఒక నిమిషం కంటే తక్కువ సమయం పడుతుంది.",
+      "services_desc": "దిగువన ఉన్న పూర్తి డైరెక్టరీని శోధించండి లేదా తక్షణ సింగిల్ #1 సిఫార్సు కోసం AI కాన్సియర్‌ని ఉపయోగించండి.",
+      "specialists_desc": "దేశవ్యాప్తంగా ఉన్న అగ్రశ్రేణి నిపుణులతో సంప్రదించండి. మీ నిర్దిష్ట వైద్య అవసరాలకు సరైన వైద్యుడిని కనుగొనండి మరియు తక్షణమే అపాయింట్‌మెంట్ బుక్ చేయండి.",
+      "records_desc": "మీరు అప్‌లోడ్ చేసిన ఆరోగ్య పత్రాలను సురక్షితంగా నిర్వహించండి మరియు వీక్షించండి.",
+      "compare_desc": "మీరు ఎంచుకున్న ఆరోగ్య సంరక్షణ సౌకర్యాల పక్కపక్కనే పోలిక.",
+      "feedback_desc": "మీ అభిప్రాయం ఆరోగ్య సంరక్షణ వ్యవస్థకు పారదర్శకతను తీసుకువస్తుంది. వినియోగదారు అనుభవ రేటింగ్‌ను (పరిశుభ్రత, నిరీక్షణ సమయాలు మరియు సిబ్బంది ప్రవర్తన) వదిలివేయడానికి దిగువ ఆసుపత్రి కోసం శోధించండి."
     }
   }
 };
