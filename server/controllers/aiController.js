@@ -1,4 +1,5 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import Groq from 'groq-sdk';
 import dotenv from 'dotenv';
 import { executeSearch } from './hospitalController.js';
 
@@ -9,35 +10,41 @@ export const chatWithAI = async (req, res) => {
     const { message } = req.body;
     if (!message) return res.status(400).json({ success: false, message: "Message is required." });
 
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.GROQ_API_KEY;
     if (!apiKey) {
       return res.status(200).json({
         success: true,
-        reply: "*(Simulated AI Response)*: To make me functional, add a GEMINI_API_KEY to your backend .env file."
+        reply: "*(Simulated AI Response)*: To make me functional, add a GROQ_API_KEY to your backend .env file."
       });
     }
 
     try {
-      const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({ model: "gemini-3.6-flash" });
+      const groq = new Groq({ apiKey });
 
-      const prompt = `
-        You are the "Swasth Setu AI Assistant", an intelligent government healthcare guide for Indian citizens.
-        CRITICAL SAFETY RULES:
-        1. YOU ARE NOT A DOCTOR.
-        2. YOU MUST NEVER DIAGNOSE AN ILLNESS.
-        3. YOU MUST NEVER PRESCRIBE MEDICATION.
-        4. Suggest consulting verified doctors or hospitals for real medical emergencies.
-        
-        User Query: "${message}"
-        
-        Provide a helpful, concise, and professional response formatted cleanly in markdown.
-      `;
+      const chatCompletion = await groq.chat.completions.create({
+        messages: [
+          {
+            role: "system",
+            content: `You are the "Swasth Setu AI Assistant", an intelligent government healthcare guide for Indian citizens.
+CRITICAL SAFETY RULES:
+1. YOU ARE NOT A DOCTOR.
+2. YOU MUST NEVER DIAGNOSE AN ILLNESS.
+3. YOU MUST NEVER PRESCRIBE MEDICATION.
+4. Suggest consulting verified doctors or hospitals for real medical emergencies.
 
-      const result = await model.generateContent(prompt);
-      res.status(200).json({ success: true, reply: result.response.text() });
+Provide a helpful, concise, and professional response formatted cleanly in markdown.`
+          },
+          {
+            role: "user",
+            content: message,
+          }
+        ],
+        model: "qwen/qwen3.8-27b",
+      });
+
+      res.status(200).json({ success: true, reply: chatCompletion.choices[0]?.message?.content || "" });
     } catch (apiError) {
-      console.warn("⚠️ Gemini API is busy (chat). Using fallback.");
+      console.warn("⚠️ Groq API is busy (chat). Using fallback.", apiError);
       res.status(200).json({ success: true, reply: "I am experiencing high server demand right now. Please try asking again in a few moments, or use the hospital search feature directly!" });
     }
   } catch (error) {
