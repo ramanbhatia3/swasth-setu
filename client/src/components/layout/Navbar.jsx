@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { Home, Search, Brain, MessageSquare, Map as MapIcon, User, Menu, X, Activity, LogOut, FileText, ShieldAlert, Sun, Moon, Stethoscope } from 'lucide-react';
+import { Home, Search, Brain, MessageSquare, Map as MapIcon, User, Menu, X, Activity, LogOut, FileText, ShieldAlert, Sun, Moon, Stethoscope, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../../context/AuthContext';
-
+import { useTranslation } from 'react-i18next';
 const navigationItems = [
   { label: 'Find Services', path: '/services', icon: Search },
   { label: 'Specialists', path: '/specialists', icon: Stethoscope },
@@ -28,6 +28,7 @@ const mobileLinkClass = ({ isActive }) =>
   }`;
 
 export default function Navbar() {
+  const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [imgError, setImgError] = useState(false);
   const { user, logout } = useAuth();
@@ -74,8 +75,8 @@ export default function Navbar() {
               <Activity size={20} strokeWidth={2.5} />
             </div>
             <div className="leading-tight">
-              <div className="text-base font-semibold text-slate-900 dark:text-white tracking-tight">Swasth Setu</div>
-              <div className="hidden lg:block text-[11px] text-slate-500 dark:text-slate-400">Community Health Services</div>
+              <div className="text-base font-semibold text-slate-900 dark:text-white tracking-tight">{t('Swasth Setu')}</div>
+              <div className="hidden lg:block text-[11px] text-slate-500 dark:text-slate-400">{t('Community Health Services')}</div>
             </div>
           </Link>
 
@@ -86,7 +87,7 @@ export default function Navbar() {
                 {({ isActive }) => (
                   <>
                     <item.icon size={18} />
-                    <span className="hidden lg:inline">{item.label}</span>
+                    <span className="hidden lg:inline">{t(item.label)}</span>
                     {isActive && (
                       <motion.span layoutId="nav-underline" className="absolute left-3 right-3 -bottom-[1px] h-0.5 bg-primary-600 dark:bg-primary-400 rounded-full lg:left-9" />
                     )}
@@ -107,27 +108,42 @@ export default function Navbar() {
               {isDark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
 
+            <div className="flex items-center gap-1 text-slate-600 dark:text-slate-400">
+              <Globe size={16} />
+              <select
+                value={i18n.language}
+                onChange={(e) => i18n.changeLanguage(e.target.value)}
+                className="bg-transparent text-sm font-medium focus:outline-none cursor-pointer dark:bg-slate-900"
+              >
+                <option value="en">EN</option>
+                <option value="hi">HI</option>
+                <option value="pa">PA</option>
+                <option value="ta">TA</option>
+                <option value="te">TE</option>
+              </select>
+            </div>
+
             {user ? (
               <>
                 {isAdmin && (
                   <Link
                     to="/admin"
-                    title="Admin"
+                    title={t('Admin')}
                     className="flex items-center gap-1.5 text-sm font-semibold text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-900/30 px-2.5 py-1.5 rounded-lg border border-rose-100 dark:border-rose-800 hover:bg-rose-100 dark:hover:bg-rose-900/50 transition-colors"
                   >
                     <ShieldAlert size={16} />
-                    <span className="hidden lg:inline">Admin</span>
+                    <span className="hidden lg:inline">{t('Admin')}</span>
                   </Link>
                 )}
 
                 {!isAdmin && (
                   <Link
                     to="/records"
-                    title="My Records"
+                    title={t('Records')}
                     className="flex items-center gap-1.5 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary-800 dark:hover:text-primary-400 hover:bg-slate-50 dark:hover:bg-slate-800 px-2.5 py-1.5 rounded-lg transition-colors"
                   >
                     <FileText size={18} />
-                    <span className="hidden lg:inline">Records</span>
+                    <span className="hidden lg:inline">{t('Records')}</span>
                   </Link>
                 )}
 
@@ -149,11 +165,11 @@ export default function Navbar() {
 
                 <button
                   onClick={logout}
-                  title="Logout"
+                  title={t('Logout')}
                   className="flex items-center gap-1.5 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 px-2.5 py-1.5 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-900/30 transition-colors"
                 >
                   <LogOut size={17} />
-                  <span className="hidden lg:inline">Logout</span>
+                  <span className="hidden lg:inline">{t('Logout')}</span>
                 </button>
               </>
             ) : (
@@ -161,7 +177,7 @@ export default function Navbar() {
                 to="/login"
                 className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-800 text-white hover:bg-primary-900 transition-colors text-sm font-medium shadow-sm"
               >
-                <User size={17} /> Sign In
+                <User size={17} /> {t('Sign In')}
               </NavLink>
             )}
           </div>
@@ -174,6 +190,20 @@ export default function Navbar() {
             >
               {isDark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
+            <div className="flex items-center gap-1 text-slate-600 dark:text-slate-400">
+              <Globe size={16} />
+              <select
+                value={i18n.language}
+                onChange={(e) => i18n.changeLanguage(e.target.value)}
+                className="bg-transparent text-sm font-medium focus:outline-none cursor-pointer dark:bg-slate-900"
+              >
+                <option value="en">EN</option>
+                <option value="hi">HI</option>
+                <option value="pa">PA</option>
+                <option value="ta">TA</option>
+                <option value="te">TE</option>
+              </select>
+            </div>
             <button
               onClick={() => setIsOpen((v) => !v)}
               aria-label={isOpen ? 'Close menu' : 'Open menu'}
@@ -198,7 +228,7 @@ export default function Navbar() {
             <div className="px-4 pt-2 pb-4 space-y-1">
               {navigationItems.map((item) => (
                 <NavLink key={item.path} to={item.path} end={item.end} onClick={closeMenu} className={mobileLinkClass}>
-                  <item.icon size={20} /> {item.label}
+                  <item.icon size={20} /> {t(item.label)}
                 </NavLink>
               ))}
 
@@ -225,12 +255,12 @@ export default function Navbar() {
 
                   {isAdmin && (
                     <NavLink to="/admin" onClick={closeMenu} className="flex items-center gap-3 px-3 py-3 rounded-lg text-base font-semibold text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-900/30 border border-rose-100 dark:border-rose-800">
-                      <ShieldAlert size={20} /> Admin Dashboard
+                      <ShieldAlert size={20} /> {t('Admin')} Dashboard
                     </NavLink>
                   )}
                   {!isAdmin && (
                     <NavLink to="/records" onClick={closeMenu} className={mobileLinkClass}>
-                      <FileText size={20} /> My Records
+                      <FileText size={20} /> My {t('Records')}
                     </NavLink>
                   )}
                   <NavLink to="/profile" onClick={closeMenu} className={mobileLinkClass}>
@@ -253,7 +283,7 @@ export default function Navbar() {
                     onClick={closeMenu}
                     className="flex items-center justify-center gap-2 px-3 py-3 rounded-lg text-base font-medium bg-primary-800 text-white shadow-sm"
                   >
-                    <User size={20} /> Sign In
+                    <User size={20} /> {t('Sign In')}
                   </NavLink>
                 </div>
               )}

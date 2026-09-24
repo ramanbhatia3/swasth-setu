@@ -7,8 +7,10 @@ import {
   ChevronRight, AlertCircle, TrendingUp, Users, IndianRupee, HeartPulse,
   Sparkles, X, Send, Bot, Award, ExternalLink
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function FindServices() {
+  const { t } = useTranslation();
   const [hospitals, setHospitals] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -128,7 +130,7 @@ export default function FindServices() {
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-50 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-800 text-primary-800 dark:text-primary-300 text-sm font-semibold mb-4">
           <Sparkles size={16} /> Verified Hospital Registry
         </div>
-        <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3 font-serif">Find Specialized Care</h1>
+        <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3 font-serif">{t('Find Specialized Care')}</h1>
         <p className="text-slate-600 dark:text-slate-400 mb-6">
           Search the complete directory below, or use the AI Concierge for an instant single #1 recommendation.
         </p>

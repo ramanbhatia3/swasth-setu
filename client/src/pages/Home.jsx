@@ -6,8 +6,10 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import MacroInsightsWidget from '../components/MacroInsightsWidget';
+import { useTranslation } from 'react-i18next';
 
 export default function Home() {
+  const { t } = useTranslation();
   const { user } = useAuth();
 
   const fadeIn = {
@@ -34,12 +36,12 @@ export default function Home() {
             className="text-center max-w-4xl mx-auto"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 dark:bg-primary-900/30 border border-primary-100 dark:border-primary-800 text-primary-800 dark:text-primary-300 font-semibold text-sm mb-6 shadow-sm">
-              <Activity size={16} /> Empowering Indian Citizens
+              <Activity size={16} /> {t('Empowering Indian Citizens')}
             </div>
             <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-8 leading-tight font-serif">
-              A Transparent & Intelligent <br />
+              {t('A Transparent & Intelligent')} <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-700 to-primary-400 dark:from-primary-400 dark:to-primary-200">
-                Healthcare Ecosystem
+                {t('Healthcare Ecosystem')}
               </span>
             </h1>
             <p className="text-xl text-slate-600 dark:text-slate-400 mb-10 leading-relaxed max-w-2xl mx-auto">
@@ -48,10 +50,10 @@ export default function Home() {
             
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/services" className="px-8 py-4 bg-primary-800 text-white rounded-xl font-bold text-lg hover:bg-primary-900 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 flex items-center justify-center gap-2">
-                <Search size={20} /> Find Hospitals
+                <Search size={20} /> {t('Find Hospitals')}
               </Link>
               <Link to="/ai-report" className="px-8 py-4 bg-white dark:bg-slate-900 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl font-bold text-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-all shadow-sm flex items-center justify-center gap-2">
-                <Brain size={20} className="text-primary-600 dark:text-primary-400" /> Ask AI Assistant
+                <Brain size={20} className="text-primary-600 dark:text-primary-400" /> {t('Ask AI Assistant')}
               </Link>
             </div>
           </motion.div>

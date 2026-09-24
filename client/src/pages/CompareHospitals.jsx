@@ -3,8 +3,10 @@ import { useLocation, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Check, Minus, MapPin } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function CompareHospitals() {
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
   const [hospitals, setHospitals] = useState([]);
@@ -65,7 +67,7 @@ export default function CompareHospitals() {
       </Link>
 
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2 font-serif">Compare Hospitals</h1>
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2 font-serif">{t('Compare Hospitals')}</h1>
         <p className="text-slate-600 dark:text-slate-400">Side-by-side comparison of your selected healthcare facilities.</p>
       </div>
 

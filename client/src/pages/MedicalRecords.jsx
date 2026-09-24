@@ -5,8 +5,10 @@ import {
   FileText, UploadCloud, Plus, X, Image as ImageIcon, 
   Droplet, Activity, Eye, File, CheckCircle, AlertCircle, Calendar, Stethoscope, Clock
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function MedicalRecords() {
+  const { t } = useTranslation();
   const [records, setRecords] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -131,7 +133,7 @@ export default function MedicalRecords() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 dark:text-white font-serif">Medical Records</h1>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white font-serif">{t('Medical Records')}</h1>
           <p className="text-slate-600 dark:text-slate-400">Securely manage and view your uploaded health documents.</p>
         </div>
         <button 

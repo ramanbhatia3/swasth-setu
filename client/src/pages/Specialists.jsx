@@ -4,8 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Search, MapPin, Award, Calendar, Clock, X, CheckCircle, AlertCircle, Stethoscope, BriefcaseMedical } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function Specialists() {
+  const { t } = useTranslation();
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -102,7 +104,7 @@ export default function Specialists() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header */}
       <div className="mb-10 text-center">
-        <h1 className="text-3xl font-bold text-slate-900 dark:text-white font-serif mb-3">Specialist Directory</h1>
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-white font-serif mb-3">{t('Specialist Directory')}</h1>
         <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
           Consult with top-tier specialists from across the country. Find the right doctor for your specific medical needs and book an appointment instantly.
         </p>
