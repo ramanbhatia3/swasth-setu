@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="client/public/setu.png" alt="Swasth Setu" width="100%" style="border-radius: 12px; margin-bottom: 20px;" />
+</p>
+
 # 🏥 Swasth Setu
 
 **An AI-Powered Government Healthcare Discovery, Hospital Monitoring & Personal Health Management Platform**
