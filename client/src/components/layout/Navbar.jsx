@@ -111,9 +111,9 @@ export default function Navbar() {
             <div className="flex items-center gap-1.5 px-2 py-1.5 bg-slate-50 dark:bg-slate-900 rounded-full text-slate-600 dark:text-slate-300 border border-transparent hover:border-slate-200 dark:hover:border-slate-700 transition-colors">
               <Globe size={16} className="text-slate-400" />
               <select
-                value={i18n.language}
+                value={i18n.language?.split('-')[0] || 'en'}
                 onChange={(e) => i18n.changeLanguage(e.target.value)}
-                className="bg-transparent text-sm font-semibold focus:outline-none cursor-pointer appearance-none pr-1 dark:bg-slate-900"
+                className="bg-transparent text-sm font-semibold focus:outline-none cursor-pointer dark:bg-slate-900"
               >
                 <option value="en">EN</option>
                 <option value="hi">HI</option>
@@ -206,7 +206,7 @@ export default function Navbar() {
             <div className="flex items-center gap-1 text-slate-600 dark:text-slate-400">
               <Globe size={16} />
               <select
-                value={i18n.language}
+                value={i18n.language?.split('-')[0] || 'en'}
                 onChange={(e) => i18n.changeLanguage(e.target.value)}
                 className="bg-transparent text-sm font-medium focus:outline-none cursor-pointer dark:bg-slate-900"
               >
