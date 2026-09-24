@@ -38,7 +38,8 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  console.error("🔥 Error:", err.message);
+  console.error("🔥 Error Object:", err);
+  if (err.message) console.error("🔥 Error Message:", err.message);
   res.status(500).json({ success: false, message: "Internal Server Error" });
 });
 
