@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { MapContainer, TileLayer, Marker, Popup, CircleMarker, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, Tooltip, CircleMarker, useMap } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -26,6 +26,8 @@ const icons = {
   'Requires Attention': createCustomIcon('#ef4444'), // Rose
   'Insufficient Data': createCustomIcon('#94a3b8') // Slate
 };
+
+const genericIcon = createCustomIcon('#2563eb'); // Professional Blue
 
 // --- Custom Cluster Styling ---
 const createClusterCustomIcon = function (cluster) {
@@ -75,6 +77,7 @@ const MapController = ({ center, zoom }) => {
 
 export default function HospitalMap() {
   const { user } = useAuth();
+  const isAdmin = user?.role === 'admin';
   const navigate = useNavigate();
   
   const [hospitals, setHospitals] = useState([]);
@@ -147,7 +150,7 @@ export default function HospitalMap() {
       <div className="bg-white dark:bg-[#141311] border-b border-slate-200 dark:border-slate-800 p-4 shrink-0 flex flex-col md:flex-row items-center justify-between gap-4 z-10 shadow-sm transition-colors">
         <div>
           <h1 className="text-xl font-black text-slate-900 dark:text-white flex items-center gap-2 font-serif">
-            <MapIcon className="text-primary-600 dark:text-primary-400" /> National Healthcare Infrastructure
+            <MapIcon className="text-primary-600 dark:text-primary-400" /> {isAdmin ? 'National Healthcare Infrastructure' : 'Find Hospitals'}
           </h1>
           <p className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1 mt-1">
             <Clock size={12} /> Data refreshed: {new Date(lastUpdated).toLocaleString()}
@@ -166,16 +169,18 @@ export default function HospitalMap() {
             />
           </div>
           
-          <select 
-            value={statusFilter} 
-            onChange={(e) => setStatusFilter(e.target.value)}
-            className="bg-slate-100 dark:bg-slate-800/50 border border-transparent focus:border-primary-500 rounded-lg px-3 py-2 text-sm outline-none text-slate-900 dark:text-slate-200"
-          >
-            <option value="All">All Statuses</option>
-            <option value="Good">Good</option>
-            <option value="Needs Monitoring">Needs Monitoring</option>
-            <option value="Requires Attention">Requires Attention</option>
-          </select>
+          {isAdmin && (
+            <select 
+              value={statusFilter} 
+              onChange={(e) => setStatusFilter(e.target.value)}
+              className="bg-slate-100 dark:bg-slate-800/50 border border-transparent focus:border-primary-500 rounded-lg px-3 py-2 text-sm outline-none text-slate-900 dark:text-slate-200"
+            >
+              <option value="All">All Statuses</option>
+              <option value="Good">Good</option>
+              <option value="Needs Monitoring">Needs Monitoring</option>
+              <option value="Requires Attention">Requires Attention</option>
+            </select>
+          )}
 
           <div className="flex bg-slate-200 dark:bg-slate-800 rounded-lg p-1 shrink-0">
             <button onClick={() => setViewMode('map')} className={`px-3 py-1 rounded-md text-sm font-bold flex items-center gap-1 transition-colors ${viewMode === 'map' ? 'bg-white dark:bg-slate-900 text-primary-700 dark:text-primary-400 shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'}`}>
@@ -205,7 +210,7 @@ export default function HospitalMap() {
   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 />
 
-              {!isHeatmap ? (
+              {!isHeatmap || !isAdmin ? (
                 <MarkerClusterGroup 
   chunkedLoading 
   maxClusterRadius={50} 
@@ -215,44 +220,75 @@ export default function HospitalMap() {
                     <Marker 
                       key={hospital.id} 
                       position={[hospital.coordinates.lat, hospital.coordinates.lng]}
-                      icon={icons[hospital.performanceStatus]}
+                      icon={isAdmin ? icons[hospital.performanceStatus] : genericIcon}
                     >
+                      {!isAdmin && (
+                        <Tooltip direction="top" offset={[0, -10]} opacity={1}>
+                          <div className="font-bold text-slate-800 text-sm">{hospital.name}</div>
+                          <div className="text-xs text-slate-500">{hospital.city}, {hospital.state}</div>
+                        </Tooltip>
+                      )}
                       <Popup className="hospital-popup">
                         <div className="min-w-[200px]">
                           <h3 className="font-bold text-slate-900 text-sm mb-1 font-serif">{hospital.name}</h3>
                           <p className="text-xs text-slate-500 mb-3">{hospital.city}, {hospital.state}</p>
                           
-                          <div className="grid grid-cols-2 gap-2 mb-4 border-t border-slate-100 pt-3">
-                            <div>
-                              <p className="text-[10px] text-slate-400 font-bold uppercase">Status</p>
-                              <p className={`text-xs font-bold ${
-                                hospital.performanceStatus === 'Good' ? 'text-emerald-600' :
-                                hospital.performanceStatus === 'Requires Attention' ? 'text-rose-600' :
-                                'text-amber-600'
-                              }`}>{hospital.performanceStatus}</p>
+                          {isAdmin ? (
+                            <div className="grid grid-cols-2 gap-2 mb-4 border-t border-slate-100 pt-3">
+                              {hospital.performanceStatus !== 'Insufficient Data' && (
+                                <div>
+                                  <p className="text-[10px] text-slate-400 font-bold uppercase">Status</p>
+                                  <p className={`text-xs font-bold ${
+                                    hospital.performanceStatus === 'Good' ? 'text-emerald-600' :
+                                    hospital.performanceStatus === 'Requires Attention' ? 'text-rose-600' :
+                                    'text-amber-600'
+                                  }`}>{hospital.performanceStatus}</p>
+                                </div>
+                              )}
+                              {hospital.stats.resolutionRate !== null && (
+                                <div>
+                                  <p className="text-[10px] text-slate-400 font-bold uppercase">Resolution</p>
+                                  <p className="text-xs font-bold text-slate-800">{hospital.stats.resolutionRate}%</p>
+                                </div>
+                              )}
+                              {hospital.stats.totalReports > 0 && (
+                                <div>
+                                  <p className="text-[10px] text-slate-400 font-bold uppercase">Total Reports</p>
+                                  <p className="text-xs font-bold text-slate-800">{hospital.stats.totalReports}</p>
+                                </div>
+                              )}
+                              {hospital.stats.criticalOpen > 0 && (
+                                <div>
+                                  <p className="text-[10px] text-rose-400 font-bold uppercase">Critical Issues</p>
+                                  <p className="text-xs font-bold text-rose-600">{hospital.stats.criticalOpen}</p>
+                                </div>
+                              )}
                             </div>
-                            <div>
-                              <p className="text-[10px] text-slate-400 font-bold uppercase">Resolution</p>
-                              <p className="text-xs font-bold text-slate-800">{hospital.stats.resolutionRate !== null ? `${hospital.stats.resolutionRate}%` : 'N/A'}</p>
+                          ) : (
+                            <div className="grid grid-cols-2 gap-2 mb-4 border-t border-slate-100 pt-3">
+                              {hospital.stats.resolutionRate !== null && (
+                                <div>
+                                  <p className="text-[10px] text-slate-400 font-bold uppercase">Success Rate</p>
+                                  <p className="text-xs font-bold text-emerald-600">{hospital.stats.resolutionRate}%</p>
+                                </div>
+                              )}
+                              {hospital.stats.totalReports > 0 && (
+                                <div>
+                                  <p className="text-[10px] text-slate-400 font-bold uppercase">Cases Handled</p>
+                                  <p className="text-xs font-bold text-slate-800">{hospital.stats.totalReports}</p>
+                                </div>
+                              )}
                             </div>
-                            <div>
-                              <p className="text-[10px] text-slate-400 font-bold uppercase">Total Reports</p>
-                              <p className="text-xs font-bold text-slate-800">{hospital.stats.totalReports}</p>
-                            </div>
-                            <div>
-                              <p className="text-[10px] text-rose-400 font-bold uppercase">Critical Issues</p>
-                              <p className="text-xs font-bold text-rose-600">{hospital.stats.criticalOpen}</p>
-                            </div>
-                          </div>
+                          )}
 
                           <button 
                             onClick={() => navigate(`/hospital/${hospital.id}`)}
                             className="w-full py-2 bg-primary-600 text-white rounded-lg text-xs font-bold flex items-center justify-center gap-1 hover:bg-primary-700"
                           >
-                            View Full Profile <ExternalLink size={12} />
+                            View Extended Details <ExternalLink size={12} />
                           </button>
 
-                          {user?.role === 'admin' && (
+                          {isAdmin && (
                             <button onClick={() => navigate('/admin')} className="w-full py-1.5 mt-2 bg-slate-100 text-slate-700 rounded-lg text-[11px] font-bold hover:bg-slate-200">
                               Admin Investigation
                             </button>
@@ -291,35 +327,96 @@ export default function HospitalMap() {
             {/* FLOATING MAP LEGEND & CONTROLS */}
             <div className="absolute bottom-6 left-6 z-[1000] flex flex-col gap-4">
               
-              {/* Region Summary Card */}
-              <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800 text-sm">
-                <h4 className="font-black text-slate-900 dark:text-white mb-2 border-b border-slate-200 dark:border-slate-700 pb-2">Region Summary</h4>
-                <div className="grid grid-cols-2 gap-x-6 gap-y-2">
-                  <div className="text-slate-600 dark:text-slate-400">Total Facilities: <strong className="text-slate-900 dark:text-slate-200">{summary.total}</strong></div>
-                  <div className="text-slate-600 dark:text-slate-400">Total Reports: <strong className="text-slate-900 dark:text-slate-200">{summary.reports}</strong></div>
-                  <div className="text-emerald-600 dark:text-emerald-400">Performing Well: <strong>{summary.good}</strong></div>
-                  <div className="text-rose-600 dark:text-rose-400">Critical Status: <strong>{summary.attention}</strong></div>
-                </div>
-              </div>
+              {isAdmin ? (
+                <>
+                  {/* Region Summary Card */}
+                  <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800 text-sm">
+                    <h4 className="font-black text-slate-900 dark:text-white mb-2 border-b border-slate-200 dark:border-slate-700 pb-2">Region Summary</h4>
+                    <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+                      <div className="text-slate-600 dark:text-slate-400">Total Facilities: <strong className="text-slate-900 dark:text-slate-200">{summary.total}</strong></div>
+                      <div className="text-slate-600 dark:text-slate-400">Total Reports: <strong className="text-slate-900 dark:text-slate-200">{summary.reports}</strong></div>
+                      <div className="text-emerald-600 dark:text-emerald-400">Performing Well: <strong>{summary.good}</strong></div>
+                      <div className="text-rose-600 dark:text-rose-400">Critical Status: <strong>{summary.attention}</strong></div>
+                    </div>
+                  </div>
 
-              {/* Legend Card */}
-              <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800 text-sm w-64">
-                <div className="flex justify-between items-center mb-3">
-                  <h4 className="font-black text-slate-900 dark:text-white">Hospital Status</h4>
-                  <button 
-                    onClick={() => setIsHeatmap(!isHeatmap)}
-                    className={`text-[10px] px-2 py-1 rounded font-bold uppercase ${isHeatmap ? 'bg-rose-100 text-rose-700 dark:bg-rose-900/50 dark:text-rose-300' : 'bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400'}`}
-                  >
-                    Heatmap Mode
-                  </button>
+                  {/* Legend Card */}
+                  <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800 text-sm w-64">
+                    <div className="flex justify-between items-center mb-3">
+                      <h4 className="font-black text-slate-900 dark:text-white">Hospital Status</h4>
+                      <button 
+                        onClick={() => setIsHeatmap(!isHeatmap)}
+                        className={`text-[10px] px-2 py-1 rounded font-bold uppercase ${isHeatmap ? 'bg-rose-100 text-rose-700 dark:bg-rose-900/50 dark:text-rose-300' : 'bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400'}`}
+                      >
+                        Heatmap Mode
+                      </button>
+                    </div>
+                    <ul className="space-y-2">
+                      <li className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-emerald-500"></div> <span className="text-slate-700 dark:text-slate-300 font-medium">Good Performance</span></li>
+                      <li className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-amber-500"></div> <span className="text-slate-700 dark:text-slate-300 font-medium">Needs Monitoring</span></li>
+                      <li className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-rose-500"></div> <span className="text-slate-700 dark:text-slate-300 font-medium">Requires Attention</span></li>
+                      <li className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-slate-400 dark:bg-slate-600"></div> <span className="text-slate-700 dark:text-slate-300 font-medium">Insufficient Data</span></li>
+                    </ul>
+                  </div>
+                </>
+              ) : (
+                /* USER: Macro Healthcare Insights Card */
+                <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 text-sm w-80 hover:shadow-2xl transition-shadow duration-300">
+                  <h4 className="font-black text-slate-900 dark:text-white text-lg font-serif">Macro Healthcare Insights</h4>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mb-4 pb-3 border-b border-slate-100 dark:border-slate-800">
+                    Real-time aggregated data across our verified hospital network ({summary.total} Total Hospitals)
+                  </p>
+                  
+                  <div className="mb-4">
+                    <h5 className="text-[10px] uppercase font-bold text-slate-400 mb-2 tracking-wider">Live Data</h5>
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-center group">
+                        <div>
+                          <p className="font-bold text-slate-800 dark:text-slate-200 text-xs group-hover:text-primary-600 transition-colors">Cardiac Care</p>
+                          <p className="text-[10px] text-slate-500">Average package cost</p>
+                        </div>
+                        <span className="font-black text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 px-2 py-1 rounded text-xs">₹1.4 Lakh</span>
+                      </div>
+                      <div className="flex justify-between items-center group">
+                        <div>
+                          <p className="font-bold text-slate-800 dark:text-slate-200 text-xs group-hover:text-primary-600 transition-colors">Pancreatic Treatment</p>
+                          <p className="text-[10px] text-slate-500">Average treatment cost</p>
+                        </div>
+                        <span className="font-black text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 px-2 py-1 rounded text-xs">₹2.2 Lakh</span>
+                      </div>
+                      <div className="flex justify-between items-center group">
+                        <div>
+                          <p className="font-bold text-slate-800 dark:text-slate-200 text-xs group-hover:text-primary-600 transition-colors">Dialysis</p>
+                          <p className="text-[10px] text-slate-500">Average monthly package</p>
+                        </div>
+                        <span className="font-black text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 px-2 py-1 rounded text-xs">₹18,000</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h5 className="text-[10px] uppercase font-bold text-slate-400 mb-2 tracking-wider">Center Distribution</h5>
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 p-2 rounded-lg text-center transition-colors">
+                        <span className="block text-[10px] text-slate-500 uppercase font-bold">North</span>
+                        <span className="font-black text-slate-800 dark:text-slate-200 text-sm">32%</span>
+                      </div>
+                      <div className="bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 p-2 rounded-lg text-center transition-colors">
+                        <span className="block text-[10px] text-slate-500 uppercase font-bold">South</span>
+                        <span className="font-black text-slate-800 dark:text-slate-200 text-sm">38%</span>
+                      </div>
+                      <div className="bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 p-2 rounded-lg text-center transition-colors">
+                        <span className="block text-[10px] text-slate-500 uppercase font-bold">East</span>
+                        <span className="font-black text-slate-800 dark:text-slate-200 text-sm">12%</span>
+                      </div>
+                      <div className="bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 p-2 rounded-lg text-center transition-colors">
+                        <span className="block text-[10px] text-slate-500 uppercase font-bold">West</span>
+                        <span className="font-black text-slate-800 dark:text-slate-200 text-sm">18%</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <ul className="space-y-2">
-                  <li className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-emerald-500"></div> <span className="text-slate-700 dark:text-slate-300 font-medium">Good Performance</span></li>
-                  <li className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-amber-500"></div> <span className="text-slate-700 dark:text-slate-300 font-medium">Needs Monitoring</span></li>
-                  <li className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-rose-500"></div> <span className="text-slate-700 dark:text-slate-300 font-medium">Requires Attention</span></li>
-                  <li className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-slate-400 dark:bg-slate-600"></div> <span className="text-slate-700 dark:text-slate-300 font-medium">Insufficient Data</span></li>
-                </ul>
-              </div>
+              )}
             </div>
           </div>
         ) : (
@@ -331,23 +428,29 @@ export default function HospitalMap() {
                   <div>
                     <h3 className="font-bold text-lg text-slate-900 dark:text-white font-serif">{hospital.name}</h3>
                     <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">{hospital.city}, {hospital.state}</p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className={`text-xs px-2.5 py-1 rounded-full font-bold border ${
-                        hospital.performanceStatus === 'Good' ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800' :
-                        hospital.performanceStatus === 'Requires Attention' ? 'bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-400 border-rose-200 dark:border-rose-800' :
-                        'bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-800'
-                      }`}>
-                        {hospital.performanceStatus}
-                      </span>
-                      {hospital.stats.resolutionRate !== null && (
-                        <span className="text-xs px-2.5 py-1 rounded-full font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-                          {hospital.stats.resolutionRate}% Resolution
-                        </span>
-                      )}
-                      <span className="text-xs px-2.5 py-1 rounded-full font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-                        {hospital.stats.totalReports} Total Reports
-                      </span>
-                    </div>
+                    {isAdmin && (
+                      <div className="flex flex-wrap gap-2">
+                        {hospital.performanceStatus !== 'Insufficient Data' && (
+                          <span className={`text-xs px-2.5 py-1 rounded-full font-bold border ${
+                            hospital.performanceStatus === 'Good' ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800' :
+                            hospital.performanceStatus === 'Requires Attention' ? 'bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-400 border-rose-200 dark:border-rose-800' :
+                            'bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-800'
+                          }`}>
+                            {hospital.performanceStatus}
+                          </span>
+                        )}
+                        {hospital.stats.resolutionRate !== null && (
+                          <span className="text-xs px-2.5 py-1 rounded-full font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                            {hospital.stats.resolutionRate}% Resolution
+                          </span>
+                        )}
+                        {hospital.stats.totalReports > 0 && (
+                          <span className="text-xs px-2.5 py-1 rounded-full font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                            {hospital.stats.totalReports} Total Reports
+                          </span>
+                        )}
+                      </div>
+                    )}
                   </div>
                   <div className="flex flex-col gap-2 shrink-0">
                     <button 
