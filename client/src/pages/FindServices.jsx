@@ -147,16 +147,16 @@ export default function FindServices() {
         </div>
 
         {/* Standard Multi-Hospital Search Bar */}
-        <form onSubmit={handleStandardSearch} className="relative flex items-center shadow-lg rounded-2xl bg-white dark:bg-[#141311] border border-slate-200 dark:border-slate-800 p-2 focus-within:ring-2 focus-within:ring-primary-600 transition-shadow">
-          <Search className="text-slate-400 ml-4 shrink-0" size={24} />
+        <form onSubmit={handleStandardSearch} className="relative flex flex-col sm:flex-row items-center gap-2 sm:gap-0 shadow-lg rounded-2xl bg-white dark:bg-[#141311] border border-slate-200 dark:border-slate-800 p-2 focus-within:ring-2 focus-within:ring-primary-600 transition-shadow w-full">
+          <Search className="hidden sm:block text-slate-400 ml-4 shrink-0" size={24} />
           <input 
             type="text" 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search all hospitals: e.g. 'Cancer treatment in Punjab', 'Cardiology in Delhi'..." 
-            className="w-full px-4 py-4 text-slate-700 dark:text-white bg-transparent outline-none text-base md:text-lg placeholder-slate-400"
+            placeholder="Search all hospitals: e.g. 'Cancer treatment in Punjab'..." 
+            className="w-full px-4 py-3 sm:py-4 text-slate-700 dark:text-white bg-transparent outline-none text-base md:text-lg placeholder-slate-400"
           />
-          <button type="submit" className="bg-primary-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-primary-800 transition-colors shrink-0">
+          <button type="submit" className="w-full sm:w-auto bg-primary-700 text-white px-4 sm:px-8 py-3 sm:py-4 rounded-xl font-bold hover:bg-primary-800 transition-colors shrink-0">
             Search List
           </button>
         </form>

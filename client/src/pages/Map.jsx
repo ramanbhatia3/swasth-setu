@@ -148,16 +148,16 @@ export default function HospitalMap() {
       
       {/* TOP TOOLBAR */}
       <div className="bg-white dark:bg-[#141311] border-b border-slate-200 dark:border-slate-800 p-4 shrink-0 flex flex-col md:flex-row items-center justify-between gap-4 z-10 shadow-sm transition-colors">
-        <div>
-          <h1 className="text-xl font-black text-slate-900 dark:text-white flex items-center gap-2 font-serif">
+        <div className="w-full md:w-auto text-center md:text-left">
+          <h1 className="text-xl font-black text-slate-900 dark:text-white flex items-center justify-center md:justify-start gap-2 font-serif">
             <MapIcon className="text-primary-600 dark:text-primary-400" /> {isAdmin ? 'National Healthcare Infrastructure' : 'Find Hospitals'}
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1 mt-1">
+          <p className="text-xs text-slate-500 dark:text-slate-400 flex items-center justify-center md:justify-start gap-1 mt-1">
             <Clock size={12} /> Data refreshed: {new Date(lastUpdated).toLocaleString()}
           </p>
         </div>
 
-        <div className="flex items-center gap-3 w-full md:w-auto">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto">
           <div className="relative flex-grow md:w-64">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
             <input 
@@ -173,7 +173,7 @@ export default function HospitalMap() {
             <select 
               value={statusFilter} 
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="bg-slate-100 dark:bg-slate-800/50 border border-transparent focus:border-primary-500 rounded-lg px-3 py-2 text-sm outline-none text-slate-900 dark:text-slate-200"
+              className="w-full sm:w-auto bg-slate-100 dark:bg-slate-800/50 border border-transparent focus:border-primary-500 rounded-lg px-3 py-2 text-sm outline-none text-slate-900 dark:text-slate-200"
             >
               <option value="All">All Statuses</option>
               <option value="Good">Good</option>
@@ -182,7 +182,7 @@ export default function HospitalMap() {
             </select>
           )}
 
-          <div className="flex bg-slate-200 dark:bg-slate-800 rounded-lg p-1 shrink-0">
+          <div className="flex bg-slate-200 dark:bg-slate-800 rounded-lg p-1 shrink-0 w-full sm:w-auto justify-center">
             <button onClick={() => setViewMode('map')} className={`px-3 py-1 rounded-md text-sm font-bold flex items-center gap-1 transition-colors ${viewMode === 'map' ? 'bg-white dark:bg-slate-900 text-primary-700 dark:text-primary-400 shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'}`}>
               <MapIcon size={16} /> Map
             </button>
@@ -325,12 +325,12 @@ export default function HospitalMap() {
             </MapContainer>
 
             {/* FLOATING MAP LEGEND & CONTROLS */}
-            <div className="absolute bottom-6 left-6 z-[1000] flex flex-col gap-4">
+            <div className="absolute bottom-4 md:bottom-6 left-4 right-4 md:right-auto md:left-6 z-[1000] flex flex-col gap-4">
               
               {isAdmin ? (
                 <>
                   {/* Region Summary Card */}
-                  <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800 text-sm">
+                  <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800 text-sm w-full md:w-80">
                     <h4 className="font-black text-slate-900 dark:text-white mb-2 border-b border-slate-200 dark:border-slate-700 pb-2">Region Summary</h4>
                     <div className="grid grid-cols-2 gap-x-6 gap-y-2">
                       <div className="text-slate-600 dark:text-slate-400">Total Facilities: <strong className="text-slate-900 dark:text-slate-200">{summary.total}</strong></div>
@@ -341,7 +341,7 @@ export default function HospitalMap() {
                   </div>
 
                   {/* Legend Card */}
-                  <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800 text-sm w-64">
+                  <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800 text-sm w-full md:w-64">
                     <div className="flex justify-between items-center mb-3">
                       <h4 className="font-black text-slate-900 dark:text-white">Hospital Status</h4>
                       <button 
@@ -361,7 +361,7 @@ export default function HospitalMap() {
                 </>
               ) : (
                 /* USER: Macro Healthcare Insights Card */
-                <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 text-sm w-80 hover:shadow-2xl transition-shadow duration-300">
+                <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 text-sm w-full md:w-80 hover:shadow-2xl transition-shadow duration-300 hidden sm:block">
                   <h4 className="font-black text-slate-900 dark:text-white text-lg font-serif">Macro Healthcare Insights</h4>
                   <p className="text-xs text-slate-500 dark:text-slate-400 mb-4 pb-3 border-b border-slate-100 dark:border-slate-800">
                     Real-time aggregated data across our verified hospital network ({summary.total} Total Hospitals)

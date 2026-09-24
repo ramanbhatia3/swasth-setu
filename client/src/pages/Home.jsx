@@ -38,7 +38,7 @@ export default function Home() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 dark:bg-primary-900/30 border border-primary-100 dark:border-primary-800 text-primary-800 dark:text-primary-300 font-semibold text-sm mb-6 shadow-sm">
               <Activity size={16} /> {t('Empowering Indian Citizens')}
             </div>
-            <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-8 leading-tight font-serif">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-8 leading-tight font-serif">
               {t('A Transparent & Intelligent')} <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-700 to-primary-400 dark:from-primary-400 dark:to-primary-200">
                 {t('Healthcare Ecosystem')}
@@ -62,7 +62,7 @@ export default function Home() {
 
       {/* STATS STRIP */}
       <section className="bg-primary-900 dark:bg-primary-950 text-white py-12 border-y border-primary-800 dark:border-primary-900 relative z-20 -mt-10 mx-4 md:mx-auto max-w-6xl rounded-2xl shadow-2xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-8 divide-x divide-primary-800 dark:divide-primary-900 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 md:gap-8 px-4 md:px-8 divide-x-0 md:divide-x divide-primary-800 dark:divide-primary-900 text-center">
           <div>
             <p className="text-4xl font-black text-primary-300 mb-1">100%</p>
             <p className="text-sm font-medium text-primary-100/80 uppercase tracking-wide">Data Privacy</p>
